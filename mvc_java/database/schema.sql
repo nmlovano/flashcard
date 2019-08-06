@@ -28,13 +28,15 @@ CREATE TABLE app_user (
         is_admin   boolean       NOT NULL DEFAULT FALSE,
         first_name varchar(25)   NOT NULL,
         last_name  varchar(25)   NOT NULL,
-        salt       varchar(255)  NOT NULL
+        salt       varchar(255)  NOT NULL,
+        CONSTRAINT pk_app_user_email PRIMARY KEY(email)
 );
 
 CREATE TABLE deck (
         deck_id                 integer              NOT NULL DEFAULT nextval('seq_deck_id'),   --primary key
         deck_name               varchar(50)          NOT NULL,
-        deck_description        varchar(350)         NOT NULL
+        deck_description        varchar(350)         NOT NULL,
+        CONSTRAINT pk_deck_deck_id PRIMARY KEY(deck_id)
 );
 
 CREATE TABLE card (
@@ -42,13 +44,15 @@ CREATE TABLE card (
         deck_id                 integer              NOT NULL,                                  --primary key
         card_front              varchar(100)         NOT NULL,
         card_back               varchar(100)         NOT NULL,
-        card_tag                text                 NOT NULL
+        card_tag                text                 NOT NULL,
+        CONSTRAINT pk_card_card_id PRIMARY KEY(card_id)
 );
 
 CREATE TABLE deckscreated(
-        cool_secret_id          integer              NOT NULL DEFAULT nextval('seq_cool_secret_id')
+        cool_secret_id          integer              NOT NULL DEFAULT nextval('seq_cool_secret_id'),
         deck_id                 integer              NOT NULL,
-        email                   text                 NOT NULL
+        email                   text                 NOT NULL,
+        CONSTRAINT pk_deckscreated_cool_secret_id PRIMARY KEY(cool_secret_id)
 );
 
 CREATE TABLE audit (
@@ -56,13 +60,14 @@ CREATE TABLE audit (
         deck_id                 integer              NOT NULL,                                  --foreign key
         num_right               integer              NOT NULL DEFAULT 0,
         date                    date                 NOT NULL,
-        email                   text                 NOT NULL
+        email                   text                 NOT NULL,
+        CONSTRAINT pk_audit_session_id PRIMARY KEY(session_id)
 );
 
 ALTER TABLE audit               ADD FOREIGN KEY (deck_id) REFERENCES    deck(deck_id);
-ALTER TABLE audit               ADD FOREIGN KEY (email)   REFERENCES    users(email);
+ALTER TABLE audit               ADD FOREIGN KEY (email)   REFERENCES    app_user(email);
 ALTER TABLE card                ADD FOREIGN KEY (deck_id) REFERENCES    deck(deck_id);
 ALTER TABLE deckscreated        ADD FOREIGN KEY (deck_id) REFERENCES    deck(deck_id);
-ALTER TABLE deckscreated        ADD FOREIGN KEY (email)   REFERENCES    users(email);
+ALTER TABLE deckscreated        ADD FOREIGN KEY (email)   REFERENCES    app_user(email);
 
 COMMIT;
