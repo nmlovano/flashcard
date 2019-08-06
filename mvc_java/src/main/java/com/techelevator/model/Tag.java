@@ -1,4 +1,4 @@
-package com.techelevator;
+package com.techelevator.model;
 
 public class Tag {
 	private int tagId;

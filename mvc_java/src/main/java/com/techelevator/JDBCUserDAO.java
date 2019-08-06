@@ -1,4 +1,4 @@
-package com.techelevator.model;
+package com.techelevator;
 
 import javax.sql.DataSource;
 
@@ -29,14 +29,14 @@ public class JDBCUserDAO implements UserDAO {
 		String hashedPassword = hashMaster.computeHash(password, salt);
 		String saltString = new String(Base64.encode(salt));
 		
-		jdbcTemplate.update("INSERT INTO app_user(user_name, password, salt) VALUES (?, ?, ?)",
+		jdbcTemplate.update("INSERT INTO users(email, user_name, password, salt, first_name, last_name) VALUES (?, ?, ?)",
 				userName, hashedPassword, saltString);
 	}
 
 	@Override
 	public boolean searchForUsernameAndPassword(String userName, String password) {
 		String sqlSearchForUser = "SELECT * "+
-							      "FROM app_user "+
+							      "FROM users "+
 							      "WHERE UPPER(user_name) = ? ";
 		
 		SqlRowSet user = jdbcTemplate.queryForRowSet(sqlSearchForUser, userName.toUpperCase());
@@ -52,13 +52,13 @@ public class JDBCUserDAO implements UserDAO {
 
 	@Override
 	public void updatePassword(String userName, String password) {
-		jdbcTemplate.update("UPDATE app_user SET password = ? WHERE user_name = ?", password, userName);
+		jdbcTemplate.update("UPDATE users SET password = ? WHERE user_name = ?", password, userName);
 	}
 
 	@Override
 	public Object getUserByUserName(String userName) {
 		String sqlSearchForUsername ="SELECT * "+
-		"FROM app_user "+
+		"FROM users "+
 		"WHERE UPPER(user_name) = ? ";
 
 		SqlRowSet user = jdbcTemplate.queryForRowSet(sqlSearchForUsername, userName.toUpperCase()); 

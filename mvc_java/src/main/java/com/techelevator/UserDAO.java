@@ -1,4 +1,5 @@
-package com.techelevator.model;
+package com.techelevator;
+
 
 public interface UserDAO {
 

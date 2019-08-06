@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.techelevator.UserDAO;
 import com.techelevator.model.User;
-import com.techelevator.model.UserDAO;
 
 @Controller
 public class UserController {

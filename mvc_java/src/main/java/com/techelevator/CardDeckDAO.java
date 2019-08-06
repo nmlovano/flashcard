@@ -1,14 +1,16 @@
-package com.techelevator.model;
+package com.techelevator;
 
 import java.util.List;
 
 import javax.swing.text.html.HTML.Tag;
 
-import com.techelevator.CardDeck;
-import com.techelevator.Flashcard;
+
+import com.techelevator.model.CardDeck;
+import com.techelevator.model.Flashcard;
+
 
 public interface CardDeckDAO {
-public Flashcard saveFlashcard(int userId, String frontText, String backText, int[] tagId);
+public void saveFlashcard(int deckId, String frontText, String backText, String[] tagId);
 	
 	public void deleteFlashcard(int cardId);
 	
@@ -22,11 +24,11 @@ public Flashcard saveFlashcard(int userId, String frontText, String backText, in
 	
 	public List<Flashcard> getFlashcardsForDeckShuffled(int deckId);
 	
-	public void updateFlashcard(int cardId, String frontText, String backText, int[] tagId);
+	public void updateFlashcard(int cardId, String frontText, String backText, String[] tagId);
 	
 	public void updateFlashcardStudySession(Flashcard flashcard);
 	
-	public CardDeck saveCardDeck(int userId, String name, String description);
+	public void saveCardDeck(String name, String description);
 	
 	public List<CardDeck> getCardDecksByUserName(String userName);
 	
@@ -39,8 +41,6 @@ public Flashcard saveFlashcard(int userId, String frontText, String backText, in
 	public List<Tag> getAllTags();
 	
 	public List<Flashcard> searchCardsByTags(String tagNames);
-
-	public List<Flashcard> getFlashcardsByUserId(int userId);
 	
 	public List<Integer> getAllDeckIdsForCard(int cardId);
 

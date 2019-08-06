@@ -5,7 +5,7 @@
 BEGIN;
 
 -- CREATE statements go here
-DROP TABLE IF EXISTS app_user     CASCADE;
+DROP TABLE IF EXISTS users    CASCADE;
 DROP TABLE IF EXISTS deck         CASCADE;
 DROP TABLE IF EXISTS card         CASCADE;
 DROP TABLE IF EXISTS deckscreated CASCADE;
@@ -21,7 +21,7 @@ CREATE SEQUENCE seq_card_id;
 CREATE SEQUENCE seq_cool_secret_id;
 CREATE SEQUENCE seq_session_id;
 
-CREATE TABLE app_user (
+CREATE TABLE users (
         email      text          NOT NULL,
         user_name  varchar(32)   NOT NULL UNIQUE,
         password   varchar(32)   NOT NULL,
@@ -29,7 +29,7 @@ CREATE TABLE app_user (
         first_name varchar(25)   NOT NULL,
         last_name  varchar(25)   NOT NULL,
         salt       varchar(255)  NOT NULL,
-        CONSTRAINT pk_app_user_email PRIMARY KEY(email)
+        CONSTRAINT pk_users_email PRIMARY KEY(email)
 );
 
 CREATE TABLE deck (
@@ -68,6 +68,6 @@ ALTER TABLE audit               ADD FOREIGN KEY (deck_id) REFERENCES    deck(dec
 ALTER TABLE audit               ADD FOREIGN KEY (email)   REFERENCES    app_user(email);
 ALTER TABLE card                ADD FOREIGN KEY (deck_id) REFERENCES    deck(deck_id);
 ALTER TABLE deckscreated        ADD FOREIGN KEY (deck_id) REFERENCES    deck(deck_id);
-ALTER TABLE deckscreated        ADD FOREIGN KEY (email)   REFERENCES    app_user(email);
+ALTER TABLE deckscreated        ADD FOREIGN KEY (email)   REFERENCES    users(email);
 
 COMMIT;
