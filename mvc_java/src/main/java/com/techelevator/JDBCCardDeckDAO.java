@@ -1,5 +1,6 @@
 package com.techelevator;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.sql.DataSource;
@@ -7,6 +8,7 @@ import javax.swing.text.html.HTML.Tag;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
 import com.techelevator.model.CardDeck;
@@ -40,41 +42,64 @@ public Flashcard getFlashcardByCardId(int cardId) {
 							  "where card_id = ?";
 	
 	SqlRowSet card = jdbcTemplate.queryForRowSet(sqlSearchForCard, cardId);
-	Card thisCard = null;
+	Flashcard thisCard = null;
 	if(card.next()) {
-		thisCard = new Card();
+		thisCard = new Flashcard();
+		thisCard = getFlashcardByCardId(card.getInt("card_id"));
 		
 	}
-	return null;
+	return thisCard;
 }
 
 @Override
 public void assignFlashcardToDeck(int cardId, int deckId) {
-	// TODO Auto-generated method stub
+	jdbcTemplate.update("update card set deck_id = ? where card_id = ?");
 	
 }
 
 @Override
 public void removeFlashcardFromDeck(int cardId, int deckId) {
-	// TODO Auto-generated method stub
+	jdbcTemplate.batchUpdate("delete from card where card_id = ?");
 	
 }
 
 @Override
 public List<Flashcard> getFlashcardsForDeckOrdered(int deckId) {
-	// TODO Auto-generated method stub
-	return null;
+	String sqlSearchForDeck = "SELECT *"+
+							  "FROM card"+
+							  "WHERE deck_id = ?"+
+							  "ORDER by ?";
+	SqlRowSet deck = jdbcTemplate.queryForRowSet(sqlSearchForDeck, deckId);
+	List<Flashcard> thisDeck = null;
+	if(deck.next()) {
+		thisDeck = new ArrayList<Flashcard>();
+		thisDeck = getFlashcardsForDeckOrdered(deck.getInt("deck_id"));
+		
+	}
+	return thisDeck;
 }
 
 @Override
 public List<Flashcard> getFlashcardsForDeckShuffled(int deckId) {
-	// TODO Auto-generated method stub
-	return null;
+	String sqlShuffleDeck = "SELECT *"+
+							"from card"+
+							"where deck_id = ?"+
+							"order by random()";
+	SqlRowSet deck = jdbcTemplate.queryForRowSet(sqlShuffleDeck, deckId);
+	List<Flashcard> thisDeck = null;
+	if(deck.next()) {
+		thisDeck = new ArrayList<Flashcard>();
+		thisDeck = getFlashcardsForDeckShuffled(deck.getInt("deck_id"));
+		
+	}
+	return thisDeck;
 }
 
 @Override
 public void updateFlashcard(int cardId, String frontText, String backText, String[] tagId) {
-	// TODO Auto-generated method stub
+	jdbcTemplate.batchUpdate("UPDATE card"+ 
+							 "SET ? = ?"+
+							 "WHERE ? = ?");
 	
 }
 
@@ -98,19 +123,38 @@ public List<CardDeck> getCardDecksByUserName(String userName) {
 
 @Override
 public List<CardDeck> getAllCardDecks() {
-	// TODO Auto-generated method stub
-	return null;
+	String sqlGetDecks = "SELECT *"+
+						 "from deck";
+	SqlRowSet decks = jdbcTemplate.queryForRowSet(sqlGetDecks);
+	List<CardDeck> thisDeck = null;
+	if(decks.next()) {
+		thisDeck = new ArrayList<CardDeck>();
+		thisDeck = getAllCardDecks();
+
+}
+return thisDeck;
 }
 
 @Override
 public CardDeck getCardDeckByDeckId(int deckId) {
-	// TODO Auto-generated method stub
-	return null;
+	String sqlGetDeckByDeckId = "SELECT *"+
+								"from deck"+
+								"where deck_id = ?";
+	SqlRowSet deck = jdbcTemplate.queryForRowSet(sqlGetDeckByDeckId, deckId);
+	CardDeck thisDeck = null;
+	if(deck.next()) {
+		thisDeck = new CardDeck();
+		thisDeck = getCardDeckByDeckId(deck.getInt("deck_id"));
+
+}
+return thisDeck;
 }
 
 @Override
 public void updateCardDeck(int deckId, String name, String description) {
-	// TODO Auto-generated method stub
+	jdbcTemplate.batchUpdate("UPDATE deck"+ 
+							 "SET ? = ?"+
+			 				 "WHERE ? = ?");
 	
 }
 
