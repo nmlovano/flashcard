@@ -1,11 +1,32 @@
 <template>
+<div class="header">
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link>
-      <div>
-      <router-link to="/login">Login</router-link>
-      </div>
-    </div>
-    <router-view/>
+    <header>
+
+     </header>
+    <router-view class="content"/>
+  </div>
   </div>
 </template>
+<style>
+
+
+#app {
+
+
+}
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+
+
+
+
+
+body {
+  margin: 0;
+  padding: 0;
+}
+</style>

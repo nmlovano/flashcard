@@ -4,7 +4,7 @@ import auth from './auth'
 import Home from './views/Home.vue'
 import Login from './views/Login.vue'
 import Register from './views/Register.vue'
-
+import Search from './views/Search.vue'
 Vue.use(Router)
 
 /**
@@ -21,13 +21,14 @@ const router = new Router({
   base: process.env.BASE_URL,
   routes: [
     {
-      path: '/',
-      name: 'home',
-      component: Home,
-      meta: {
-        requiresAuth: true
-      }
-    },
+        path: '/home',
+        name: 'home',
+        component: Home,
+        meta: {
+          requiresAuth: false
+        }
+      },
+      
     {
       path: "/login",
       name: "login",
@@ -44,6 +45,14 @@ const router = new Router({
         requiresAuth: false
       }
     },
+    {
+      path: "/search",
+      name: "search",
+      component: Search,
+      meta: {
+        requiresAuth: false
+      }
+      },
   ]
 })
 

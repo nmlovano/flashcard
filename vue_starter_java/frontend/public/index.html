@@ -5,8 +5,35 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
-    <title>final-vue-capstone-seed</title>
+    <title>FlashCard Study For Days</title>
   </head>
+
+  
+      
+  <div class="topnav">
+      <a class="active" href="/home">Home</a>
+      <a class="active" href="/login">Login</a>
+       <div class="search-container">
+    <form action="/search">
+      <input type="text" placeholder="Search.." name="search">
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+    </div>
+    <style>
+      a:link {
+  color: red;
+}
+    a:visited {
+      color: green;
+    }
+    a:hover {
+  color: hotpink;
+}
+a:active {
+  color: blue;
+}
+  </style>
   <body>
     <noscript>
       <strong>We're sorry but final-vue-capstone-seed doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
