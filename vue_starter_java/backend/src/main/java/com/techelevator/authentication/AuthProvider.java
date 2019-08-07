@@ -42,7 +42,7 @@ public interface AuthProvider {
      * @param password the new user's password
      * @param role the new user's role
      */
-    void register(String username, String password, String role);
+    void register(String username, String password, String role, String first_name, String last_name, String email);
 
     /**
      * Checks to see if the current user has one of the given roles

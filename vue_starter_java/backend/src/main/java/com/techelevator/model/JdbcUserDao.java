@@ -43,18 +43,21 @@ public class JdbcUserDao implements UserDao {
      * @return the new user
      */
     @Override
-    public User saveUser(String userName, String password, String role) {
+    public User saveUser(String userName, String password, String role, String first_name, String last_name, String email) {
         byte[] salt = passwordHasher.generateRandomSalt();
         String hashedPassword = passwordHasher.computeHash(password, salt);
         String saltString = new String(Base64.encode(salt));
         long newId = jdbcTemplate.queryForObject(
-                "INSERT INTO users(username, password, salt, role) VALUES (?, ?, ?, ?) RETURNING id", Long.class,
-                userName, hashedPassword, saltString, role);
+                "INSERT INTO users(username, password, salt, role, first_name, last_name, email) VALUES (?, ?, ?, ?, ?,?,?) RETURNING id", Long.class,
+                userName, hashedPassword, saltString, role, first_name, last_name, email);
 
         User newUser = new User();
         newUser.setId(newId);
         newUser.setUsername(userName);
         newUser.setRole(role);
+        newUser.setFirstName(first_name);
+        newUser.setLastName(last_name);
+        newUser.setEmail(email);
 
         return newUser;
     }
@@ -103,7 +106,7 @@ public class JdbcUserDao implements UserDao {
     @Override
     public List<User> getAllUsers() {
         List<User> users = new ArrayList<User>();
-        String sqlSelectAllUsers = "SELECT id, username, role FROM users";
+        String sqlSelectAllUsers = "SELECT * FROM users";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sqlSelectAllUsers);
 
         while (results.next()) {
@@ -119,6 +122,9 @@ public class JdbcUserDao implements UserDao {
         user.setId(results.getLong("id"));
         user.setUsername(results.getString("username"));
         user.setRole(results.getString("role"));
+        user.setFirstName(results.getString("first_name"));
+        user.setLastName(results.getString("last_name"));
+        user.setEmail(results.getString("email"));
         return user;
     }
 

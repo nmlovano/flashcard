@@ -7,7 +7,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
-import org.hibernate.validator.constraints.SafeHtml.Tag;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -16,18 +16,18 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.techelevator.CardDeckDAO;
-import com.techelevator.UserDAO;
+import com.techelevator.dao.CardDeckDAO;
+import com.techelevator.model.UserDao;
 import com.techelevator.model.Flashcard;
 
 @Controller
 public class SearchController {
 	
-	private UserDAO userDAO;
+	private UserDao userDAO;
 //	private CardDeckDAO cardDeckDAO;
 
 @Autowired
-public SearchController(UserDAO userDAO) {
+public SearchController(UserDao userDAO) {
 	this.userDAO = userDAO;
 //	this.cardDeckDAO = cardDeckDAO;
 }
