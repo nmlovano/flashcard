@@ -117,7 +117,7 @@ public void saveCardDeck(String name, String description) {
 
 @Override
 public List<CardDeck> getCardDecksByUserName(String userName) {
-	// TODO Auto-generated method stub
+	
 	return null;
 }
 
@@ -160,20 +160,39 @@ public void updateCardDeck(int deckId, String name, String description) {
 
 @Override
 public List<Tag> getAllTags() {
-	// TODO Auto-generated method stub
-	return null;
+	String sqlAllTags = "Select card_tag from card"; 
+	SqlRowSet allTags = jdbcTemplate.queryForRowSet(sqlAllTags); 
+	List <Tag> allTheseTags = null; 
+	if(allTags.next()) {
+		allTheseTags = new ArrayList<Tag>(); 
+		allTheseTags = getAllTags(); 
+	}
+	
+	return allTheseTags;
 }
 
 @Override
 public List<Flashcard> searchCardsByTags(String tagNames) {
-	// TODO Auto-generated method stub
-	return null;
+	String sqlGetTaggedCards = "Select * from card where card_tag like '%?%'";
+	SqlRowSet matchingCards = jdbcTemplate.queryForRowSet(sqlGetTaggedCards, tagNames); 
+	List <Flashcard> allMatchedCards = null;
+	if(matchingCards.next()) {
+		allMatchedCards = new ArrayList<Flashcard>();
+		allMatchedCards = searchCardsByTags("card_tag");
+	}
+	return allMatchedCards;
 }
 
 @Override
-public List<Integer> getAllDeckIdsForCard(int cardId) {
-	// TODO Auto-generated method stub
-	return null;
+public List<Flashcard> getAllCommonCards(String frontText, String backText){
+	String sqlGetCommon = "Select * from card where card_front = ? or card_back = ?"; 
+	SqlRowSet commonCards = jdbcTemplate.queryForRowSet(sqlGetCommon, frontText, backText); 
+	List <Flashcard> listOfCards = null; 
+	if(commonCards.next()) {
+		listOfCards = new ArrayList<Flashcard>(); 
+		listOfCards = getAllCommonCards("card_front", "card_back"); 
+	}
+	return listOfCards;
 }
 	
 }

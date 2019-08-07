@@ -42,7 +42,7 @@ public void saveFlashcard(int deckId, String frontText, String backText, String[
 	
 	public List<Flashcard> searchCardsByTags(String tagNames);
 	
-	public List<Integer> getAllDeckIdsForCard(int cardId);
+	public List<Flashcard> getAllCommonCards(String frontText, String backText);
 
 }
 
