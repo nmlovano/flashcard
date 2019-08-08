@@ -40,17 +40,16 @@ public SearchController(UserDao userDAO) {
 	this.cardDeckDAO = cardDeckDAO;
 }
 @RequestMapping(path = "/search", method = RequestMethod.GET)
-public String searchCardsByTags(HttpSession session, ModelMap map, String tagNames) {
-	List<Flashcard> cardList = cardDeckDAO.searchCardsByTags(tagNames);
-	Map<Integer, String> cardMap = new HashMap<>();
-	session.setAttribute("tags", cardList);
-	for (Flashcard tag : cardList) {
-		cardMap.put(tag.getCardId(), tag.getFrontText());
-	}
-	map.addAttribute("cardMap", cardMap);
-	return "searchCard";
-}
-
+//public String searchCardsByTags(HttpSession session, ModelMap map, String tagNames) {
+//	List<Flashcard> cardList = cardDeckDAO.searchCardsByTags(tagNames);
+//	Map<Integer, String> cardMap = new HashMap<>();
+//	session.setAttribute("tags", cardList);
+//	for (Flashcard tag : cardList) {
+//		cardMap.put(tag.getCardId(), tag.getFrontText());
+//	}
+//	map.addAttribute("cardMap", cardMap);
+//	return "searchCard";
+//}
 public String conductSearch(HttpSession session, RedirectAttributes ra,
 		@RequestParam(required = false) String[] tagNames) {
 		Set<Flashcard> cardSet = new HashSet<>();
