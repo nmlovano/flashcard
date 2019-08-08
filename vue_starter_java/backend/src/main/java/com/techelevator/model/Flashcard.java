@@ -10,7 +10,7 @@ public class Flashcard {
 	private List<Integer> allDeckIds;
 	private String frontText;
 	private String backText;
-	private List<Integer> tagIds;
+	private List<String> cardTag;
 	private boolean isCorrect; 
 	
 	public int getCardId() {
@@ -49,11 +49,11 @@ public class Flashcard {
 	public void setBackText(String backText) {
 		this.backText = backText;
 	}
-	public List<Integer> getTagIds() {
-		return tagIds;
+	public List<String> getCardTag() {
+		return cardTag;
 	}
-	public void setTagIds(List<Integer> tagIds) {
-		this.tagIds = tagIds;
+	public void setCardTag(List<String> cardTags) {
+		this.cardTag = cardTags;
 	}
 	public boolean getIsCorrect() {
 		return isCorrect;
