@@ -8,7 +8,6 @@ import Search from './views/Search.vue'
 import User from './views/User.vue'
 import SearchResults from './views/SearchResults.vue'
 
-
 Vue.use(Router)
 
 /**
@@ -72,7 +71,7 @@ const router = new Router({
       meta: {
         requiresAuth: false
       }
-    },
+    }
   ]
 })
 
