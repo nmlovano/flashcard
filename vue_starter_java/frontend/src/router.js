@@ -5,6 +5,10 @@ import Home from './views/Home.vue'
 import Login from './views/Login.vue'
 import Register from './views/Register.vue'
 import Search from './views/Search.vue'
+import User from './views/User.vue'
+import SearchResults from './views/SearchResults.vue'
+
+
 Vue.use(Router)
 
 /**
@@ -53,6 +57,22 @@ const router = new Router({
         requiresAuth: false
       }
       },
+      {
+        path: "/user",
+        name: "user",
+        component: User,
+        meta: {
+          requiresAuth: false
+        }
+      },
+      {
+      path: "/SearchResults",
+      name: "Search Results",
+      component: SearchResults,
+      meta: {
+        requiresAuth: false
+      }
+    },
   ]
 })
 
