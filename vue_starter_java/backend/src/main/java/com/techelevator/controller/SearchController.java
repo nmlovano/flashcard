@@ -2,8 +2,10 @@ package com.techelevator.controller;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import javax.servlet.http.HttpSession;
 
@@ -22,6 +24,8 @@ import com.techelevator.dao.CardDeckDAO;
 import com.techelevator.model.UserDao;
 import com.techelevator.model.Flashcard;
 
+
+
 @RestController
 @CrossOrigin
 
@@ -36,14 +40,14 @@ public SearchController(UserDao userDAO) {
 	this.cardDeckDAO = cardDeckDAO;
 }
 @RequestMapping(path = "/search", method = RequestMethod.GET)
-public String searchTags(HttpSession session, ModelMap map) {
-	List<Tag> tagList = cardDeckDAO.getAllTags();
-	Map<Integer, String> tagMap = new HashMap<>();
-	session.setAttribute("tags", tagList);
-	for (Tag tag : tagList) {
-		tagMap.put(tag.getTagId(), tag.getName());
+public String searchCardsByTags(HttpSession session, ModelMap map, String tagNames) {
+	List<Flashcard> cardList = cardDeckDAO.searchCardsByTags(tagNames);
+	Map<Integer, String> cardMap = new HashMap<>();
+	session.setAttribute("tags", cardList);
+	for (Flashcard tag : cardList) {
+		cardMap.put(tag.getCardId(), tag.getFrontText());
 	}
-	map.addAttribute("tagMap", tagMap);
+	map.addAttribute("cardMap", cardMap);
 	return "searchCard";
 }
 
@@ -74,5 +78,6 @@ public String conductSearch(HttpSession session, RedirectAttributes ra,
 	}
 	return "redirect:/search";
 }
+
 
 }
