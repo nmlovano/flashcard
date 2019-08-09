@@ -1,8 +1,10 @@
 <template>
     <div class="card">
+      <form>
         <h1>Card</h1>
         <div>
-            <p>Sample text, not an error, calm down. :D</p>
+            <label for="input-text" class="sr-only">Enter text here!</label>
+            <input type="text" id="input-text" class="input-text" placeholder="Enter text here!"/>
         </div>
         <div>
             <label for="fronttext" class="fronttext">Front Text</label>
@@ -16,6 +18,7 @@
             <button type="submit">Save Card to Deck!</button>
             <button type="submit">Discard dis card!</button>
         </div>
+      </form>
     </div>
 </template>
 
@@ -24,7 +27,7 @@ export default {
     name: 'card',
     data(){
         return {
-
+            
         }
     },
     methods: {

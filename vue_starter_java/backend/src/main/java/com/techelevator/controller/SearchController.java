@@ -2,8 +2,10 @@ package com.techelevator.controller;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import javax.servlet.http.HttpSession;
 
@@ -21,6 +23,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.techelevator.dao.CardDeckDAO;
 import com.techelevator.model.UserDao;
 import com.techelevator.model.Flashcard;
+import com.techelevator.model.Tag;
 
 @RestController
 @CrossOrigin
@@ -49,7 +52,7 @@ public String searchTags(HttpSession session, ModelMap map) {
 
 public String conductSearch(HttpSession session, RedirectAttributes ra,
 		@RequestParam(required = false) String[] tagNames) {
-		Set<Flashcard> cardSet = new HashSet<>();
+		Set<Flashcard> cardSet = new HashSet<Flashcard>();
 	if (tagNames != null) {
 		List<Flashcard> cardList = new ArrayList<>();
 		for (int i = 0; i < tagNames.length; i++) {

@@ -1,4 +1,3 @@
-
 <template>
   <div id="login" class="text-center">
     <form class="form-signin" @submit.prevent="login">

@@ -7,7 +7,8 @@ import Register from './views/Register.vue'
 import Search from './views/Search.vue'
 import User from './views/User.vue'
 import SearchResults from './views/SearchResults.vue'
-
+import Card from './views/Card.vue'
+import Decks from './views/Decks.vue'
 Vue.use(Router)
 
 /**
@@ -64,12 +65,26 @@ const router = new Router({
           requiresAuth: false
         }
       },
-      {
+    {
       path: "/SearchResults",
       name: "Search Results",
       component: SearchResults,
-      meta: {
+        meta: {
         requiresAuth: false
+      }
+    },
+    {
+      path: "/Card",
+      name: "Card",
+      component: Card, meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: "/Decks",
+      name: "Decks",
+      component: Decks, meta: {
+        requiresAuth: true
       }
     }
   ]
