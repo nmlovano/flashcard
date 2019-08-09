@@ -117,8 +117,14 @@ public void saveCardDeck(String name, String description) {
 
 @Override
 public List<CardDeck> getCardDecksByUserName(String userName) {
-	
-	return null;
+	String sqlDecksByUser = "select * from deck inner join users on deck.user_id = users.id where id = ?"; 
+	SqlRowSet deezDecks = jdbcTemplate.queryForRowSet(sqlDecksByUser); 
+	List <CardDeck> allMyDecks = null; 
+	if(deezDecks.next()) {
+		allMyDecks = new ArrayList<CardDeck>(); 
+		allMyDecks = getCardDecksByUserName(userName); 
+	}
+	return allMyDecks;
 }
 
 @Override

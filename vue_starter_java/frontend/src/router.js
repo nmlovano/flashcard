@@ -7,9 +7,12 @@ import Register from './views/Register.vue'
 import Search from './views/Search.vue'
 import User from './views/User.vue'
 import SearchResults from './views/SearchResults.vue'
+<<<<<<< HEAD
 import Decks from './views/Decks.vue'
 import Card from './views/Card.vue'
 import Admin from './views/Admin.vue'
+=======
+>>>>>>> fdcb687681f30d3e80d3fadd88e79bdfce0ad2ee
 
 Vue.use(Router)
 
@@ -74,6 +77,7 @@ const router = new Router({
       meta: {
         requiresAuth: false
       }
+<<<<<<< HEAD
     },
     {
       path: '/decks/:id',
@@ -102,6 +106,9 @@ const router = new Router({
       }
     },
     
+=======
+    }
+>>>>>>> fdcb687681f30d3e80d3fadd88e79bdfce0ad2ee
   ]
 })
 
