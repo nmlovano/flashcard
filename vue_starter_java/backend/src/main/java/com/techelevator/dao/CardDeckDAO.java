@@ -43,6 +43,8 @@ public void saveFlashcard(int deckId, String frontText, String backText, String[
 	public List<Flashcard> searchCardsByTags(String tagNames);
 	
 	public List<Flashcard> getAllCommonCards(String frontText, String backText);
+	
+	public void deleteCardDeck(int deckId);
 
 }
 
