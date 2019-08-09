@@ -45,13 +45,24 @@ export default {
   },
   methods: {
     getDeck(id) {
-      userService.get(id).then(deck => this.deck = deck);
+      
     }
   },
   created() {
     this.getDeck(this.$route.params.id);
   }
 }
+<<<<<<< HEAD
+=======
+
+
+
+
+
+  
+
+
+>>>>>>> 1eea2122866407421036aa101297e32b80e59719
 </script>
 <style>
 

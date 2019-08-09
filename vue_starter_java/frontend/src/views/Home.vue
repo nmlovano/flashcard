@@ -1,12 +1,11 @@
 <template>
   <div class="home">
+    <router-link to="/home"></router-link>
     <h1>FlashCard Study Capstone</h1>
-
-     
       <div class="flip-card">
         <div class="flip-card-inner">
           <div class="flip-card-front">
-            <img src="/Images/Flashcards (1).png" alt="TE" style="width:300px;height:300px;">
+            <img src="../Images/Flashcards (1).png" alt="TE" style="width:300px;height:300px;">
             </div>
           <div class="flip-card-back">
             <h1>FlashCard Study Capstone</h1> 
@@ -30,7 +29,6 @@
 			<div class="col-12"><auth-buttons></auth-buttons></div>
 		</div>
 		<div class="row mt-2">
-			<div class="col-12"><h2>Public Decks</h2></div>
 			<div class="col-12">
 				<public-deck-list :decks="publicDecks" :filter="filterValue"></public-deck-list>
 			</div>
@@ -38,7 +36,6 @@
 	</div>
           </div>
         </div>
-      </div>
       </div>
 </template>
 <script>
@@ -87,7 +84,7 @@ font-size: 12px;
 .flip-card-inner {
   position: relative;
   width: 300px;
-  height: 200px;
+  height: 300px;
   text-align: center;
   transition: transform 0.8s;
   transform-style: preserve-3d;

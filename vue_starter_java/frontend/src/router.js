@@ -10,6 +10,7 @@ import SearchResults from './views/SearchResults.vue'
 import Decks from './views/Decks.vue'
 import Card from './views/Card.vue'
 import Admin from './views/Admin.vue'
+import Contact from './views/Contact.vue'
 Vue.use(Router)
 
 /**
@@ -90,6 +91,12 @@ const router = new Router({
       path: '/login',
       name: 'accountcreated',
       component: Login,
+    
+    },
+    {
+      path: '/contact',
+      name: 'contact',
+      component: Contact,
     
     },
     {

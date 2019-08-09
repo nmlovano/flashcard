@@ -111,7 +111,7 @@ public void updateFlashcardStudySession(Flashcard flashcard) {
 
 @Override
 public void saveCardDeck(String name, String description) {
-	jdbcTemplate.update("Insert into deck (deck_name, deck_description) VALUES (?, ?)");
+	jdbcTemplate.update("Insert into deck (deck_name, deck_description, user_id) VALUES (?, ?, ?)");
 	
 }
 
@@ -199,6 +199,11 @@ public List<Flashcard> getAllCommonCards(String frontText, String backText){
 		listOfCards = getAllCommonCards("card_front", "card_back"); 
 	}
 	return listOfCards;
+}
+
+public void deleteCardDeck(int deckId) {
+	jdbcTemplate.batchUpdate("delete from deck " + 
+							 "where deck_id = ?");
 }
 	
 }
