@@ -8,8 +8,6 @@
 	name: 'User',
 	
 	components: {
-		'decks': DeckList,
-		'auth': Auth
 	},
 	data() {
 		return {

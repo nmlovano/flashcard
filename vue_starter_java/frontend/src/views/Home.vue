@@ -1,8 +1,7 @@
 <template>
   <div class="home">
+    <router-link to="/home"></router-link>
     <h1>FlashCard Study Capstone</h1>
-
-     
       <div class="flip-card">
         <div class="flip-card-inner">
           <div class="flip-card-front">
@@ -37,7 +36,6 @@
 	</div>
           </div>
         </div>
-      </div>
       </div>
 </template>
 <script>
