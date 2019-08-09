@@ -1,7 +1,7 @@
 <template>
   <div id="register" class="text-center">
     <form class="form-register" @submit.prevent="register">
-      <h1 class="h3 mb-3 font-weight-normal">Create Account</h1>
+      <h1 class="h3 mb-3 font-weight-normal">Create New Account</h1>
       <div class="alert alert-danger" role="alert" v-if="registrationErrors">
         There were problems registering this user.
       </div>
@@ -43,7 +43,7 @@
         type="firstname"
         id="firstName"
         class="form-control"
-        placeholder="e.g. Bob"
+        placeholder="First Name"
         v-model="user.firstName"
         required
       />
@@ -52,7 +52,7 @@
         type="lastname"
         id="lastName"
         class="form-control"
-        placeholder="e.g. Bob"
+        placeholder="Last Name"
         v-model="user.lastName"
         required
       />
@@ -62,7 +62,7 @@
         type="email"
         id="email"
         class="form-control"
-        placeholder="email"
+        placeholder="Enter in Your Email Address"
         v-model="user.email"
         required
       />
@@ -72,7 +72,7 @@
         type="email"
         id="confirmEmail"
         class="form-control"
-        placeholder="Confirm Email"
+        placeholder="Confirm Email Address"
         v-model="user.confirmEmail"
         required
       />

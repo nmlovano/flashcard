@@ -7,7 +7,9 @@ import Register from './views/Register.vue'
 import Search from './views/Search.vue'
 import User from './views/User.vue'
 import SearchResults from './views/SearchResults.vue'
-import Deck from './views/Deck.vue'
+import Decks from './views/Decks.vue'
+import Card from './views/Card.vue'
+import Admin from './views/Admin.vue'
 
 Vue.use(Router)
 
@@ -74,10 +76,30 @@ const router = new Router({
       }
     },
     {
-      path: '/deck/:id',
+      path: '/decks/:id',
       name: 'deck',
-      component: Deck,
+      component: Decks,
     
+    },
+    {
+      path: '/card',
+      name: 'card',
+      component: Card,
+    
+    },
+    {
+      path: '/login',
+      name: 'accountcreated',
+      component: Login,
+    
+    },
+    {
+      path: '/admin',
+      name: 'admin',
+      component: Admin,
+      meta: {
+        requiresAuth: false
+      }
     },
     
   ]

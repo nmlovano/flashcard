@@ -1,18 +1,35 @@
-<template>
-<div class="container">
-
-  <!-- Page Heading -->
-  
-
-      <h1 class="text-center">Welcome Back!<br>
-    <small>Take a look at your most recent study sessions! <br>God you're brilliant!</small>
-  </h1>
+<template v-if="authenticated">
+      <div class="content">
+		<div class="row">
+			<div class="col-8 col-sm-9 text-left">
+				<h2 class="text=center">
+					{{user.displayName}}
+				</h2>
+			</div>
+      	</div>
+       
+				<input type="text" class="form-control input-group-sm" placeholder="Filter by tags" v-model="filterValue">
+			</div>
+		</div>
+		<div class="row mb-5">
+			<div class="col-12">
+				<my-deck-list v-if="authenticated" :decks="privateDecks" :filter="filterValue"></my-deck-list>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-3"></div>
+			<div class="col-6 text-center">
+				<auth-buttons></auth-buttons>
+			</div>
+		</div>
+	</div>
+    
 
 
   <div class="row">
     <div class="col-lg-6 mb-4">
       <div class="card h-100">
-        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400"> v-model="filterValue" alt=""</a>
         <div class="card-body">
           <h4 class="card-title">
             <a href="#1">Deck One</a>
@@ -66,9 +83,7 @@
       </div>
     </div> 
   </div>
-  <!-- /.row -->
 
-  <!-- Pagination -->
   <ul class="pagination justify-content-center">
     <li class="page-item">
       <a class="page-link" href="#" aria-label="Previous">
