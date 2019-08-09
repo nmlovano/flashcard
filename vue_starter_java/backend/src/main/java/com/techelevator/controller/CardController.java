@@ -88,7 +88,7 @@ public class CardController {
 	
 	
 //	@RequestMapping(path = "?tags={tags}", method = RequestMethod.GET)
-//	public List<Tag> getAllTags() {
-//		return cardDeckDAO.getAllTags();
+//	public List<Tag> getAllTags(String tagNames) {
+//		return cardDeckDAO.getAllTags(tagNames);
 //	}
 }

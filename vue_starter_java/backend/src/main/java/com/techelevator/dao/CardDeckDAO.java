@@ -34,7 +34,7 @@ public interface CardDeckDAO {
 
 	public void updateCardDeck(int deckId, String name, String description, int userId);
 
-	public List<Tag> getAllTags();
+	public List<Tag> getAllTags(String tagNames);
 
 	public List<Flashcard> searchCardsByTags(String tagNames);
 

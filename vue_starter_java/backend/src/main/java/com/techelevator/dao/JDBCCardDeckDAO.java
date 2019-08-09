@@ -144,13 +144,13 @@ public class JDBCCardDeckDAO implements CardDeckDAO {
 	}
 
 	@Override
-	public List<Tag> getAllTags() {
+	public List<Tag> getAllTags(String tagNames) {
 		String sqlAllTags = "Select card_tag from card";
 		SqlRowSet allTags = jdbcTemplate.queryForRowSet(sqlAllTags);
 		List<Tag> allTheseTags = null;
 		if (allTags.next()) {
 			allTheseTags = new ArrayList<Tag>();
-			allTheseTags = getAllTags();
+			allTheseTags = getAllTags(allTags.getString("card_tag"));
 		}
 
 		return allTheseTags;
