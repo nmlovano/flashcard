@@ -17,14 +17,14 @@ import com.techelevator.model.CardDeck;
 @RestController
 @CrossOrigin
 @RequestMapping("/deck")
-public class DeckAndCardController {
+public class DeckController {
 
 	private AuthProvider authProvider;
 
 	private CardDeckDAO cardDeckDAO;
 
 	@Autowired
-	public DeckAndCardController(CardDeckDAO cardDeckDAO, AuthProvider authProvider) {
+	public DeckController(CardDeckDAO cardDeckDAO, AuthProvider authProvider) {
 		this.cardDeckDAO = cardDeckDAO;
 		this.authProvider = authProvider;
 	}
@@ -35,8 +35,8 @@ public class DeckAndCardController {
 	}
 
 	@RequestMapping(path = "", method = RequestMethod.POST)
-	public void saveNewDeck(@RequestBody CardDeck deck, String name, String description) {
-		cardDeckDAO.saveCardDeck(name, description);
+	public void saveNewDeck(@RequestBody CardDeck deck, String name, String description, int userId) {
+		cardDeckDAO.saveCardDeck(name, description, userId);
 
 	}
 
@@ -54,6 +54,12 @@ public class DeckAndCardController {
 	public CardDeck getDeckById(@RequestParam int deckId) {
 		CardDeck thisDeck = cardDeckDAO.getCardDeckByDeckId(deckId);
 		return thisDeck;
+	}
+	
+	@RequestMapping(path = "", method = RequestMethod.POST)
+	public void updateDeck(@RequestBody int deckId, String name, String description, int userId) {
+		cardDeckDAO.updateCardDeck(deckId, name, description, userId);
+
 	}
 
 }
