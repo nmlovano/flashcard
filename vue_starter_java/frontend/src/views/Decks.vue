@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <template>
   <div class="deck-id">
      <pre>{{deck}}</pre>
@@ -52,5 +53,16 @@ export default {
     this.getDeck(this.$route.params.id);
   }
 }
-</script>
+=======
 
+<script>
+
+
+  
+
+>>>>>>> 6960a2229f8d1d25d5ff51ce59147543d6fb3d8d
+</script>
+<style>
+
+
+</style>

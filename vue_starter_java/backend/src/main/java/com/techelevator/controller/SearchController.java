@@ -25,6 +25,8 @@ import com.techelevator.model.UserDao;
 import com.techelevator.model.Flashcard;
 import com.techelevator.model.Tag;
 
+
+
 @RestController
 @CrossOrigin
 
@@ -39,17 +41,16 @@ public SearchController(UserDao userDAO) {
 	this.cardDeckDAO = cardDeckDAO;
 }
 @RequestMapping(path = "/search", method = RequestMethod.GET)
-public String searchTags(HttpSession session, ModelMap map) {
-	List<Tag> tagList = cardDeckDAO.getAllTags();
-	Map<Integer, String> tagMap = new HashMap<>();
-	session.setAttribute("tags", tagList);
-	for (Tag tag : tagList) {
-		tagMap.put(tag.getTagId(), tag.getName());
-	}
-	map.addAttribute("tagMap", tagMap);
-	return "searchCard";
-}
-
+//public String searchCardsByTags(HttpSession session, ModelMap map, String tagNames) {
+//	List<Flashcard> cardList = cardDeckDAO.searchCardsByTags(tagNames);
+//	Map<Integer, String> cardMap = new HashMap<>();
+//	session.setAttribute("tags", cardList);
+//	for (Flashcard tag : cardList) {
+//		cardMap.put(tag.getCardId(), tag.getFrontText());
+//	}
+//	map.addAttribute("cardMap", cardMap);
+//	return "searchCard";
+//}
 public String conductSearch(HttpSession session, RedirectAttributes ra,
 		@RequestParam(required = false) String[] tagNames) {
 		Set<Flashcard> cardSet = new HashSet<Flashcard>();
@@ -77,5 +78,6 @@ public String conductSearch(HttpSession session, RedirectAttributes ra,
 	}
 	return "redirect:/search";
 }
+
 
 }

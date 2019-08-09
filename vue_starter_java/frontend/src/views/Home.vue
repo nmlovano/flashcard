@@ -1,24 +1,57 @@
 <template>
   <div class="home">
-    <h1>Home</h1>
+    <h1>FlashCard Study Capstone</h1>
+
+     
       <div class="flip-card">
         <div class="flip-card-inner">
           <div class="flip-card-front">
             <img src="/Images/Flashcards (1).png" alt="TE" style="width:300px;height:300px;">
-          </div>
+            </div>
           <div class="flip-card-back">
             <h1>FlashCard Study Capstone</h1> 
             <p>Cohort 11</p> 
-           
+            <div class="row mb-2" v-if="authenticated">
+			<div class="col"></div>
+			<div class="col">
+				<h2>My Decks</h2>
+			</div>
+			<div class="col">
+				<input type="text" class="form-control input-group-sm" placeholder="Filter by tags" v-model="filterValue">
+			</div>
+			<div class="col-12">
+				<my-deck-list :decks="privateDecks" :filter="filterValue"></my-deck-list>
+				<hr>
+			</div>
+		</div>
+		<!-- If not authenticated -->
+		<div class="row mb-4" v-else>
+			<div class="col-12">Login to create private decks and track your scores</div>
+			<div class="col-12"><auth-buttons></auth-buttons></div>
+		</div>
+		<div class="row mt-2">
+			<div class="col-12"><h2>Public Decks</h2></div>
+			<div class="col-12">
+				<public-deck-list :decks="publicDecks" :filter="filterValue"></public-deck-list>
+			</div>
+		</div>
+	</div>
           </div>
         </div>
       </div>
       </div>
-</template> 
-
+</template>
 <script>
 export default {
-  name: 'home'
+  name: 'home',
+  views: {
+
+  },
+  data() {
+		return {
+			filterValue: ''
+		}
+	}
 }
 </script>
 
@@ -33,9 +66,10 @@ body{
   text-align: center;
 
 }
+
 .flip-card {
     display: block;
-  margin-left: auto;
+ 
   margin-right: auto;
 font-family: serif;
 font-size: 12px;
@@ -45,6 +79,10 @@ font-size: 12px;
   height: 200px;
   border: 1px solid #f1f1f1;
 
+}
+.student {
+  display: block;
+  margin-left: auto;
 }
 .flip-card-inner {
   position: relative;
