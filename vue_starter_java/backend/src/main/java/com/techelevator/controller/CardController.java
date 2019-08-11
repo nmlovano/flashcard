@@ -85,10 +85,6 @@ public class CardController {
 		return cardDeckDAO.getAllCommonCards(frontText, backText);
 	}
 	
-	
-//  Cannot get this to work for some reason???
-	
-	
 	@RequestMapping(path = "?tags={tags}", method = RequestMethod.GET)
 	public List<Tag> getAllTags(String tagNames) {
 		return cardDeckDAO.getAllTags(tagNames);
