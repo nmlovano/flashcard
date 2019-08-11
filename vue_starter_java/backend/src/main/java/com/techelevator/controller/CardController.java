@@ -2,6 +2,8 @@ package com.techelevator.controller;
 
 import java.util.List;
 
+import javax.swing.text.html.HTML.Tag;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,7 +16,7 @@ import com.techelevator.authentication.AuthProvider;
 import com.techelevator.dao.CardDeckDAO;
 import com.techelevator.model.CardDeck;
 import com.techelevator.model.Flashcard;
-import com.techelevator.model.Tag;
+
 
 @RestController
 @CrossOrigin
@@ -87,8 +89,8 @@ public class CardController {
 //  Cannot get this to work for some reason???
 	
 	
-//	@RequestMapping(path = "?tags={tags}", method = RequestMethod.GET)
-//	public List<Tag> getAllTags(String tagNames) {
-//		return cardDeckDAO.getAllTags(tagNames);
-//	}
+	@RequestMapping(path = "?tags={tags}", method = RequestMethod.GET)
+	public List<Tag> getAllTags(String tagNames) {
+		return cardDeckDAO.getAllTags(tagNames);
+	}
 }
