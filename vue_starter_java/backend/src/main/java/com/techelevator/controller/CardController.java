@@ -39,13 +39,13 @@ public class CardController {
 		return cardDeckDAO.getFlashcardByCardId(cardId);
 	}
 	
-	@RequestMapping(path = "", method = RequestMethod.POST)
+	@RequestMapping(path = "?savecard={savecard}", method = RequestMethod.POST)
 	public void saveNewCard(@RequestBody int deckId, String frontText, String backText, String[] tagId) {
 		cardDeckDAO.saveFlashcard(deckId, frontText, backText, tagId);
 
 	}
 	
-	@RequestMapping(path = "", method = RequestMethod.POST)
+	@RequestMapping(path = "?assign={assign}", method = RequestMethod.POST)
 	public void assignCardToDeck(@RequestBody int cardId, int deckId) {
 		cardDeckDAO.assignFlashcardToDeck(cardId, deckId);
 	}
