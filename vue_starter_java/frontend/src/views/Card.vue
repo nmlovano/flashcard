@@ -13,12 +13,12 @@
             <label for="backtext" class="backtext">Back Text</label>
             <button type="radio"></button>
         </div>
-        <form>
-            <div>
+        <div>
+            <form action="/Decks">
                 <button type="submit">Save Card to Deck!</button>
                 <button type="submit">Discard dis card!</button>
-            </div>
-        </form>
+            </form>
+        </div>
     </div>
 </template>
 
