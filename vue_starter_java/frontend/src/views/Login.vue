@@ -1,6 +1,6 @@
 <template>
   <div id="login" class="text-center">
-    <router-link to="/login"></router-link>
+    <router-link to="/Login"></router-link>
     <form class="form-signin" @submit.prevent="login">
       <h1 class="h3 mb-3 font-weight-normal">Please Sign In</h1>
       <div class="alert alert-danger" role="alert" v-if="invalidCredentials">
@@ -29,7 +29,7 @@
         v-model="user.password"
         required
       />
-      <router-link :to="{ name: 'register' }">Need an account?</router-link>
+      <router-link :to="{ name: 'Register' }">Need an account?</router-link>
       <button type="submit">Sign in</button>
     </form>
   </div>
@@ -39,7 +39,7 @@
 import auth from '../auth';
 
 export default {
-  name: 'login',
+  name: 'Login',
   components: {},
   data() {
     return {
@@ -52,7 +52,7 @@ export default {
   },
   methods: {
     login() {
-      fetch(`${process.env.VUE_APP_REMOTE_API}/login`, {
+      fetch(`${process.env.VUE_APP_REMOTE_API}/Login`, {
         method: 'POST',
         headers: {
           Accept: 'application/json',
