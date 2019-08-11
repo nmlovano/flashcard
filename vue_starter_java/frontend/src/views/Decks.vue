@@ -35,13 +35,13 @@ export default {
       decks: [
         {
           id: 1,
-          title: "First Deck",
-          description: "This is a dummy deck"
+          title: "First Card.",
+          description: "This is a dummy card."
         },
         {
           id: 2,
-          title: "Second Deck",
-          description: "This is another dummy deck"
+          title: "Second Card.",
+          description: "This is another dummy card."
         }
       ]
     }
