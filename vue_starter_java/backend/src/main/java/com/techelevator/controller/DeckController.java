@@ -34,7 +34,7 @@ public class DeckController {
 		return cardDeckDAO.getCardDecksByUserName(username);
 	}
 
-	@RequestMapping(path = "", method = RequestMethod.POST)
+	@RequestMapping(path = "?savedeck={savedeck}", method = RequestMethod.POST)
 	public void saveNewDeck(@RequestBody CardDeck deck, String name, String description, int userId) {
 		cardDeckDAO.saveCardDeck(name, description, userId);
 
