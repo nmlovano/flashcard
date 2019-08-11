@@ -25,7 +25,7 @@
 		</div>
 		<!-- If not authenticated -->
 		<div class="row mb-4" v-else>
-			<div class="col-12">Login to create private decks and track your scores</div>
+			<div class="col-12">Login to view private decks and track your scores</div>
 			<div class="col-12"><auth-buttons></auth-buttons></div>
 		</div>
 		<div class="row mt-2">

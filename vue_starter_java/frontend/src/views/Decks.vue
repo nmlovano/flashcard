@@ -1,5 +1,8 @@
 <template>
   <div class="deck-id">
+    <form action="/Card">
+      <button type="redirect">Add A Card!</button>
+    </form>
      <pre>{{deck}}</pre>
      <h1>Deck Title Goes Here</h1>
      <p>Deck Description Goes Here</p>
@@ -32,21 +35,19 @@ export default {
       decks: [
         {
           id: 1,
-          title: "First Deck",
-          description: "This is a dummy deck"
+          title: "First Card.",
+          description: "This is a dummy card."
         },
         {
           id: 2,
-          title: "Second Deck",
-          description: "This is another dummy deck"
+          title: "Second Card.",
+          description: "This is another dummy card."
         }
       ]
     }
   },
   methods: {
-    getDeck(id) {
-      
-    }
+    
   },
   created() {
     this.getDeck(this.$route.params.id);

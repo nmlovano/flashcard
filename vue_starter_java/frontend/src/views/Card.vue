@@ -1,6 +1,5 @@
 <template>
     <div class="card">
-      <form>
         <h1>Card</h1>
         <div>
             <label for="input-text" class="sr-only">Enter text here!</label>
@@ -8,17 +7,18 @@
         </div>
         <div>
             <label for="fronttext" class="fronttext">Front Text</label>
-            <button type="submit">Save</button>
+            <button type="radio"></button>
         </div>
         <div>
             <label for="backtext" class="backtext">Back Text</label>
-            <button type="submit">Save</button>
+            <button type="radio"></button>
         </div>
         <div>
-            <button type="submit">Save Card to Deck!</button>
-            <button type="submit">Discard dis card!</button>
+            <form action="/Decks">
+                <button type="submit">Save Card to Deck!</button>
+                <button type="submit">Discard dis card!</button>
+            </form>
         </div>
-      </form>
     </div>
 </template>
 
