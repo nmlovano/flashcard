@@ -24,7 +24,7 @@
 
 <script>
 export default {
-    name: 'Card',
+    name: 'card',
     data(){
         return {
             

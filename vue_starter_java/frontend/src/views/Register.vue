@@ -93,7 +93,7 @@
 
 <script>
 export default {
-  name: 'Register',
+  name: 'register',
   data() {
     return {
       user: {
@@ -107,7 +107,7 @@ export default {
   },
   methods: {
     register() {
-      fetch(`${process.env.VUE_APP_REMOTE_API}/Register`, {
+      fetch(`${process.env.VUE_APP_REMOTE_API}/register`, {
         method: 'POST',
         headers: {
           Accept: 'application/json',
@@ -117,7 +117,7 @@ export default {
       })
         .then((response) => {
           if (response.ok) {
-            this.$router.push({ path: '/Login', query: { registration: 'success' } });
+            this.$router.push({ path: '/login', query: { registration: 'success' } });
           } else {
             this.registrationErrors = true;
           }
