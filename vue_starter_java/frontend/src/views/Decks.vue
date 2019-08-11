@@ -1,5 +1,8 @@
 <template>
   <div class="deck-id">
+    <form action="/Card">
+      <button type="redirect">Add A Card!</button>
+    </form>
      <pre>{{deck}}</pre>
      <h1>Deck Title Goes Here</h1>
      <p>Deck Description Goes Here</p>
@@ -44,9 +47,7 @@ export default {
     }
   },
   methods: {
-    getDeck(id) {
-      
-    }
+    
   },
   created() {
     this.getDeck(this.$route.params.id);
