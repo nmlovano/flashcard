@@ -1,4 +1,3 @@
-
 <template>
 <div class="photo">
   <div class="admin">
@@ -64,3 +63,4 @@ export default {
 }
 
 </style>
+

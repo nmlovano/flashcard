@@ -2,9 +2,11 @@
   <div id="login" class="text-center">
     <router-link to="/login"></router-link>
     <form class="form-signin" @submit.prevent="login">
+      <div class="header">
       <h1 class="h3 mb-3 font-weight-normal">Please Sign In</h1>
       <div class="alert alert-danger" role="alert" v-if="invalidCredentials">
         Invalid username and password!
+      </div>
       </div>
       
       <div class="alert alert-success" role="alert" v-if="this.$route.query.registration">
@@ -32,7 +34,11 @@
       <router-link :to="{ name: 'register' }">Need an account?</router-link>
       <button v-on:click.prevent="login">Sign in</button>
     </form>
+    <div class="account">
+      <router-link :to="{ name: 'register' }">Need an account?</router-link>
+      </div>
   </div>
+
 </template>
 
 <script>
@@ -87,6 +93,28 @@ export default {
 
 #login{
   color:black;
-  font-family: Sans-serif;
+  font-family: 'Times New Roman', Times, serif;
+
+}
+ 
+#button{
+
+
+
+  padding: 15px 32px;
+  text-align: center;
+ 
+
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+.header{
+  font-family: Arial, Helvetica, sans-serif;
+  text-align:center
+}
+.account{
+  font-size: 16px;
+   text-align: center;
 }
 </style>

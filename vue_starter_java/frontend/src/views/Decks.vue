@@ -9,11 +9,11 @@
      <pre>{{deck}}</pre>
      <div>
         <label for="input-text" class="sr-only">Enter title:</label>
-        <input type="text" id="input-text" class="input-text" placeholder="Enter title:"/>
+        <input type="text" id="input-text" class="input-text" placeholder="Enter title:" v-model="deck.deckId"/>
      </div>
      <div>
         <label for="input-text" class="sr-only">Enter description:</label>
-        <input type="text" id="input-text" class="input-text" placeholder="Enter description:"/>
+        <input type="text" id="input-text" class="input-text" placeholder="Enter description:" v-model="deck.description"/>
      </div>
      <table>
        <thead>
@@ -25,7 +25,7 @@
          </tr>
        </thead>
        <tbody>
-          <tr v-for="card in cards" v-bind:key="card.id">
+          <tr v-for="card in cards" v-bind:key="card.cardId">
             <td>{{card.cardId}}</td>
             <td>{{card.frontText}}</td>
             <td>{{card.backText}}</td>
