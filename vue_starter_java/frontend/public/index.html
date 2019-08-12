@@ -9,32 +9,44 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="icon" href="%= BASE_URL %>favicon.ico"/>
       
-  <div class="topnav">
-      <a class="active" href="/Home">Home</a>
-      <a class="active" href="/Login">Login</a>
-      <a class="active" href="/User">User Profile</a>
+  
        <div class="search-container">
-    <form action="/Search">
+   
+        <form action="/Search">
       <input type="text" placeholder="Search.." name="Search">
       <button type="submit">Submit</button>
     </form>
-  </div>
+  
     </div>
   </head>
 </div>
     <div class="footer">
-      
-       
-        <a href="/Home">Home</a>
+      <a href="/Home">Home</a>
+      <a href="/Register">Register</a>
+     
           <a href="/Admin">Admin</a> 
-      
-          <a href="/Contact">Contact</a>
+         <a href="/Contact">Contact</a>
+         <a href="Login">User Login</a>
         </div>
+        <div class="flip-card card" ontouchstart="this.classList.toggle('hover');">
+          <div class="flip-card-inner">
+            <div class="flip-card-inner-front">
+              <span>Flashcard Study</span>
+            </div>
+            <div class="flip-card-inner-back">
+              <h3 class="flip-card-inner-back-title">Educate Yourself</h3>
+              <p class="flip-card-inner-back-text">Intelligence looks good on you.</p>
+            </div>
+          </div>
+    
+        
+        
         
     <style>
 
 
-/* Style the footer */
+
+
 .footer {
   overflow: hidden;
   background-color: #333;
@@ -58,7 +70,7 @@
 }
 
 .footer a.active {
-  background-color: #4CAF50;
+  background-color: #f2f2f2;
   color: white;
 }
 

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.techelevator.authentication.AuthProvider;
 import com.techelevator.dao.CardDeckDAO;
 import com.techelevator.model.CardDeck;
+import com.techelevator.model.Flashcard;
 
 @RestController
 @CrossOrigin
@@ -59,6 +60,16 @@ public class DeckController {
 	@RequestMapping(path = "", method = RequestMethod.POST)
 	public void updateDeck(@RequestBody int deckId, String name, String description, int userId) {
 		cardDeckDAO.updateCardDeck(deckId, name, description, userId);
+
+	}
+	@RequestMapping(path = "?id={cardId}", method = RequestMethod.DELETE)
+	public void removeCardFromDeck(@RequestParam int cardId) {
+		Flashcard thisCard = cardDeckDAO.getFlashcardByCardId(cardId);
+		CardDeck thisDeck = cardDeckDAO.getCardDeckByDeckId(thisCard.getDeckId());
+		if (thisDeck.getUserId() == authProvider.getCurrentUser().getId()) {
+			cardDeckDAO.removeFlashcardFromDeck(cardId);;
+		}
+		System.out.println(authProvider.getCurrentUser().toString());
 
 	}
 

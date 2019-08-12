@@ -5,7 +5,7 @@
   
 
   export default {
-	name: 'User',
+	name: 'user',
 	
 	components: {
 	},

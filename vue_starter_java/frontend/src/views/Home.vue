@@ -1,46 +1,26 @@
 <template>
   <div class="home">
     <router-link to="/home"></router-link>
-    <h1>FlashCard Study Capstone</h1>
+   
+    <div card="card">
       <div class="flip-card">
         <div class="flip-card-inner">
           <div class="flip-card-front">
-            <img src="../Images/Flashcards (1).png" alt="TE" style="width:300px;height:300px;">
+            <img src="../Images/Flashcards (1).png" posistion="center" alt="TE" style="width:300px;height:300px;">
             </div>
           <div class="flip-card-back">
-            <h1>FlashCard Study Capstone</h1> 
-            <p>Cohort 11</p> 
-            <div class="row mb-2" v-if="authenticated">
-			<div class="col"></div>
-			<div class="col">
-				<h2>My Decks</h2>
-			</div>
-			<div class="col">
-				<input type="text" class="form-control input-group-sm" placeholder="Filter by tags" v-model="filterValue">
-			</div>
-			<div class="col-12">
-				<my-deck-list :decks="privateDecks" :filter="filterValue"></my-deck-list>
-				<hr>
-			</div>
+         
 		</div>
 		<!-- If not authenticated -->
-		<div class="row mb-4" v-else>
-			<div class="col-12">Login to view private decks and track your scores</div>
-			<div class="col-12"><auth-buttons></auth-buttons></div>
-		</div>
-		<div class="row mt-2">
-			<div class="col-12">
-				<public-deck-list :decks="publicDecks" :filter="filterValue"></public-deck-list>
-			</div>
-		</div>
-	</div>
+
           </div>
         </div>
       </div>
+        </div>
 </template>
 <script>
 export default {
-  name: 'Home',
+  name: 'home',
   views: {
 
   },
@@ -53,62 +33,112 @@ export default {
 </script>
 
 <style>
-body{
-   background-color: antiquewhite;
-    
-}
-.home{
-  color:black;
-  font-family: Sans-serif;
-  text-align: center;
-
-}
 
 .flip-card {
-    display: block;
- 
-  margin-right: auto;
-font-family: serif;
-font-size: 12px;
+  -webkit-perspective: 1000;
+          perspective: 1000;
+  border: 0;
+  background: transparent;
+}
 
-  background-color: transparent;
-  width: 300px;
-  height: 200px;
-  border: 1px solid #f1f1f1;
+.flip-card:hover .flip-card-inner,
+.flip-card.hover .flip-card-inner {
+  -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
+}
 
-}
-.student {
-  display: block;
-  margin-left: auto;
-}
-.flip-card-inner {
-  position: relative;
-  width: 300px;
-  height: 300px;
-  text-align: center;
-  transition: transform 0.8s;
-  transform-style: preserve-3d;
-}
-.flip-card:hover .flip-card-inner {
-  transform: rotateY(180deg);
-}
-.flip-card-front, .flip-card-back {
-  position: absolute;
+.flip-card,
+.flip-card-inner-front,
+.flip-card-inner-back {
   width: 100%;
-  height: 100%;
-  backface-visibility: hidden;
-}
-.flip-card-front {
-  background-color: #bbb;
-  color: black;
-}
-.flip-card-back {
-  background-color: white;
-  font-size: 14px;
-  color: black;
-  transform: rotateY(180deg);
+  height: 20rem;
 }
 
+.flip-card-inner {
+  transition: 0.6s;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  position: relative;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+}
 
+.flip-card-inner-front,
+.flip-card-inner-back {
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.flip-card-inner-front {
+  background: white;
+  z-index: 2;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.flip-card-inner-front span {
+  width: 100%;
+  text-align: center;
+  background: rgba(254, 254, 254, 0.8);
+  padding: 0.25rem 0;
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.flip-card-inner-back {
+  -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
+            z-index: 2;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  text-align: center;
+ background: url("../Images/card.jpg") 0 0 0 no-repeat;
+
+}
+
+.flip-card-inner-back-title {
+  font-weight: bold;
+
+            z-index: 2;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  text-align: center;
+
+}
+
+.flip-card-inner-back-text {
+  line-height: 1.3;
+  
+}
 
 </style>

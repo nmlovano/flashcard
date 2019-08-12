@@ -20,7 +20,6 @@ import com.techelevator.model.Flashcard;
 @RestController
 @CrossOrigin
 @RequestMapping("/card")
-
 public class CardController {
 
 	private AuthProvider authProvider;
@@ -37,6 +36,7 @@ public class CardController {
 	public Flashcard getCardById(@RequestParam int cardId) {
 		return cardDeckDAO.getFlashcardByCardId(cardId);
 	}
+<<<<<<< HEAD
 
 	@RequestMapping(path = "?savecard={savecard}", method = RequestMethod.POST)
 	public void saveNewCard(@RequestBody int deckId, String frontText, String backText, String[] tagId) {
@@ -44,10 +44,21 @@ public class CardController {
 
 	}
 
+=======
+	
+	@RequestMapping(path = "", method = RequestMethod.POST)
+	public void saveNewCard(@RequestBody Flashcard card) { 
+		System.out.println("saveNewCard()");
+		cardDeckDAO.saveFlashcard(card.getDeckId(), card.getFrontText(), card.getBackText(), card.getCardTag());
+	}
+	
+	
+>>>>>>> fe80b4c73c892003efdc23c67186e5341d48bc6a
 	@RequestMapping(path = "?assign={assign}", method = RequestMethod.POST)
 	public void assignCardToDeck(@RequestBody int cardId, int deckId) {
 		cardDeckDAO.assignFlashcardToDeck(cardId, deckId);
 	}
+<<<<<<< HEAD
 
 	@RequestMapping(path = "?id={cardId}", method = RequestMethod.DELETE)
 	public void removeCardFromDeck(@RequestParam int cardId, int deckId) {
@@ -60,6 +71,9 @@ public class CardController {
 
 	}
 
+=======
+	
+>>>>>>> fe80b4c73c892003efdc23c67186e5341d48bc6a
 	@RequestMapping(path = "?id={deckId}", method = RequestMethod.GET)
 	public List<Flashcard> getCardByDeckOrdered(@RequestParam int deckId) {
 		return cardDeckDAO.getFlashcardsForDeckOrdered(deckId);
@@ -69,8 +83,13 @@ public class CardController {
 	public List<Flashcard> getCardByDeckShuffled(@RequestParam int deckId) {
 		return cardDeckDAO.getFlashcardsForDeckShuffled(deckId);
 	}
+<<<<<<< HEAD
 
 	@RequestMapping(path = "", method = RequestMethod.POST)
+=======
+	
+	@RequestMapping(path = "", method = RequestMethod.PUT)
+>>>>>>> fe80b4c73c892003efdc23c67186e5341d48bc6a
 	public void updateCard(@RequestBody int cardId, String frontText, String backText, String[] tagId) {
 		cardDeckDAO.updateFlashcard(cardId, frontText, backText, tagId);
 	}
