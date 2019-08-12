@@ -31,12 +31,6 @@ public class Flashcard {
 	public void setDeckId(int deckId) {
 		this.deckId = deckId;
 	}
-	public List<Integer> getAllDeckIds() {
-		return this.allDeckIds;
-	}
-	public void setAllDeckIds(List<Integer> allDeckIds) {
-		this.allDeckIds = allDeckIds;
-	}
 	public String getFrontText() {
 		return frontText;
 	}
@@ -55,12 +49,20 @@ public class Flashcard {
 	public void setCardTag(List<String> cardTags) {
 		this.cardTag = cardTags;
 	}
-	public boolean getIsCorrect() {
+	public List<Integer> getAllDeckIds() {
+		return allDeckIds;
+	}
+	public void setAllDeckIds(List<Integer> allDeckIds) {
+		this.allDeckIds = allDeckIds;
+	}
+	public boolean isCorrect() {
 		return isCorrect;
 	}
-	public void setIsCorrect(boolean isCorrect) {
+	public void setCorrect(boolean isCorrect) {
 		this.isCorrect = isCorrect;
 	}
+	
+	
 }
 
 

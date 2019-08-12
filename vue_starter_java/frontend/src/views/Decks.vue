@@ -1,53 +1,76 @@
 <template>
   <div class="deck-id">
     <form action="/Card">
-      <button type="redirect">Add A Card!</button>
+      <button type="redirect">Add a Card!</button>
+    </form>
+    <form action="/Decks">
+      <button type="redirect">Make a new Deck!</button>
     </form>
      <pre>{{deck}}</pre>
-     <h1>Deck Title Goes Here</h1>
-     <p>Deck Description Goes Here</p>
+     <div>
+        <label for="input-text" class="sr-only">Enter title:</label>
+        <input type="text" id="input-text" class="input-text" placeholder="Enter title:"/>
+     </div>
+     <div>
+        <label for="input-text" class="sr-only">Enter description:</label>
+        <input type="text" id="input-text" class="input-text" placeholder="Enter description:"/>
+     </div>
      <table>
        <thead>
          <tr>
            <th>Id</th>
-           <th>Title</th>
-           <th>Description</th>
+           <th>Front Text</th>
+           <th>Back Text</th>
+           <th>Tags</th>
          </tr>
        </thead>
        <tbody>
-          <tr v-for="deck in decks" v-bind:key="deck.id">
-            <td>{{deck.id}}</td>
-            <td>{{deck.title}}</td>
-            <td>{{deck.description}}</td>
+          <tr v-for="card in cards" v-bind:key="card.id">
+            <td>{{card.cardId}}</td>
+            <td>{{card.frontText}}</td>
+            <td>{{card.backText}}</td>
+            <td>{{card.tags}}</td>
           </tr>
        </tbody>
      </table>
+     <form action="/Admin">
+      <div>
+          <button type="submit">Save Changes to this Deck</button>
+      </div>
+     </form>
   </div>
 </template>    
 
 
 <script>
 export default {
-  name: 'decks',
+  name: 'cards',
   data() {
     return {
-      user: null,
-      decks: [
-        {
-          id: 1,
-          title: "First Card.",
-          description: "This is a dummy card."
-        },
-        {
-          id: 2,
-          title: "Second Card.",
-          description: "This is another dummy card."
-        }
-      ]
+      cards: {
+        cardId: '',
+        frontText: '',
+        backText: '',
+        tags: ''
+      }
     }
   },
   methods: {
-    
+    displayCards(){
+      fetch(`${process.env.VUE_APP_REMOTE_API}/Register`, {
+        method: 'GET',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+      })
+      .then((response) => {
+          if (response.ok) {
+            this.$router.push({ path: '/Decks', query: { cards: 'success' } });
+          }
+        })
+      .then((err) => console.error(err));
+    }
   },
   created() {
     this.getDeck(this.$route.params.id);
