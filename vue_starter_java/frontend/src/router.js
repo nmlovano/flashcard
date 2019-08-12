@@ -28,7 +28,7 @@ const router = new Router({
   routes: [
     {
         path: '/Home',
-        name: 'Home',
+        name: 'home',
         component: Home,
         meta: {
           requiresAuth: false
@@ -37,7 +37,7 @@ const router = new Router({
       
     {
       path: "/Login",
-      name: "Login",
+      name: "login",
       component: Login,
       meta: {
         requiresAuth: false
@@ -45,7 +45,7 @@ const router = new Router({
     },
     {
       path: "/Register",
-      name: "Register",
+      name: "register",
       component: Register,
       meta: {
         requiresAuth: false
@@ -53,7 +53,7 @@ const router = new Router({
     },
     {
       path: "/Search",
-      name: "Search",
+      name: "search",
       component: Search,
       meta: {
         requiresAuth: false
@@ -61,7 +61,7 @@ const router = new Router({
       },
       {
         path: "/User",
-        name: "User",
+        name: "user",
         component: User,
         meta: {
           requiresAuth: false
@@ -69,7 +69,7 @@ const router = new Router({
       },
     {
       path: "/SearchResults",
-      name: "SearchResults",
+      name: "searchresults",
       component: SearchResults,
         meta: {
         requiresAuth: false
@@ -77,13 +77,13 @@ const router = new Router({
     },
     {
       path: '/Decks',
-      name: 'Decks',
+      name: 'decks',
       component: Decks,
     
     },
     {
       path: '/Card',
-      name: 'Card',
+      name: 'card',
       component: Card,
     
     },
@@ -95,13 +95,13 @@ const router = new Router({
     },
     {
       path: '/Contact',
-      name: 'Contact',
+      name: 'contact',
       component: Contact,
     
     },
     {
       path: '/Admin',
-      name: 'Admin',
+      name: 'admin',
       component: Admin,
       meta: {
         requiresAuth: false

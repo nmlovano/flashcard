@@ -28,7 +28,7 @@
 
 <script>
 export default {
-  name: 'Decks',
+  name: 'decks',
   data() {
     return {
       user: null,

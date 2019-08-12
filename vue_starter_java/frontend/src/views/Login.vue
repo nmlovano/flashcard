@@ -29,7 +29,7 @@
         v-model="user.password"
         required
       />
-      <router-link :to="{ name: 'Register' }">Need an account?</router-link>
+      <router-link :to="{ name: 'register' }">Need an account?</router-link>
       <button type="submit">Sign in</button>
     </form>
   </div>
@@ -40,7 +40,7 @@ import auth from '../auth';
 
 
 export default {
-  name: 'Login',
+  name: 'login',
   components: {},
   data() {
     return {
