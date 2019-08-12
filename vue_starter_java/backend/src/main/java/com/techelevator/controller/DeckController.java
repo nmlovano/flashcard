@@ -49,13 +49,13 @@ public class DeckController {
 		System.out.println(authProvider.getCurrentUser().toString());
 
 	}
-	
+
 	@RequestMapping(path = "?id={deckId}", method = RequestMethod.GET)
 	public CardDeck getDeckById(@RequestParam int deckId) {
 		CardDeck thisDeck = cardDeckDAO.getCardDeckByDeckId(deckId);
 		return thisDeck;
 	}
-	
+
 	@RequestMapping(path = "", method = RequestMethod.POST)
 	public void updateDeck(@RequestBody int deckId, String name, String description, int userId) {
 		cardDeckDAO.updateCardDeck(deckId, name, description, userId);

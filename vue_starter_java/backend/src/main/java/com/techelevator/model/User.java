@@ -8,88 +8,88 @@ import org.hibernate.validator.constraints.NotBlank;
  * User
  */
 public class User {
-    @NotBlank(message = "Username is required")
-    private String username;
+	@NotBlank(message = "Username is required")
+	private String username;
 
-    @NotBlank(message = "Role is required")
-    private String role;
-    private long id;
+	@NotBlank(message = "Role is required")
+	private String role;
+	private long id;
 
-    @NotBlank(message = "Password is required")
-    private String password;
-    private String confirmPassword;
+	@NotBlank(message = "Password is required")
+	private String password;
+	private String confirmPassword;
 
-    private boolean passwordMatching;
-    
-    private String email;
-    private String firstName;
-    private String lastName;
+	private boolean passwordMatching;
 
-    @AssertTrue(message = "Passwords must match")
-    public boolean isPasswordMatching() {
-        if (password != null) {
-            return password.equals(confirmPassword);
-        }
-        return true;
-    }
+	private String email;
+	private String firstName;
+	private String lastName;
 
-    public String getPassword() {
-        return password;
-    }
+	@AssertTrue(message = "Passwords must match")
+	public boolean isPasswordMatching() {
+		if (password != null) {
+			return password.equals(confirmPassword);
+		}
+		return true;
+	}
 
-    public String getConfirmPassword() {
-        return confirmPassword;
-    }
+	public String getPassword() {
+		return password;
+	}
 
-    /**
-     * @return the username
-     */
-    public String getUsername() {
-        return username;
-    }
+	public String getConfirmPassword() {
+		return confirmPassword;
+	}
 
-    /**
-     * @return the id
-     */
-    public long getId() {
-        return id;
-    }
+	/**
+	 * @return the username
+	 */
+	public String getUsername() {
+		return username;
+	}
 
-    /**
-     * @param id the id to set
-     */
-    public void setId(long id) {
-        this.id = id;
-    }
+	/**
+	 * @return the id
+	 */
+	public long getId() {
+		return id;
+	}
 
-    /**
-     * @return the role
-     */
-    public String getRole() {
-        return role;
-    }
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(long id) {
+		this.id = id;
+	}
 
-    /**
-     * @param role the role to set
-     */
-    public void setRole(String role) {
-        this.role = role;
-    }
+	/**
+	 * @return the role
+	 */
+	public String getRole() {
+		return role;
+	}
 
-    /**
-     * @param username the username to set
-     */
-    public void setUsername(String username) {
-        this.username = username;
-    }
+	/**
+	 * @param role the role to set
+	 */
+	public void setRole(String role) {
+		this.role = role;
+	}
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
+	/**
+	 * @param username the username to set
+	 */
+	public void setUsername(String username) {
+		this.username = username;
+	}
 
-    public void setConfirmPassword(String confirmPassword) {
-        this.confirmPassword = confirmPassword;
-    }
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public void setConfirmPassword(String confirmPassword) {
+		this.confirmPassword = confirmPassword;
+	}
 
 	public String getEmail() {
 		return email;
@@ -114,6 +114,5 @@ public class User {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-
 
 }

@@ -27,25 +27,25 @@ public class UserController {
 		this.userDAO = userDAO;
 	}
 
-	@RequestMapping(path="/users/new", method=RequestMethod.GET)
+	@RequestMapping(path = "/users/new", method = RequestMethod.GET)
 	public String displayNewUserForm(ModelMap modelHolder) {
-		if( ! modelHolder.containsAttribute("user")) {
+		if (!modelHolder.containsAttribute("user")) {
 			modelHolder.addAttribute("user", new User());
 		}
 		return "newUser";
 	}
-	
-	@RequestMapping(path="/users", method=RequestMethod.POST)
+
+	@RequestMapping(path = "/users", method = RequestMethod.POST)
 	public String createUser(@Valid @ModelAttribute User user, BindingResult result, RedirectAttributes flash) {
-		if(result.hasErrors()) {
+		if (result.hasErrors()) {
 			flash.addFlashAttribute("user", user);
 			flash.addFlashAttribute(BindingResult.MODEL_KEY_PREFIX + "user", result);
 			return "redirect:/users/new";
 		}
-		
-		userDAO.saveUser(user.getUsername(), user.getPassword(), user.getRole(), user.getFirstName(), user.getLastName(), user.getEmail());
+
+		userDAO.saveUser(user.getUsername(), user.getPassword(), user.getRole(), user.getFirstName(),
+				user.getLastName(), user.getEmail());
 		return "redirect:/login";
 	}
-	
-	
+
 }
