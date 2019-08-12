@@ -22,90 +22,60 @@ import com.techelevator.model.Flashcard;
 @RequestMapping("/card")
 public class CardController {
 
-	private AuthProvider authProvider;
+private AuthProvider authProvider;
 
-	private CardDeckDAO cardDeckDAO;
+private CardDeckDAO cardDeckDAO;
 
-	@Autowired
-	public CardController(CardDeckDAO cardDeckDAO, AuthProvider authProvider) {
-		this.cardDeckDAO = cardDeckDAO;
-		this.authProvider = authProvider;
-	}
+@Autowired
+public CardController(CardDeckDAO cardDeckDAO, AuthProvider authProvider) {
+    this.cardDeckDAO = cardDeckDAO;
+    this.authProvider = authProvider;
+}
 
-	@RequestMapping(path = "?cardId={id}", method = RequestMethod.GET)
-	public Flashcard getCardById(@RequestParam int cardId) {
-		return cardDeckDAO.getFlashcardByCardId(cardId);
-	}
-<<<<<<< HEAD
+@RequestMapping(path = "?cardId={id}", method = RequestMethod.GET)
+public Flashcard getCardById(@RequestParam int cardId) {
+    return cardDeckDAO.getFlashcardByCardId(cardId);
+}
 
-	@RequestMapping(path = "?savecard={savecard}", method = RequestMethod.POST)
-	public void saveNewCard(@RequestBody int deckId, String frontText, String backText, String[] tagId) {
-		cardDeckDAO.saveFlashcard(deckId, frontText, backText, tagId);
+@RequestMapping(path = "", method = RequestMethod.POST)
+public void saveNewCard(@RequestBody Flashcard card) { 
+    System.out.println("saveNewCard()");
+    cardDeckDAO.saveFlashcard(card.getDeckId(), card.getFrontText(), card.getBackText(), card.getCardTag());
+}
 
-	}
 
-=======
-	
-	@RequestMapping(path = "", method = RequestMethod.POST)
-	public void saveNewCard(@RequestBody Flashcard card) { 
-		System.out.println("saveNewCard()");
-		cardDeckDAO.saveFlashcard(card.getDeckId(), card.getFrontText(), card.getBackText(), card.getCardTag());
-	}
-	
-	
->>>>>>> fe80b4c73c892003efdc23c67186e5341d48bc6a
-	@RequestMapping(path = "?assign={assign}", method = RequestMethod.POST)
-	public void assignCardToDeck(@RequestBody int cardId, int deckId) {
-		cardDeckDAO.assignFlashcardToDeck(cardId, deckId);
-	}
-<<<<<<< HEAD
+@RequestMapping(path = "?assign={assign}", method = RequestMethod.POST)
+public void assignCardToDeck(@RequestBody int cardId, int deckId) {
+    cardDeckDAO.assignFlashcardToDeck(cardId, deckId);
+}
 
-	@RequestMapping(path = "?id={cardId}", method = RequestMethod.DELETE)
-	public void removeCardFromDeck(@RequestParam int cardId, int deckId) {
-		Flashcard thisCard = cardDeckDAO.getFlashcardByCardId(cardId);
-		if (thisCard.getUserId() == authProvider.getCurrentUser().getId()) {
-			cardDeckDAO.removeFlashcardFromDeck(cardId, deckId);
-			;
-		}
-		System.out.println(authProvider.getCurrentUser().toString());
+@RequestMapping(path = "?id={deckId}", method = RequestMethod.GET)
+public List<Flashcard> getCardByDeckOrdered(@RequestParam int deckId) {
+    return cardDeckDAO.getFlashcardsForDeckOrdered(deckId);
+}
 
-	}
+@RequestMapping(path = "?shuffled={deckId}", method = RequestMethod.GET)
+public List<Flashcard> getCardByDeckShuffled(@RequestParam int deckId) {
+    return cardDeckDAO.getFlashcardsForDeckShuffled(deckId);
+}
 
-=======
-	
->>>>>>> fe80b4c73c892003efdc23c67186e5341d48bc6a
-	@RequestMapping(path = "?id={deckId}", method = RequestMethod.GET)
-	public List<Flashcard> getCardByDeckOrdered(@RequestParam int deckId) {
-		return cardDeckDAO.getFlashcardsForDeckOrdered(deckId);
-	}
+@RequestMapping(path = "", method = RequestMethod.PUT)
+public void updateCard(@RequestBody int cardId, String frontText, String backText, String[] tagId) {
+    cardDeckDAO.updateFlashcard(cardId, frontText, backText, tagId);
+}
 
-	@RequestMapping(path = "?shuffled={deckId}", method = RequestMethod.GET)
-	public List<Flashcard> getCardByDeckShuffled(@RequestParam int deckId) {
-		return cardDeckDAO.getFlashcardsForDeckShuffled(deckId);
-	}
-<<<<<<< HEAD
+@RequestMapping(path = "?tag={tag}", method = RequestMethod.GET)
+public List<Flashcard> searchCardsByTag(@RequestParam String tagNames) {
+    return cardDeckDAO.searchCardsByTags(tagNames);
+}
 
-	@RequestMapping(path = "", method = RequestMethod.POST)
-=======
-	
-	@RequestMapping(path = "", method = RequestMethod.PUT)
->>>>>>> fe80b4c73c892003efdc23c67186e5341d48bc6a
-	public void updateCard(@RequestBody int cardId, String frontText, String backText, String[] tagId) {
-		cardDeckDAO.updateFlashcard(cardId, frontText, backText, tagId);
-	}
+@RequestMapping(path = "?common={common}", method = RequestMethod.GET)
+public List<Flashcard> getCommonCards(@RequestParam String frontText, String backText) {
+    return cardDeckDAO.getAllCommonCards(frontText, backText);
+}
 
-	@RequestMapping(path = "?tag={tag}", method = RequestMethod.GET)
-	public List<Flashcard> searchCardsByTag(@RequestParam String tagNames) {
-		return cardDeckDAO.searchCardsByTags(tagNames);
-	}
-
-	@RequestMapping(path = "?common={common}", method = RequestMethod.GET)
-	public List<Flashcard> getCommonCards(@RequestParam String frontText, String backText) {
-		return cardDeckDAO.getAllCommonCards(frontText, backText);
-	}
-
-	@RequestMapping(path = "?tags={tags}", method = RequestMethod.GET)
-	public List<Tag> getAllTags(String tagNames) {
-		return cardDeckDAO.getAllTags(tagNames);
-	}
+@RequestMapping(path = "?tags={tags}", method = RequestMethod.GET)
+public List<Tag> getAllTags(String tagNames) {
+    return cardDeckDAO.getAllTags(tagNames);
+}
 }
