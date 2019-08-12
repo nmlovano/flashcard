@@ -45,6 +45,7 @@ public class CardController {
 
 	}
 	
+	
 	@RequestMapping(path = "?assign={assign}", method = RequestMethod.POST)
 	public void assignCardToDeck(@RequestBody int cardId, int deckId) {
 		cardDeckDAO.assignFlashcardToDeck(cardId, deckId);
@@ -70,7 +71,7 @@ public class CardController {
 		return cardDeckDAO.getFlashcardsForDeckShuffled(deckId);
 	}
 	
-	@RequestMapping(path = "", method = RequestMethod.POST)
+	@RequestMapping(path = "", method = RequestMethod.PUT)
 	public void updateCard(@RequestBody int cardId, String frontText, String backText, String[] tagId) {
 		cardDeckDAO.updateFlashcard(cardId, frontText, backText, tagId);
 	}

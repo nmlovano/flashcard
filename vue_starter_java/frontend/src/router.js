@@ -27,7 +27,11 @@ const router = new Router({
   base: process.env.BASE_URL,
   routes: [
     {
+<<<<<<< HEAD
         path: '/',
+=======
+        path: '/Home',
+>>>>>>> e3b12233a2e04e50a0980ee45b6ce910037b1192
         name: 'home',
         component: Home,
         meta: {
@@ -36,7 +40,11 @@ const router = new Router({
       },
       
     {
+<<<<<<< HEAD
       path: "/login",
+=======
+      path: "/Login",
+>>>>>>> e3b12233a2e04e50a0980ee45b6ce910037b1192
       name: "login",
       component: Login,
       meta: {
@@ -44,7 +52,11 @@ const router = new Router({
       }
     },
     {
+<<<<<<< HEAD
       path: "/register",
+=======
+      path: "/Register",
+>>>>>>> e3b12233a2e04e50a0980ee45b6ce910037b1192
       name: "register",
       component: Register,
       meta: {
@@ -52,7 +64,11 @@ const router = new Router({
       }
     },
     {
+<<<<<<< HEAD
       path: "/search",
+=======
+      path: "/Search",
+>>>>>>> e3b12233a2e04e50a0980ee45b6ce910037b1192
       name: "search",
       component: Search,
       meta: {
@@ -60,7 +76,11 @@ const router = new Router({
       }
       },
       {
+<<<<<<< HEAD
         path: "/user",
+=======
+        path: "/User",
+>>>>>>> e3b12233a2e04e50a0980ee45b6ce910037b1192
         name: "user",
         component: User,
         meta: {
@@ -69,32 +89,54 @@ const router = new Router({
       },
     {
       path: "/SearchResults",
-      name: "SearchResults",
+      name: "searchresults",
       component: SearchResults,
         meta: {
         requiresAuth: false
         }
     },
     {
+<<<<<<< HEAD
       path: '/decks',
+=======
+      path: '/Decks',
+>>>>>>> e3b12233a2e04e50a0980ee45b6ce910037b1192
       name: 'decks',
       component: Decks,
     
     },
     {
+<<<<<<< HEAD
       path: '/card',
+=======
+      path: '/Card',
+>>>>>>> e3b12233a2e04e50a0980ee45b6ce910037b1192
       name: 'card',
       component: Card,
     
     },
     {
+<<<<<<< HEAD
       path: '/contact',
+=======
+      path: '/Login',
+      name: 'accountcreated',
+      component: Login,
+    
+    },
+    {
+      path: '/Contact',
+>>>>>>> e3b12233a2e04e50a0980ee45b6ce910037b1192
       name: 'contact',
       component: Contact,
     
     },
     {
+<<<<<<< HEAD
       path: '/admin',
+=======
+      path: '/Admin',
+>>>>>>> e3b12233a2e04e50a0980ee45b6ce910037b1192
       name: 'admin',
       component: Admin,
       meta: {

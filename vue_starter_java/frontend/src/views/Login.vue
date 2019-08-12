@@ -30,7 +30,11 @@
         required
       />
       <router-link :to="{ name: 'register' }">Need an account?</router-link>
+<<<<<<< HEAD
       <button><router-link v-on=click type="submit"/>Sign in</button>
+=======
+      <button type="submit">Sign in</button>
+>>>>>>> e3b12233a2e04e50a0980ee45b6ce910037b1192
     </form>
   </div>
 </template>
