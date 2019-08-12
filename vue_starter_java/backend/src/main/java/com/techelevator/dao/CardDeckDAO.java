@@ -8,13 +8,13 @@ import com.techelevator.model.CardDeck;
 import com.techelevator.model.Flashcard;
 
 public interface CardDeckDAO {
-	public void saveFlashcard(int deckId, String frontText, String backText, String[] tagId);
+	public void saveFlashcard(int deckId, String frontText, String backText, String cardTag);
 
 	public Flashcard getFlashcardByCardId(int cardId);
 
 	public void assignFlashcardToDeck(int cardId, int deckId);
 
-	public void removeFlashcardFromDeck(int cardId, int deckId);
+	public void removeFlashcardFromDeck(int cardId);
 
 	public List<Flashcard> getFlashcardsForDeckOrdered(int deckId);
 

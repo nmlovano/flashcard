@@ -10,6 +10,10 @@
             <input type="text" id="input-text" class="input-text" placeholder="Enter back text here!" v-model="backText"/>
         </div>
         <div>
+            <label for="cardtag" class="cardtag">Card Tag</label>
+            <input type="text" id="input-text" class="input-text" placeholder="Enter card tags here!" v-model="cardTag"/>
+        </div>
+        <div>
             <button v-on:click="saveCard">Save Card to Deck!</button>
             <button>Discard dis card!</button>
         </div>
@@ -17,39 +21,32 @@
 </template>
 
 <script>
+import auth from "../auth"
 export default {
     name: 'card',
     data(){
         return {
-            id: "",
+            deckId: "",
             frontText: "",
-            backText: ""
+            backText: "",
+            cardTag: ""
         }
     },
     methods: {
       saveCard(){
-        fetch(`${process.env.VUE_APP_REMOTE_API}/Login`, {
+        fetch(`${process.env.VUE_APP_REMOTE_API}/card`, {
           method: 'POST',
           headers: {
             Accept: 'application/json',
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify(this.user),
+          body: JSON.stringify(this.card),
         })
         .then((response) => {
           if (response.ok) {
             return response.text();
           } else {
             this.invalidCredentials = true;
-          }
-        })
-        .then((token) => {
-          if (token != undefined) {
-            if (token.includes('"')) {
-              token = token.replace(/"/g, '');
-            }
-            auth.saveToken(token);
-            this.$router.push('/');
           }
         })
         .catch((err) => console.error(err));

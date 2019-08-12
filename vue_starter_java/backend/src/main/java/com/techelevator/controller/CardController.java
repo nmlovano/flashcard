@@ -21,7 +21,6 @@ import com.techelevator.model.Flashcard;
 @RestController
 @CrossOrigin
 @RequestMapping("/card")
-
 public class CardController {
 
 	private AuthProvider authProvider;
@@ -39,26 +38,16 @@ public class CardController {
 		return cardDeckDAO.getFlashcardByCardId(cardId);
 	}
 	
-	@RequestMapping(path = "?savecard={savecard}", method = RequestMethod.POST)
-	public void saveNewCard(@RequestBody int deckId, String frontText, String backText, String[] tagId) {
-		cardDeckDAO.saveFlashcard(deckId, frontText, backText, tagId);
-
+	@RequestMapping(path = "", method = RequestMethod.POST)
+	public void saveNewCard(@RequestBody Flashcard card) { 
+		System.out.println("saveNewCard()");
+		cardDeckDAO.saveFlashcard(card.getDeckId(), card.getFrontText(), card.getBackText(), card.getCardTag());
 	}
 	
 	
 	@RequestMapping(path = "?assign={assign}", method = RequestMethod.POST)
 	public void assignCardToDeck(@RequestBody int cardId, int deckId) {
 		cardDeckDAO.assignFlashcardToDeck(cardId, deckId);
-	}
-	
-	@RequestMapping(path = "?id={cardId}", method = RequestMethod.DELETE)
-	public void removeCardFromDeck(@RequestParam int cardId, int deckId) {
-		Flashcard thisCard = cardDeckDAO.getFlashcardByCardId(cardId);
-		if (thisCard.getUserId() == authProvider.getCurrentUser().getId()) {
-			cardDeckDAO.removeFlashcardFromDeck(cardId, deckId);;
-		}
-		System.out.println(authProvider.getCurrentUser().toString());
-
 	}
 	
 	@RequestMapping(path = "?id={deckId}", method = RequestMethod.GET)

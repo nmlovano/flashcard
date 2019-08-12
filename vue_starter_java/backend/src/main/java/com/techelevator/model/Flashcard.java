@@ -1,29 +1,18 @@
 package com.techelevator.model;
 
-import java.util.List;
-
 public class Flashcard {
 	
 	private int cardId;
-	private int userId;
 	private int deckId; 
-	private List<Integer> allDeckIds;
 	private String frontText;
 	private String backText;
-	private List<String> cardTag;
-	private boolean isCorrect; 
+	private String cardTag;
 	
 	public int getCardId() {
 		return cardId;
 	}
 	public void setCardId(int cardId) {
 		this.cardId = cardId;
-	}
-	public int getUserId() {
-		return userId;
-	}
-	public void setUserId(int userId) {
-		this.userId = userId;
 	}
 	public int getDeckId() {
 		return deckId;
@@ -43,23 +32,11 @@ public class Flashcard {
 	public void setBackText(String backText) {
 		this.backText = backText;
 	}
-	public List<String> getCardTag() {
+	public String getCardTag() {
 		return cardTag;
 	}
-	public void setCardTag(List<String> cardTags) {
-		this.cardTag = cardTags;
-	}
-	public List<Integer> getAllDeckIds() {
-		return allDeckIds;
-	}
-	public void setAllDeckIds(List<Integer> allDeckIds) {
-		this.allDeckIds = allDeckIds;
-	}
-	public boolean isCorrect() {
-		return isCorrect;
-	}
-	public void setCorrect(boolean isCorrect) {
-		this.isCorrect = isCorrect;
+	public void setCardTag(String cardTag) {
+		this.cardTag = cardTag;
 	}
 	
 	
