@@ -70,7 +70,7 @@ public class CardController {
 		return cardDeckDAO.getFlashcardsForDeckShuffled(deckId);
 	}
 	
-	@RequestMapping(path = "", method = RequestMethod.POST)
+	@RequestMapping(path = " ", method = RequestMethod.POST)
 	public void updateCard(@RequestBody int cardId, String frontText, String backText, String[] tagId) {
 		cardDeckDAO.updateFlashcard(cardId, frontText, backText, tagId);
 	}
