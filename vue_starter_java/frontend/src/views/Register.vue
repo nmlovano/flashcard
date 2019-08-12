@@ -83,7 +83,7 @@
       </router-link>
       </div>
       <div id="button">
-      <button class="btn btn-lg btn-primary btn-block" type="submit">
+      <button class="btn btn-outline-primary" type="submit">
         Create Account
       </button>
       </div>

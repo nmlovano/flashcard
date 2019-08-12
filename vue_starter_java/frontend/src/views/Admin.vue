@@ -1,4 +1,3 @@
-
 <template>
 <div class="photo">
   <div class="admin">
@@ -21,3 +20,4 @@
 }
 
 </style>
+
