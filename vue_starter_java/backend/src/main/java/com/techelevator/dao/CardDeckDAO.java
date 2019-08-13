@@ -41,5 +41,9 @@ public interface CardDeckDAO {
 	public List<Flashcard> getAllCommonCards(String frontText, String backText);
 
 	public void deleteCardDeck(int deckId);
+	
+	public List<CardDeck> getCardDecksByUserId(int userId);
+	
+	public List<CardDeck> getAllDecks(String name, String description);
 
 }

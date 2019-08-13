@@ -16,9 +16,9 @@
           <div class="flip-card-back">
             <h2>Flashcard Study App</h2>
             </div>
-          <div class="  flip-card-inner-back-title"
+          <div class="  flip-card-inner-back-title">
         
-   	</div>  
+
     	</div>       
           </div>
        </div>      
