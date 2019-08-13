@@ -10,6 +10,7 @@
 <script>
   import VueRouter from 'vue-router'
   import Vue from 'vue'
+import { userInfo } from 'os';
   
 
   export default {
@@ -37,7 +38,22 @@
 				return deckId;
 			}
 			})
-    	}
+		},
+		getUserDetails(){
+			fetch(`${process.env.VUE_APP_REMOTE_API}/user`,{
+			method: 'GET',
+			headers: {
+				Accept: 'application/json',
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify(this.card),
+			})
+			.then((response) => {
+			if (response.ok) {
+				return userInfo;
+			}
+			})
+		}
 	}
 }
 </script>

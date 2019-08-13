@@ -10,10 +10,12 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.techelevator.model.UserDao;
+import com.techelevator.model.CardDeck;
 import com.techelevator.model.User;
 
 @RestController
@@ -25,6 +27,11 @@ public class UserController {
 	@Autowired
 	public UserController(UserDao userDAO) {
 		this.userDAO = userDAO;
+	}
+	@RequestMapping(path = "/user", method = RequestMethod.GET) 
+	public User getUserByUsername(@RequestParam String username) {
+		User thisUser = new User(); 
+		return thisUser; 
 	}
 
 	@RequestMapping(path = "/users/new", method = RequestMethod.GET)
@@ -47,5 +54,6 @@ public class UserController {
 				user.getLastName(), user.getEmail());
 		return "redirect:/login";
 	}
+	
 
 }
