@@ -196,14 +196,25 @@ public class JDBCCardDeckDAO implements CardDeckDAO {
 
 	@Override
 	public List<CardDeck> getAllDecks(String name, String description) {
+		List<CardDeck> allDecks = new ArrayList<>();
 		String sqlGetAllDecks = "SELECT * from deck";
-		SqlRowSet allDecks = jdbcTemplate.queryForRowSet(sqlGetAllDecks, name, description);
+		
+		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlGetAllDecks);
 		List<CardDeck> listAllDecks = null;
-		if(allDecks.next()) {
-			listAllDecks = new ArrayList <CardDeck>();
-			listAllDecks = getAllDecks("deck_name", "deck_description");
+		while(results.next()) {
+			CardDeck deckResult = mapRowToCardDeck(results);
+			allDecks.add(deckResult);
 		}
-		return listAllDecks;
+		return allDecks;
+	}
+	
+	private CardDeck mapRowToCardDeck(SqlRowSet result) {
+	    CardDeck cardDeck = new CardDeck();
+	    cardDeck.setDeckId(result.getInt("deck_id"));
+	    cardDeck.setName(result.getString("deck_name"));
+	    cardDeck.setDescription(result.getString("deck_description"));
+	    cardDeck.setUserId(result.getInt("user_id"));
+	    return cardDeck;
 	}
 
 }

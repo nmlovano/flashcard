@@ -13,6 +13,7 @@ import Admin from './views/Admin.vue'
 import Contact from './views/Contact.vue'
 import AppFooter from './views/AppFooter.vue'
 import AppHeader from './views/AppHeader.vue'
+import AllDecks from './views/AllDecks.vue'
 
 Vue.use(Router)
 
@@ -87,7 +88,7 @@ const router = new Router({
     },
     {
       path: '/allDecks={allDecks}',
-      name: 'AllDecks',
+      name: 'allDecks',
       component: AllDecks
     },
     {

@@ -1,7 +1,7 @@
 <template>
     <div>
         <h1>Here's some decks!</h1>
-        <div class="decks" v-for="deck in alldecks">
+        <div class="decks" v-for="deck in alldecks" v-bind:key="deck.decks">
             {{deck.id}}
         </div>
     </div>
@@ -19,20 +19,16 @@
         },
         methods: {
             getAllDecks(){
-                fetch(`${this.apiURL}/allDecks={allDecks}`,{
-                    method: 'GET',
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify(this.deck),
-                })
-                .then((response) => {
-                    if (response.ok) {
-                        const allDecks = this.decks.map(decks => allDecks).indexOf(id)
-                        this.decks.splice(allDecks, 1);
-                    }
-                })
-    	    }
+                fetch(this.API_URL)
+        .then((response) => {
+          return response.json();
+        })
+        .then((groceries) => {
+          this.groceries = groceries;
+        });
+            }
+            
+    	    
 	    } 
     }
 </script>

@@ -1,21 +1,5 @@
 
 <template>
-<<<<<<< HEAD
-
-
-<div class="bg-img">
- 
-    <h1>Login</h1>
-
-    <label for="email"><b>Email</b></label>
-    <input type="text" placeholder="Enter Email" name="email" required>
-
-    <label for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="psw" required>
-
-    <button type="submit" class="btn">Login</button>
-
-=======
 <div class="photo">
   <div class="admin">
     <h1>Welcome to your deck page</h1>
@@ -39,16 +23,12 @@
       </tr>
     </tbody>
   </table>
->>>>>>> 6159bb7c9728453de873472e5f4e92a5ba7cdf54
 </div>
 
 
 
 </template>
 
-<<<<<<< HEAD
-
-=======
 <script>
 import auth from "../auth"
 export default { 
@@ -93,7 +73,6 @@ export default {
   }
 }
 </script>
->>>>>>> 6159bb7c9728453de873472e5f4e92a5ba7cdf54
 
 <style>
 body, html {
