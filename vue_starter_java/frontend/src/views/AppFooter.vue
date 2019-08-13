@@ -1,20 +1,13 @@
 <template>
-       <div class="footer">
-      <a href="/Home">Home</a>
-      <a href="/Register">Register</a>
-          <a href="/Admin">Admin</a> 
-         <a href="/Contact">Contact</a>
-         <a href="Login">User Login</a>
+        <div class="footer">
+    <router-link to="/"> Home </router-link>
+   <router-link to="/contact">Contact</router-link>
         </div>
         
 </template>
-<script>
-export default {
-  name: 'app-footer'
-}
-</script>
 
-<style scoped>
+
+<style>
 .footer {
   overflow: hidden;
   background-color: #333;
@@ -25,7 +18,7 @@ export default {
 }
 .footer a{
   float: left;
-  display: block;
+  display: flexbox;
   color: #f2f2f2;
   text-align: center;
   padding: 14px 16px;
@@ -43,7 +36,7 @@ export default {
 }
 
 .footer {
-  padding: 16px;
-  margin-bottom: 30px;
+  padding: 13px;
+  margin-bottom: 10px;
 }
 </style>

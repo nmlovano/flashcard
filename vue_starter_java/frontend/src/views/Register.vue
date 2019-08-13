@@ -78,12 +78,13 @@
       />
       </div>
   <div id="switchToLogin">
+  
       <router-link :to="{ name: 'Login' }">
         Have an account?
       </router-link>
       </div>
       <div id="button">
-      <button class="btn btn-outline-primary" type="submit">
+      <button class="btn btn-lg btn-primary btn-block" type="submit">
         Create Account
       </button>
       </div>

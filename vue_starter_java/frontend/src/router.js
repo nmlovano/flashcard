@@ -11,7 +11,9 @@ import Decks from './views/Decks.vue'
 import Card from './views/Card.vue'
 import Admin from './views/Admin.vue'
 import Contact from './views/Contact.vue'
-import AllDecks from './views/AllDecks.vue'
+import AppFooter from './views/AppFooter.vue'
+import AppHeader from './views/AppHeader.vue'
+
 Vue.use(Router)
 
 /**
@@ -27,12 +29,13 @@ const router = new Router({
   mode: 'history',
   base: process.env.BASE_URL,
   routes: [
+  
     {
         path: '/',
         name: 'home',
         component: Home,
         meta: {
-          requiresAuth: true
+          
         }
       },
       
@@ -77,7 +80,7 @@ const router = new Router({
         }
     },
     {
-      path: '/deck',
+      path: '/decks',
       name: 'deck',
       component: Decks,
     
@@ -103,6 +106,22 @@ const router = new Router({
       path: '/admin',
       name: 'admin',
       component: Admin,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: '/AppHeader',
+      name: 'appHeader',
+      component: AppHeader,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: '/appFooter',
+      name: 'appFooter',
+      component: AppFooter,
       meta: {
         requiresAuth: true
       }
