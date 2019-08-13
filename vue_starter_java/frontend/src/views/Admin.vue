@@ -1,66 +1,87 @@
+
 <template>
-<div class="photo">
-  <div class="admin">
-    <h1>Heyyyyyy</h1>
-    <a href="/deck">
-        <button type="redirect">Add/Edit Decks Here!</button>
-    </a>
-  </div>
-  <table>
-    <thead>
-      <tr>
-        <th>Id</th>
-        <th>Title</th>
-        <th>Cards</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr v-for="deck in decks" v-bind:key="deck.id">
-        <td>{{deck.id}}</td>
-        <td>{{deck.title}}</td>
-        <td>{{deck.cards}}</td>
-      </tr>
-    </tbody>
-  </table>
+
+
+<div class="bg-img">
+ 
+    <h1>Login</h1>
+
+    <label for="email"><b>Email</b></label>
+    <input type="text" placeholder="Enter Email" name="email" required>
+
+    <label for="psw"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="psw" required>
+
+    <button type="submit" class="btn">Login</button>
+
 </div>
+
+
+
 </template>
 
-<script>
-export default { 
-  name: 'adminsdecks',
-  data(){
-    return{
-      user: null,
-      decks: [
-        {
-          id: 1,
-          title: "First Deck.",
-          cards: 10
-        },
-        {
-          id: 1,
-          title: "Second Deck.",
-          cards: 20
-        },
-      ]
-    }
-  },
-  methods: {
 
-  },
-  created(){
-    this.getDeck(this.$route.params.id);
-  }
-}
-</script>
 
 <style>
-
-.admin{
-  background-color: aliceblue;
-  text-align: center;
-
+body, html {
+  height: 100%;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-</style>
+* {
+  box-sizing: border-box;
+}
+
+.bg-img {
+  /* The image used */
+  background-image: url("img_nature.jpg");
+
+  min-height: 380px;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+/* Add styles to the form container */
+.container {
+  position: absolute;
+  right: 0;
+  margin: 20px;
+  max-width: 300px;
+  padding: 16px;
+  background-color: white;
+}
+
+/* Full-width input fields */
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Set a style for the submit button */
+.btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+
+.btn:hover {
+  opacity: 1;
+}
+
 
