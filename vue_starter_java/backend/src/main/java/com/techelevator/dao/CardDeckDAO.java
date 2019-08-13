@@ -44,6 +44,6 @@ public interface CardDeckDAO {
 	
 	public List<CardDeck> getCardDecksByUserId(int userId);
 	
-	public List<CardDeck> getAllDecks(String name, String description);
+	public List<CardDeck> getAllDecks();
 
 }

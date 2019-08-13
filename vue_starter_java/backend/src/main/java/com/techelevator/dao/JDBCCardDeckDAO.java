@@ -195,12 +195,11 @@ public class JDBCCardDeckDAO implements CardDeckDAO {
 	}
 
 	@Override
-	public List<CardDeck> getAllDecks(String name, String description) {
+	public List<CardDeck> getAllDecks() {
 		List<CardDeck> allDecks = new ArrayList<>();
 		String sqlGetAllDecks = "SELECT * from deck";
 		
 		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlGetAllDecks);
-		List<CardDeck> listAllDecks = null;
 		while(results.next()) {
 			CardDeck deckResult = mapRowToCardDeck(results);
 			allDecks.add(deckResult);

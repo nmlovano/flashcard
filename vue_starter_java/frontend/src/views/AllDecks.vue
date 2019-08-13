@@ -1,9 +1,9 @@
 <template>
     <div>
         <h1>Here's some decks!</h1>
-        <div class="decks" v-for="deck in alldecks" v-bind:key="deck.decks">
-            {{deck.id}}
-        </div>
+            <ul id="decks">
+                <li v-for="item in decks" v-bind:key="item.id"/>
+            </ul>
     </div>
 </template>
 
@@ -23,8 +23,8 @@
         .then((response) => {
           return response.json();
         })
-        .then((groceries) => {
-          this.groceries = groceries;
+        .then((decks) => {
+          this.decks = decks;
         });
             }
             
