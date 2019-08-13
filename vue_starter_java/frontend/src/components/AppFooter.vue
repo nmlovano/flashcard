@@ -1,11 +1,10 @@
 <template>
-        <div class="footer">
-      
-       
-        <a href="/Home">Home</a>
+       <div class="footer">
+      <a href="/Home">Home</a>
+      <a href="/Register">Register</a>
           <a href="/Admin">Admin</a> 
-      
-          <a href="/Contact">Contact</a>
+         <a href="/Contact">Contact</a>
+         <a href="Login">User Login</a>
         </div>
         
 </template>

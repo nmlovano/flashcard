@@ -1,7 +1,7 @@
 <template>
 <div class="photo">
   <div class="admin">
-    <h1>Heyyyyyy</h1>
+    <h1>Welcome to your deck page</h1>
     <a href="/deck">
         <button type="redirect">Add/Edit Decks Here!</button>
     </a>
@@ -26,6 +26,7 @@
 </template>
 
 <script>
+import auth from "../auth"
 export default { 
   name: 'adminsdecks',
   data(){
@@ -46,6 +47,21 @@ export default {
     }
   },
   methods: {
+    getDecksByUserId(){
+        fetch(`${process.env.VUE_APP_REMOTE_API}/deck?userId={userId}`,{
+          method: 'GET',
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(this.card),
+        })
+        .then((response) => {
+          if (response.ok) {
+            return deckId;
+          }
+        })
+    }
 
   },
   created(){

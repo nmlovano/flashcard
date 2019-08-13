@@ -56,21 +56,34 @@ public class DeckController {
 		CardDeck thisDeck = cardDeckDAO.getCardDeckByDeckId(deckId);
 		return thisDeck;
 	}
+	@RequestMapping(path = "?userId={userId}", method = RequestMethod.GET)
+	public CardDeck getDeckByUserId(@RequestParam int userId) {
+		CardDeck thisDeck = cardDeckDAO.getCardDeckByDeckId(userId);
+		if (thisDeck.getUserId() == authProvider.getCurrentUser().getId());
+		cardDeckDAO.getCardDecksByUserId(userId);
+		return thisDeck;
+	}
 
 	@RequestMapping(path = "", method = RequestMethod.PUT)
 	public void updateDeck(@RequestBody int deckId, String name, String description, int userId) {
 		cardDeckDAO.updateCardDeck(deckId, name, description, userId);
 
 	}
+	
 	@RequestMapping(path = "?id={cardId}", method = RequestMethod.DELETE)
 	public void removeCardFromDeck(@RequestParam int cardId) {
 		Flashcard thisCard = cardDeckDAO.getFlashcardByCardId(cardId);
 		CardDeck thisDeck = cardDeckDAO.getCardDeckByDeckId(thisCard.getDeckId());
 		if (thisDeck.getUserId() == authProvider.getCurrentUser().getId()) {
-			cardDeckDAO.removeFlashcardFromDeck(cardId);;
+			cardDeckDAO.removeFlashcardFromDeck(cardId);
 		}
 		System.out.println(authProvider.getCurrentUser().toString());
 
+	}
+	
+	@RequestMapping(path = "?allDecks={allDecks}", method = RequestMethod.GET)
+	public List<CardDeck> getAllDecks() {
+		return cardDeckDAO.getAllCardDecks();
 	}
 
 }
