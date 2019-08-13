@@ -11,6 +11,7 @@ import Decks from './views/Decks.vue'
 import Card from './views/Card.vue'
 import Admin from './views/Admin.vue'
 import Contact from './views/Contact.vue'
+import AllDecks from './views/AllDecks.vue'
 Vue.use(Router)
 
 /**
@@ -80,6 +81,11 @@ const router = new Router({
       name: 'deck',
       component: Decks,
     
+    },
+    {
+      path: '/allDecks={allDecks}',
+      name: 'AllDecks',
+      component: AllDecks
     },
     {
       path: '/card',

@@ -17,7 +17,7 @@ import com.techelevator.model.Flashcard;
 
 @RestController
 @CrossOrigin
-@RequestMapping("/deck")
+@RequestMapping
 public class DeckController {
 
 	private AuthProvider authProvider;
@@ -30,18 +30,18 @@ public class DeckController {
 		this.authProvider = authProvider;
 	}
 
-	@RequestMapping(path = "?username={username}", method = RequestMethod.GET)
+	@RequestMapping(path = "/username={username}", method = RequestMethod.GET)
 	public List<CardDeck> getDeckByUsername(@RequestParam String username) {
 		return cardDeckDAO.getCardDecksByUserName(username);
 	}
 
-	@RequestMapping(path = "?savedeck={savedeck}", method = RequestMethod.POST)
+	@RequestMapping(path = "/savedeck={savedeck}", method = RequestMethod.POST)
 	public void saveNewDeck(@RequestBody CardDeck deck, String name, String description, int userId) {
 		cardDeckDAO.saveCardDeck(name, description, userId);
 
 	}
 
-	@RequestMapping(path = "?id={deckId}", method = RequestMethod.DELETE)
+	@RequestMapping(path = "/id={deckId}", method = RequestMethod.DELETE)
 	public void deleteDeck(@RequestParam int deckId) {
 		CardDeck thisDeck = cardDeckDAO.getCardDeckByDeckId(deckId);
 		if (thisDeck.getUserId() == authProvider.getCurrentUser().getId()) {
@@ -51,12 +51,12 @@ public class DeckController {
 
 	}
 
-	@RequestMapping(path = "?id={deckId}", method = RequestMethod.GET)
+	@RequestMapping(path = "/id={deckId}", method = RequestMethod.GET)
 	public CardDeck getDeckById(@RequestParam int deckId) {
 		CardDeck thisDeck = cardDeckDAO.getCardDeckByDeckId(deckId);
 		return thisDeck;
 	}
-	@RequestMapping(path = "?userId={userId}", method = RequestMethod.GET)
+	@RequestMapping(path = "/userId={userId}", method = RequestMethod.GET)
 	public CardDeck getDeckByUserId(@RequestParam int userId) {
 		CardDeck thisDeck = cardDeckDAO.getCardDeckByDeckId(userId);
 		if (thisDeck.getUserId() == authProvider.getCurrentUser().getId());
@@ -64,13 +64,13 @@ public class DeckController {
 		return thisDeck;
 	}
 
-	@RequestMapping(path = "", method = RequestMethod.PUT)
+	@RequestMapping(path = "/deck", method = RequestMethod.PUT)
 	public void updateDeck(@RequestBody int deckId, String name, String description, int userId) {
 		cardDeckDAO.updateCardDeck(deckId, name, description, userId);
 
 	}
 	
-	@RequestMapping(path = "?id={cardId}", method = RequestMethod.DELETE)
+	@RequestMapping(path = "/id={cardId}", method = RequestMethod.DELETE)
 	public void removeCardFromDeck(@RequestParam int cardId) {
 		Flashcard thisCard = cardDeckDAO.getFlashcardByCardId(cardId);
 		CardDeck thisDeck = cardDeckDAO.getCardDeckByDeckId(thisCard.getDeckId());
@@ -81,7 +81,7 @@ public class DeckController {
 
 	}
 	
-	@RequestMapping(path = "?allDecks={allDecks}", method = RequestMethod.GET)
+	@RequestMapping(path = "/allDecks={allDecks}", method = RequestMethod.GET)
 	public List<CardDeck> getAllDecks() {
 		return cardDeckDAO.getAllCardDecks();
 	}

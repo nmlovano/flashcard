@@ -14,23 +14,24 @@ DROP TABLE IF EXISTS deckscreated  CASCADE;
 
 DROP SEQUENCE IF EXISTS seq_deck_id;        --deck table
 DROP SEQUENCE IF EXISTS seq_card_id;        --card table
-DROP SEQUENCE IF EXISTS seq_user_id; --deckscreated table
+DROP SEQUENCE IF EXISTS seq_id; --deckscreated table
 DROP SEQUENCE IF EXISTS seq_session_id;     --audit table
 
 CREATE SEQUENCE seq_deck_id;
 CREATE SEQUENCE seq_card_id;
-CREATE SEQUENCE seq_user_id;
+CREATE SEQUENCE seq_id;
 CREATE SEQUENCE seq_session_id;
 
 CREATE TABLE users (
-        id         serial        PRIMARY KEY,
-        email      text          NOT NULL,
-        username  varchar(32)   NOT NULL UNIQUE,
+        id         integer        NOT NULL DEFAULT nextval('seq_id'), --primary key
+        email      varchar(100)  NOT NULL,
+        username    varchar(32)  NOT NULL UNIQUE,
         password   varchar(32)   NOT NULL,
         role       varchar(255)  NOT NULL DEFAULT('user'),
         first_name varchar(25)   NOT NULL,
         last_name  varchar(25)   NOT NULL,
-        salt       varchar(255)  NOT NULL
+        salt       varchar(255)  NOT NULL,
+        CONSTRAINT pk_users_id   PRIMARY KEY(id)
 );
 
 CREATE TABLE deck (
