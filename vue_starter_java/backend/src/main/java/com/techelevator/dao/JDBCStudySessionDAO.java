@@ -27,7 +27,13 @@ public class JDBCStudySessionDAO implements StudySessionDAO{
 			jdbcTemplate.update("UPDATE card" + "SET ? = ?" + "WHERE ? = ?");
 
 		}
+
+	@Override
+	public void createNewStudySession() {
+		// TODO Auto-generated method stub
 		
 	}
+		
+	
 
 }
