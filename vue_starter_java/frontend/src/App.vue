@@ -1,27 +1,37 @@
-<template>
-<div class="header">
-  <div id="app">
-    <header>
-
-     </header>
-    <router-view class="content"/>
-  </div>
-  </div>
-</template>
-
 <script>
+import AppFooter from './views/AppFooter.vue'
+import AppHeader from './views/AppHeader.vue'
+import Home from './views/Home.vue'
+import router from './router'
+export default {
+	name: 'app',
+	
+	components: {
+    AppFooter, 
+    AppHeader,
+    Home
+	},
+	data() {
+		return {
+		
+		}
+	}
+}
 
 </script>
+ 
+ <template>
+   <div id="app">
+        <div id="nav">
+ <app-footer></app-footer>
+ <app-header></app-header>
+ 
 
-<style>
+   
+    </div>
+   <router-view/>
+ </div>
+</template>
 
-body {
-  margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-}
 
-body {
-  margin: 0;
-  padding: 0;
-}
-</style>
+

@@ -19,7 +19,7 @@ import com.techelevator.model.Flashcard;
 
 @RestController
 @CrossOrigin
-@RequestMapping("/card")
+@RequestMapping
 public class CardController {
 
 private AuthProvider authProvider;
@@ -32,49 +32,49 @@ public CardController(CardDeckDAO cardDeckDAO, AuthProvider authProvider) {
     this.authProvider = authProvider;
 }
 
-@RequestMapping(path = "?cardId={id}", method = RequestMethod.GET)
+@RequestMapping(path = "/cardId={id}", method = RequestMethod.GET)
 public Flashcard getCardById(@RequestParam int cardId) {
     return cardDeckDAO.getFlashcardByCardId(cardId);
 }
 
-@RequestMapping(path = "", method = RequestMethod.POST)
+@RequestMapping(path = "/", method = RequestMethod.POST)
 public void saveNewCard(@RequestBody Flashcard card) { 
     System.out.println("saveNewCard()");
     cardDeckDAO.saveFlashcard(card.getDeckId(), card.getFrontText(), card.getBackText(), card.getCardTag());
 }
 
 
-@RequestMapping(path = "?assign={assign}", method = RequestMethod.POST)
+@RequestMapping(path = "/assign={assign}", method = RequestMethod.POST)
 public void assignCardToDeck(@RequestBody int cardId, int deckId) {
     cardDeckDAO.assignFlashcardToDeck(cardId, deckId);
 }
 
-@RequestMapping(path = "?id={deckId}", method = RequestMethod.GET)
+@RequestMapping(path = "/id={deckId}", method = RequestMethod.GET)
 public List<Flashcard> getCardByDeckOrdered(@RequestParam int deckId) {
     return cardDeckDAO.getFlashcardsForDeckOrdered(deckId);
 }
 
-@RequestMapping(path = "?shuffled={deckId}", method = RequestMethod.GET)
+@RequestMapping(path = "/shuffled={deckId}", method = RequestMethod.GET)
 public List<Flashcard> getCardByDeckShuffled(@RequestParam int deckId) {
     return cardDeckDAO.getFlashcardsForDeckShuffled(deckId);
 }
 
-@RequestMapping(path = "", method = RequestMethod.PUT)
+@RequestMapping(path = "/update", method = RequestMethod.PUT)
 public void updateCard(@RequestBody int cardId, String frontText, String backText, String cardTag) {
     cardDeckDAO.updateFlashcard(cardId, frontText, backText, cardTag);
 }
 
-@RequestMapping(path = "?tag={tag}", method = RequestMethod.GET)
+@RequestMapping(path = "/tag={tag}", method = RequestMethod.GET)
 public List<Flashcard> searchCardsByTag(@RequestParam String tagNames) {
     return cardDeckDAO.searchCardsByTags(tagNames);
 }
 
-@RequestMapping(path = "?common={common}", method = RequestMethod.GET)
+@RequestMapping(path = "/common={common}", method = RequestMethod.GET)
 public List<Flashcard> getCommonCards(@RequestParam String frontText, String backText) {
     return cardDeckDAO.getAllCommonCards(frontText, backText);
 }
 
-@RequestMapping(path = "?tags={tags}", method = RequestMethod.GET)
+@RequestMapping(path = "/tags={tags}", method = RequestMethod.GET)
 public List<Tag> getAllTags(String tagNames) {
     return cardDeckDAO.getAllTags(tagNames);
 }

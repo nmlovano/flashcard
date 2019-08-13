@@ -35,7 +35,7 @@
       <button v-on:click.prevent="login">Sign in</button>
     </form>
     <div class="account">
-      <router-link :to="{ name: 'register' }">Need an account?</router-link>
+      
       </div>
   </div>
 
