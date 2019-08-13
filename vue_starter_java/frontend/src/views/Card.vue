@@ -1,6 +1,12 @@
 <template>
     <div class="card">
         <h1>Card</h1>
+        <div class="deck selection">
+          <label for="deck-choice">Select a deck to add card to:</label>
+          <div><select id="deck-choice" v-model="deckId">
+            </select>
+          </div>
+        </div>
         <div>
             <label for="fronttext" class="fronttext">Front Text</label>
             <input type="text" id="input-text" class="input-text" placeholder="Enter front text here!" v-model="frontText"/>
@@ -50,9 +56,24 @@ export default {
           }
         })
         .catch((err) => console.error(err));
+      },
+      getDecksByUserId(){
+        fetch(`${process.env.VUE_APP_REMOTE_API}/deck?userId={userId}`,{
+          method: 'GET',
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(this.card),
+        })
+        .then((response) => {
+          if (response.ok) {
+            return deckId;
+          }
+        })
       }
     }
-}
+  }
 </script>
 
 <style>

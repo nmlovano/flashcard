@@ -109,6 +109,17 @@ public class JDBCCardDeckDAO implements CardDeckDAO {
 		}
 		return allMyDecks;
 	}
+	@Override
+	public List<CardDeck> getCardDecksByUserId(int userId) {
+		String sqlDecksByUserId = "select * from deck where userId = ?";
+		SqlRowSet allDecksByUserId = jdbcTemplate.queryForRowSet(sqlDecksByUserId);
+		List<CardDeck> allMyIdDecks = null;
+		if (allDecksByUserId.next()) {
+			allMyIdDecks = new ArrayList<CardDeck>();
+			allMyIdDecks = getCardDecksByUserId(userId);
+		}
+		return allMyIdDecks;
+	}
 
 	@Override
 	public List<CardDeck> getAllCardDecks() {
@@ -181,6 +192,18 @@ public class JDBCCardDeckDAO implements CardDeckDAO {
 
 	public void deleteCardDeck(int deckId) {
 		jdbcTemplate.batchUpdate("delete from deck " + "where deck_id = ?");
+	}
+
+	@Override
+	public List<CardDeck> getAllDecks(String name, String description) {
+		String sqlGetAllDecks = "SELECT * from deck";
+		SqlRowSet allDecks = jdbcTemplate.queryForRowSet(sqlGetAllDecks, name, description);
+		List<CardDeck> listAllDecks = null;
+		if(allDecks.next()) {
+			listAllDecks = new ArrayList <CardDeck>();
+			listAllDecks = getAllDecks("deck_name", "deck_description");
+		}
+		return listAllDecks;
 	}
 
 }

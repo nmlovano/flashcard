@@ -15,4 +15,11 @@ INSERT INTO users ("username", "password", "email", "salt", "role", first_name, 
 'FjZDm+sndmsdEDwNtfr6NA==', 'admin@gmail.com',
 'kidcasB0te7i0jK0fmRIGHSm0mYhdLTaiGkEAiEvLp7dAEHWnuT8n/5bd2V/mqjstQ198iImm1xCmEFu+BHyOz1Mf7vm4LILcrr17y7Ws40Xyx4FOCt8jD03G+jEafpuVJnPiDmaZQXJEpEfekGOvhKGOCtBnT5uatjKEuVWuDA=',
 'admin', 'Lori', 'Brown');
+
+
+Insert into deck (deck_name, deck_description, user_id) VALUES ('pizza', 'yumminess', 1);
+Insert into deck (deck_name, deck_description, user_id) VALUES ('pie', 'more yumminess', 1);
+Insert into deck (deck_name, deck_description, user_id) VALUES ('veggies', 'BLAH', 2);
+Insert into deck (deck_name, deck_description, user_id) VALUES ('carrots', 'MORE BLAH', 2);
+
 COMMIT;
