@@ -1,7 +1,18 @@
 <template>
   <div class="home">
     <router-link to="/home"></router-link>
-   
+    <div class="flip-card card" ontouchstart="this.classList.toggle('hover');">
+          <div class="flip-card-inner">
+            <div class="flip-card-inner-front">
+              <span>Flashcard Study</span>
+            </div>
+            <div class="flip-card-inner-back">
+              <h3 class="flip-card-inner-back-title">Educate Yourself</h3>
+              <p class="flip-card-inner-back-text">Intelligence looks good on you.</p>
+            </div>
+          </div>
+    
+        
     <div card="card">
       <div class="flip-card">
         <div class="flip-card-inner">
@@ -12,11 +23,12 @@
          
 		</div>
 		<!-- If not authenticated -->
-
+ </div>
           </div>
         </div>
       </div>
         </div>
+        
 </template>
 <script>
 export default {
