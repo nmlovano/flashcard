@@ -81,7 +81,7 @@ public class JDBCCardDeckDAO implements CardDeckDAO {
 	}
 
 	@Override
-	public void updateFlashcard(int cardId, String frontText, String backText, String[] tagId) {
+	public void updateFlashcard(int cardId, String frontText, String backText, String cardTag) {
 		jdbcTemplate.batchUpdate("UPDATE card" + "SET ? = ?" + "WHERE ? = ?");
 
 	}
@@ -94,7 +94,7 @@ public class JDBCCardDeckDAO implements CardDeckDAO {
 
 	@Override
 	public void saveCardDeck(String name, String description, int userId) {
-		jdbcTemplate.update("Insert into deck (deck_name, deck_description, user_id) VALUES (?, ?, ?)");
+		jdbcTemplate.update("Insert into deck (deck_name, deck_description, user_id) VALUES (?, ?, ?)", name, description, userId);
 
 	}
 
