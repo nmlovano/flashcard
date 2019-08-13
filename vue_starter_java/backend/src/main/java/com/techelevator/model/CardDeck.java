@@ -52,4 +52,5 @@ public class CardDeck {
 	public void setFlashcards(List<Flashcard> flashcards) {
 		this.flashcards = flashcards;
 	}
+	
 }
