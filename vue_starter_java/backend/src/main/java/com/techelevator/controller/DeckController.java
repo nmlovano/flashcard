@@ -57,7 +57,7 @@ public class DeckController {
 		return thisDeck;
 	}
 
-	@RequestMapping(path = "", method = RequestMethod.POST)
+	@RequestMapping(path = "", method = RequestMethod.PUT)
 	public void updateDeck(@RequestBody int deckId, String name, String description, int userId) {
 		cardDeckDAO.updateCardDeck(deckId, name, description, userId);
 

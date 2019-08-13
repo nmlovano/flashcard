@@ -76,8 +76,8 @@ const router = new Router({
         }
     },
     {
-      path: '/decks',
-      name: 'decks',
+      path: '/deck',
+      name: 'deck',
       component: Decks,
     
     },

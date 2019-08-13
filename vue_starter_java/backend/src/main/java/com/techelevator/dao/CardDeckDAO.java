@@ -20,7 +20,7 @@ public interface CardDeckDAO {
 
 	public List<Flashcard> getFlashcardsForDeckShuffled(int deckId);
 
-	public void updateFlashcard(int cardId, String frontText, String backText, String[] tagId);
+	public void updateFlashcard(int cardId, String frontText, String backText, String cardTag);
 
 	public void updateFlashcardStudySession(Flashcard flashcard);
 

@@ -60,8 +60,8 @@ public List<Flashcard> getCardByDeckShuffled(@RequestParam int deckId) {
 }
 
 @RequestMapping(path = "", method = RequestMethod.PUT)
-public void updateCard(@RequestBody int cardId, String frontText, String backText, String[] tagId) {
-    cardDeckDAO.updateFlashcard(cardId, frontText, backText, tagId);
+public void updateCard(@RequestBody int cardId, String frontText, String backText, String cardTag) {
+    cardDeckDAO.updateFlashcard(cardId, frontText, backText, cardTag);
 }
 
 @RequestMapping(path = "?tag={tag}", method = RequestMethod.GET)

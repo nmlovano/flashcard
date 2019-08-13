@@ -3,7 +3,7 @@
     <form action="/Card">
       <button type="redirect">Add a Card!</button>
     </form>
-    <form action="/Decks">
+    <form action="/deck">
       <button type="redirect">Make a new Deck!</button>
     </form>
      <pre>{{deck}}</pre>
@@ -66,7 +66,7 @@ export default {
       })
       .then((response) => {
           if (response.ok) {
-            this.$router.push({ path: '/Decks', query: { cards: 'success' } });
+            this.$router.push({ path: '/deck', query: { cards: 'success' } });
           }
         })
       .then((err) => console.error(err));
