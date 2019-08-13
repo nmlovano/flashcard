@@ -24,9 +24,8 @@ public class JDBCCardDeckDAO implements CardDeckDAO {
 	}
 
 	@Override
-	public void saveFlashcard(int deckId, String frontText, String backText, String[] tagId) {
-		jdbcTemplate.update("INSERT into card (deck_id, card_front, card_back, card_tag) VALUES (?, ?, ?, ?)");
-
+	public void saveFlashcard(int deckId, String frontText, String backText, String cardTag) {
+		jdbcTemplate.update("INSERT into card(deck_id, card_front, card_back, card_tag) VALUES (?, ?, ?, ?)", deckId, frontText, backText, cardTag);
 	}
 
 	@Override
@@ -50,7 +49,7 @@ public class JDBCCardDeckDAO implements CardDeckDAO {
 	}
 
 	@Override
-	public void removeFlashcardFromDeck(int cardId, int deckId) {
+	public void removeFlashcardFromDeck(int cardId) {
 		jdbcTemplate.batchUpdate("delete from card where card_id = ?");
 
 	}
@@ -82,7 +81,7 @@ public class JDBCCardDeckDAO implements CardDeckDAO {
 	}
 
 	@Override
-	public void updateFlashcard(int cardId, String frontText, String backText, String[] tagId) {
+	public void updateFlashcard(int cardId, String frontText, String backText, String cardTag) {
 		jdbcTemplate.batchUpdate("UPDATE card" + "SET ? = ?" + "WHERE ? = ?");
 
 	}
@@ -95,7 +94,7 @@ public class JDBCCardDeckDAO implements CardDeckDAO {
 
 	@Override
 	public void saveCardDeck(String name, String description, int userId) {
-		jdbcTemplate.update("Insert into deck (deck_name, deck_description, user_id) VALUES (?, ?, ?)");
+		jdbcTemplate.update("Insert into deck (deck_name, deck_description, user_id) VALUES (?, ?, ?)", name, description, userId);
 
 	}
 

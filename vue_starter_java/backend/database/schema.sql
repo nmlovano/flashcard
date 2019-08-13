@@ -43,10 +43,10 @@ CREATE TABLE deck (
 
 CREATE TABLE card (
         card_id                 integer              NOT NULL DEFAULT nextval('seq_card_id'),   --primary key
-        deck_id                 integer              NOT NULL,                                  --primary key
+        deck_id                 integer              NOT NULL,                                  --foreign key
         card_front              varchar(100)         NOT NULL,
         card_back               varchar(100)         NOT NULL,
-        card_tag                text                 NOT NULL,
+        card_tag                varchar(100)         NOT NULL,
         CONSTRAINT pk_card_card_id PRIMARY KEY(card_id)
 );
 

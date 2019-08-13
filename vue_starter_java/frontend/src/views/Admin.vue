@@ -2,9 +2,9 @@
 <div class="photo">
   <div class="admin">
     <h1>Heyyyyyy</h1>
-    <form action="/Decks">
+    <a href="/deck">
         <button type="redirect">Add/Edit Decks Here!</button>
-    </form>
+    </a>
   </div>
   <table>
     <thead>

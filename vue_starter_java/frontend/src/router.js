@@ -27,16 +27,16 @@ const router = new Router({
   base: process.env.BASE_URL,
   routes: [
     {
-        path: '/Home',
+        path: '/',
         name: 'home',
         component: Home,
         meta: {
-          requiresAuth: false
+          requiresAuth: true
         }
       },
       
     {
-      path: "/Login",
+      path: "/login",
       name: "login",
       component: Login,
       meta: {
@@ -44,7 +44,7 @@ const router = new Router({
       }
     },
     {
-      path: "/Register",
+      path: "/register",
       name: "register",
       component: Register,
       meta: {
@@ -52,7 +52,7 @@ const router = new Router({
       }
     },
     {
-      path: "/Search",
+      path: "/search",
       name: "search",
       component: Search,
       meta: {
@@ -60,7 +60,7 @@ const router = new Router({
       }
       },
       {
-        path: "/User",
+        path: "/user",
         name: "user",
         component: User,
         meta: {
@@ -76,35 +76,29 @@ const router = new Router({
         }
     },
     {
-      path: '/Decks',
-      name: 'decks',
+      path: '/deck',
+      name: 'deck',
       component: Decks,
     
     },
     {
-      path: '/Card',
+      path: '/card',
       name: 'card',
       component: Card,
     
     },
     {
-      path: '/Login',
-      name: 'accountcreated',
-      component: Login,
-    
-    },
-    {
-      path: '/Contact',
+      path: '/contact',
       name: 'contact',
       component: Contact,
     
     },
     {
-      path: '/Admin',
+      path: '/admin',
       name: 'admin',
       component: Admin,
       meta: {
-        requiresAuth: false
+        requiresAuth: true
       }
     },
   ]
@@ -117,7 +111,7 @@ router.beforeEach((to, from, next) => {
 
   // If it does and they are not logged in, send the user to "/login"
   if (requiresAuth && !user) {
-    next("/Login");
+    next("/login");
   } else {
     // Else let them go to their next destination
     next();
