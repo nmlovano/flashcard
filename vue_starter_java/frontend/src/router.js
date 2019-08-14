@@ -11,7 +11,7 @@ import Decks from './views/Decks.vue'
 import Card from './views/Card.vue'
 import Admin from './views/Admin.vue'
 import Contact from './views/Contact.vue'
-import AppFooter from './views/AppFooter.vue'
+
 import AppHeader from './views/AppHeader.vue'
 import AllDecks from './views/AllDecks.vue'
 
@@ -120,14 +120,7 @@ const router = new Router({
         requiresAuth: true
       }
     },
-    {
-      path: '/appFooter',
-      name: 'appFooter',
-      component: AppFooter,
-      meta: {
-        requiresAuth: true
-      }
-    },
+  
   ]
 })
 
