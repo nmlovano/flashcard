@@ -25,8 +25,6 @@ export default {
         <div id="nav">
  <app-footer></app-footer>
  <app-header></app-header>
- 
-
    
     </div>
    <router-view/>
