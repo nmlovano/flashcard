@@ -4,22 +4,20 @@
   <div class="admin">
     <h1>Welcome to your deck page</h1>
     <a href="/addDeck">
-        <button type="redirect">Add/Edit Decks Here!</button>
+        <button type="redirect">Add Decks Here!</button>
     </a>
   </div>
   <table>
     <thead>
       <tr>
-        <th>Id</th>
         <th>Title</th>
-        <th>Cards</th>
+        <th>Description</th>
       </tr>
     </thead>
     <tbody>
       <tr v-for="deck in decks" v-bind:key="deck.id">
-        <td>{{deck.id}}</td>
-        <td>{{deck.title}}</td>
-        <td>{{deck.cards}}</td>
+        <td><router-link to="/deck={deckId}" tag="button">{{deck.name}}</router-link></td>
+        <td>{{deck.description}}</td>
       </tr>
     </tbody>
   </table>
@@ -31,45 +29,36 @@
 
 <script>
 import auth from "../auth"
+
 export default { 
   name: 'adminsdecks',
   data(){
     return{
       user: null,
       decks: [
-        {
-          id: 1,
-          title: "First Deck.",
-          cards: 10
-        },
-        {
-          id: 1,
-          title: "Second Deck.",
-          cards: 20
-        },
+        
       ]
     }
   },
   methods: {
     getDecksByUserId(){
-        fetch(`${process.env.VUE_APP_REMOTE_API}/deck?userId={userId}`,{
-          method: 'GET',
-          headers: {
-            Accept: 'application/json',
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(this.card),
-        })
-        .then((response) => {
-          if (response.ok) {
-            return deckId;
-          }
-        })
+      fetch(`${process.env.VUE_APP_REMOTE_API}/decksByUser`,{
+        method: 'GET',
+        headers: {
+          Accept: 'application/json',
+          Authorization: 'Bearer ' + auth.getToken()
+        }
+      })
+      .then((response) => {
+        return response.json();
+      })
+      .then((decks) => {
+        this.decks = decks;
+      })
     }
-
   },
   created(){
-    this.getDeck(this.$route.params.id);
+    this.getDecksByUserId();
   }
 }
 </script>

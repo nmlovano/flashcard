@@ -56,12 +56,10 @@ public class DeckController {
 		CardDeck thisDeck = cardDeckDAO.getCardDeckByDeckId(deckId);
 		return thisDeck;
 	}
-	@RequestMapping(path = "/userId={userId}", method = RequestMethod.GET)
-	public CardDeck getDeckByUserId(@RequestParam int userId) {
-		CardDeck thisDeck = cardDeckDAO.getCardDeckByDeckId(userId);
-		if (thisDeck.getUserId() == authProvider.getCurrentUser().getId());
-		cardDeckDAO.getCardDecksByUserId(userId);
-		return thisDeck;
+	
+	@RequestMapping(path = "/decksByUser", method = RequestMethod.GET)
+	public List<CardDeck> getDeckByUserId() {
+		return cardDeckDAO.getCardDecksByUserId((int)authProvider.getCurrentUser().getId());
 	}
 
 	@RequestMapping(path = "/deck={deckId}", method = RequestMethod.PUT)

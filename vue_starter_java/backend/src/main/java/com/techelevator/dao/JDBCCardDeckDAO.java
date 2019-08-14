@@ -112,12 +112,12 @@ public class JDBCCardDeckDAO implements CardDeckDAO {
 	}
 	@Override
 	public List<CardDeck> getCardDecksByUserId(int userId) {
-		String sqlDecksByUserId = "select * from deck where userId = ?";
-		SqlRowSet allDecksByUserId = jdbcTemplate.queryForRowSet(sqlDecksByUserId);
-		List<CardDeck> allMyIdDecks = null;
-		if (allDecksByUserId.next()) {
-			allMyIdDecks = new ArrayList<CardDeck>();
-			allMyIdDecks = getCardDecksByUserId(userId);
+		String sqlDecksByUserId = "select * from deck where user_id = ?";
+		SqlRowSet allDecksByUserId = jdbcTemplate.queryForRowSet(sqlDecksByUserId, userId);
+		List<CardDeck> allMyIdDecks = new ArrayList<CardDeck>();
+		while (allDecksByUserId.next()) {
+			CardDeck allTheseDecks = mapRowToCardDeck(allDecksByUserId);
+			allMyIdDecks.add(allTheseDecks);
 		}
 		return allMyIdDecks;
 	}
