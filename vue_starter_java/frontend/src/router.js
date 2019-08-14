@@ -88,7 +88,7 @@ const router = new Router({
     
     },
     {
-      path: '/allDecks={allDecks}',
+      path: '/allDecks',
       name: 'allDecks',
       component: AllDecks
     },

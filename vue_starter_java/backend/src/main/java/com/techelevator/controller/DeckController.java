@@ -82,7 +82,7 @@ public class DeckController {
 
 	}
 	
-	@RequestMapping(path = "/allDecks={allDecks}", method = RequestMethod.GET)
+	@RequestMapping(path = "/decks", method = RequestMethod.GET)
 	public List<CardDeck> getAllDecks() {
 		List<CardDeck> allDecks = cardDeckDAO.getAllCardDecks();
 		return allDecks;
