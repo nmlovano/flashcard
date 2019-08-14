@@ -3,13 +3,13 @@
 		<router-link to="user"></router-link>
 		<h1>Welcome!</h1>
 		<p>Welcome to this page!</p>
-		<table>
-			<v-for="piece in users" v:bind:key="piece.username">
+		<!-- <table>
+			<v-for="piece in user" v:bind:key="piece.username">
 			<tr>User Name: {{piece.username}}</tr>
 			<tr>Email: {{piece.email}}</tr>
 			<tr> First Name: </tr>
 			<tr> Last Name: </tr>
-		</table>
+		</table> -->
 		<div class="deckButton">
 			<router-link to="/decks" tag="button">View Decks!</router-link>
 		</div>
@@ -38,7 +38,7 @@
 			this.getUserDetails(); 
 		},
 		getUserDetails(username){
-			fetch(this.API_URL + '/user?username={{username}}',{
+			fetch(this.API_URL + '/user/username={{username}}',{
 			method: 'GET',
 			headers: {
 				Accept: 'application/json',

@@ -81,12 +81,21 @@ export default {
             }
             auth.saveToken(token);
             //need to make redirect to admin page if admin = true
-            //if()
-            this.$router.push('/user');
+            // if(userRoleVerify == true){
+            //   this.$router.push('/admin')
+            // }
+            // else{
+              this.$router.push('/user');
           }
         })
         .catch((err) => console.error(err));
     },
+    userRoleVerify(){
+      if (auth.getUser.role=='admin'){
+        return true;
+      }
+      else return false;
+    }
   },
 };
 </script>

@@ -54,6 +54,11 @@ public class UserController {
 				user.getLastName(), user.getEmail());
 		return "redirect:/login";
 	}
-	
+	@RequestMapping(path = "/role", method = RequestMethod.GET) 
+	public String getUserRole(@RequestParam String username) {
+		User thisUser = new User(); 
+		String role = thisUser.getRole(); 
+		return role; 
+	}
 
 }
