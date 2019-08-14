@@ -3,6 +3,7 @@ package com.techelevator.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -83,7 +84,8 @@ public class DeckController {
 	
 	@RequestMapping(path = "/allDecks={allDecks}", method = RequestMethod.GET)
 	public List<CardDeck> getAllDecks() {
-		return cardDeckDAO.getAllCardDecks();
+		List<CardDeck> allDecks = cardDeckDAO.getAllCardDecks();
+		return allDecks;
 	}
 
 }

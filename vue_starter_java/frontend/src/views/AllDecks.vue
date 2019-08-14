@@ -1,34 +1,31 @@
 <template>
     <div>
         <h1>Here's some decks!</h1>
-            <ul id="decks">
-                <li v-for="item in decks" v-bind:key="item.id"/>
+            <ul id="deck">
+                <li v-for="item in deck" v-bind:key="item.id"/>
+                {{item.name}}
             </ul>
     </div>
 </template>
 
 <script>
     export default {
-        name: 'decks',
-        data(){
-            return {
-                decks: {
-
-                }
+        data() {
+            return { 
+                API_URL: '',
+                deck: []
             }
         },
         methods: {
             getAllDecks(){
                 fetch(this.API_URL)
-        .then((response) => {
-          return response.json();
-        })
-        .then((decks) => {
-          this.decks = decks;
-        });
-            }
-            
-    	    
+                .then((response) => {
+                    return response.json();
+                })
+                .then((deck) => {
+                    this.deck = deck;
+                });
+            }   
 	    } 
     }
 </script>
