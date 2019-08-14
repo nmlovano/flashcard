@@ -126,7 +126,7 @@ const router = new Router({
       component: CardsByDeckShuffled,
     },
     {
-      path: '/cardsByDeck',
+      path: '/cardsByDeck/:deckId',
       name: 'cardsByDeck',
       component: CardsByDeck,
     },

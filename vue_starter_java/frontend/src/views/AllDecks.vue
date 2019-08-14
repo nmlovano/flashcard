@@ -4,6 +4,7 @@
             <ul id="deck">
                 <li v-for="item in deck" v-bind:key="item.id">
                 {{item}}
+                <router-link v-bind:to="'/cardsByDeck/' + item.deckId">View Cards</router-link>
                 </li>
             </ul>
     </div>
