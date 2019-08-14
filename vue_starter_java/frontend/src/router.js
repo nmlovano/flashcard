@@ -11,10 +11,10 @@ import Decks from './views/Decks.vue'
 import Card from './views/Card.vue'
 import Admin from './views/Admin.vue'
 import Contact from './views/Contact.vue'
-import AppFooter from './views/AppFooter.vue'
 import AppHeader from './views/AppHeader.vue'
 import AllDecks from './views/AllDecks.vue'
-
+import CardsByDeckShuffled from './views/CardsByDeckShuffled'
+import CardsByDeck from './views/CardsByDeck'
 Vue.use(Router)
 
 /**
@@ -121,12 +121,14 @@ const router = new Router({
       }
     },
     {
-      path: '/appFooter',
-      name: 'appFooter',
-      component: AppFooter,
-      meta: {
-        requiresAuth: true
-      }
+      path: '/cardsByDeckShuffled',
+      name: 'cardsByDeckShuffled',
+      component: CardsByDeckShuffled,
+    },
+    {
+      path: '/cardsByDeck',
+      name: 'cardsByDeck',
+      component: CardsByDeck,
     },
   ]
 })
