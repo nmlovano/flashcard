@@ -48,12 +48,12 @@ public void assignCardToDeck(@RequestBody int cardId, int deckId) {
     cardDeckDAO.assignFlashcardToDeck(cardId, deckId);
 }
 
-@RequestMapping(path = "/deckOrder", method = RequestMethod.GET)
+@RequestMapping(path = "/deckOrder={deckId}", method = RequestMethod.GET)
 public List<Flashcard> getCardByDeckOrdered(@RequestParam int deckId) {
     return cardDeckDAO.getFlashcardsForDeckOrdered(deckId);
 }
 
-@RequestMapping(path = "/shuffled", method = RequestMethod.GET)
+@RequestMapping(path = "/shuffled={deckId}", method = RequestMethod.GET)
 public List<Flashcard> getCardByDeckShuffled(@RequestParam int deckId) {
     return cardDeckDAO.getFlashcardsForDeckShuffled(deckId);
 }

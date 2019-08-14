@@ -11,7 +11,7 @@
 			<tr> Last Name: </tr>
 		</table> -->
 		<div class="deckButton">
-			<router-link to="/decks" tag="button">View Decks!</router-link>
+			<router-link to="/allDecks" tag="button">View Decks!</router-link>
 		</div>
 	</div>
 </template>

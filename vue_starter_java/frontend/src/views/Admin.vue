@@ -3,7 +3,7 @@
 <div class="photo">
   <div class="admin">
     <h1>Welcome to your deck page</h1>
-    <a href="/deck">
+    <a href="/addDeck">
         <button type="redirect">Add/Edit Decks Here!</button>
     </a>
   </div>

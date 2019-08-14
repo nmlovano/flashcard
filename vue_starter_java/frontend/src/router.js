@@ -82,8 +82,8 @@ const router = new Router({
         }
     },
     {
-      path: '/decks',
-      name: 'deck',
+      path: '/addDeck',
+      name: 'addDeck',
       component: Decks,
     
     },
