@@ -18,7 +18,6 @@ import com.techelevator.model.Flashcard;
 
 @RestController
 @CrossOrigin
-@RequestMapping
 public class DeckController {
 
 	private AuthProvider authProvider;
@@ -36,7 +35,7 @@ public class DeckController {
 		return cardDeckDAO.getCardDecksByUserName(username);
 	}
 
-	@RequestMapping(path = "/savedeck={savedeck}", method = RequestMethod.POST)
+	@RequestMapping(path = "/savedeck", method = RequestMethod.POST)
 	public void saveNewDeck(@RequestBody CardDeck deck, String name, String description, int userId) {
 		cardDeckDAO.saveCardDeck(name, description, userId);
 
@@ -84,7 +83,7 @@ public class DeckController {
 	
 	@RequestMapping(path = "/decks", method = RequestMethod.GET)
 	public List<CardDeck> getAllDecks() {
-		List<CardDeck> allDecks = cardDeckDAO.getAllCardDecks();
+		List<CardDeck> allDecks = cardDeckDAO.getAllDecks();
 		return allDecks;
 	}
 

@@ -23,7 +23,7 @@ export default {
         getAllDecks(){
             fetch(this.API_URL + '/decks', {
                 headers: {
-                    Authorization: 'Bearer: ' + auth.getToken()
+                    Authorization: 'Bearer ' + auth.getToken()
                 }
             })
             .then((response) => {
