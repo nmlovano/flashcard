@@ -49,7 +49,7 @@ public void assignCardToDeck(@RequestBody int cardId, int deckId) {
     cardDeckDAO.assignFlashcardToDeck(cardId, deckId);
 }
 
-@RequestMapping(path = "/id={deckId}", method = RequestMethod.GET)
+@RequestMapping(path = "/deckOrder={deckOrder}", method = RequestMethod.GET)
 public List<Flashcard> getCardByDeckOrdered(@RequestParam int deckId) {
     return cardDeckDAO.getFlashcardsForDeckOrdered(deckId);
 }

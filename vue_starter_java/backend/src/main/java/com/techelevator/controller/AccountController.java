@@ -49,5 +49,9 @@ public class AccountController {
 				user.getEmail());
 		return "{\"success\":true}";
 	}
+	@RequestMapping(path="/", method = RequestMethod.GET)
+	public String returnHomePage() {
+		return "/"; 
+	}
 
 }
