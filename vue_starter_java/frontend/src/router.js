@@ -72,6 +72,7 @@ const router = new Router({
           requiresAuth: false
         }
       },
+     
     {
       path: "/SearchResults",
       name: "searchresults",

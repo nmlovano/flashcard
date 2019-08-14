@@ -1,111 +1,75 @@
 
-<template>
-
-  <div class="home">
-
-    <h1>FlashCard Study Capstone</h1>
-    
-      <div class="flip-card">
-        <div class="flip-card-inner">
-      
-          <div class="flip-card-front">
-         <div class="flip-card-inner-back">
-               <div class="flip-card-inner-front">
-            <img src="../Images/Flashcards (1).png" alt="TE" style="width:300px;height:300px;">
-           </div>
-          <div class="flip-card-back">
-            <h2>Flashcard Study App</h2>
-            </div>
-          <div class="  flip-card-inner-back-title">
-        
-
-    	</div>       
-          </div>
-       </div>      
-      </div>
-      </div>
-  </div>
-</template>
-
-
 <style>
-
-.flip-card {
-    display: block;
- 
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  padding-top: 50 px;
+}
+#home{
+ display: block;
+  margin-left: auto;
   margin-right: auto;
-font-family: serif;
-font-size: 12px;
-
+padding: 70px 0;
+  width: 50%;
+}
+.flip-card {
   background-color: transparent;
   width: 300px;
-  height: 200px;
-  border: 1px solid #f1f1f1;
-
-}
-.flip-card-inner {
-  
-  width: 300px;
   height: 300px;
-  text-align: center;
-  transition: transform 0.8s;
-  transform-style: preserve-3d;
+  perspective: 1000px;
 }
-.flip-card-front, .flip-card-back {
-  position:relative;
-  width: 100%;
-  height: 80%;
-  
-}
-.flip-card:hover
-.flip-card-inner{
-  transform: rotateY(180deg);
-  transform: rotateY(180deg);
-   backface-visibility: hidden;
-}
-
-.flip-card,
-.flip-card-inner-front,
-.flip-card-inner-back {
-  width: 100%;
-  height: 20rem;
-}
-
 .flip-card-inner {
-  transition: 0.6s;
-
-}
-
-.flip-card-inner-front,
-.flip-card-inner-back {
-
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
-
-
-.flip-card-inner-back {
-
-  display: flex;
+  position: relative;
+  width: 100%;
+  height: 100%;
   text-align: center;
- background: url("../Images/card.jpg") 0 0 0 no-repeat;
-
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 }
 
-.flip-card-inner-back-title {
-  font-weight: bold;
-
-            z-index: 2;
-  display: flex;
-  
-
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
 }
 
-.flip-card-inner-back-text {
-  line-height: 1.3;
-  
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
 }
 
+.flip-card-front {
+  background-color: #bbb;
+  color: black;
+}
+
+.flip-card-back {
+  background-color: #2980b9;
+  color: white;
+  transform: rotateY(180deg);
+}
 </style>
+<template>
+<body>
+
+<h1>Flashcard Capstone HotMess</h1>
+<div id="home">
+<div class="flip-card">
+  <div class="flip-card-inner">
+    <div class="flip-card-front">
+      <img src="../Images/Flashcards (1).png" alt="TE" style="width:300px;height:300px;">
+    </div>
+    <div class="flip-card-back">
+     
+      <h1>Flashcard Capstone</h1> 
+      <p>Lori</p>
+      <p>Sarah</p> 
+      <p>Nathan</p>
+      <p>Chris</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</template>

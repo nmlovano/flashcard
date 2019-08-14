@@ -94,12 +94,10 @@ export default {
 #login{
   color:black;
   font-family: 'Times New Roman', Times, serif;
-
+  display:center;
 }
  
 #button{
-
-
 
   padding: 15px 32px;
   text-align: center;
@@ -111,10 +109,12 @@ export default {
 }
 .header{
   font-family: Arial, Helvetica, sans-serif;
-  text-align:center
+  text-align:center;
+  display:center;
 }
 .account{
   font-size: 16px;
    text-align: center;
 }
+
 </style>
