@@ -3,15 +3,15 @@
 		<router-link to="user"></router-link>
 		<h1>Welcome!</h1>
 		<p>Welcome to this page!</p>
-		<!-- <table>
+		<table>
 			<v-for="piece in user" v:bind:key="piece.username">
 			<tr>User Name: {{piece.username}}</tr>
 			<tr>Email: {{piece.email}}</tr>
 			<tr> First Name: </tr>
 			<tr> Last Name: </tr>
-		</table> -->
+		</table>
 		<div class="deckButton">
-			<router-link to="/allDecks" tag="button">View Decks!</router-link>
+			<router-link to="/decks" tag="button">View Decks!</router-link>
 		</div>
 	</div>
 </template>
@@ -29,7 +29,8 @@
 	data() {
 		return {
 			API_URL: process.env.VUE_APP_REMOTE_API,
-			filterValue: ''
+			filterValue: '',
+			user:null
 		}
 	},
 	methods: {
@@ -38,7 +39,7 @@
 			this.getUserDetails(); 
 		},
 		getUserDetails(username){
-			fetch(this.API_URL + '/user/username={{username}}',{
+			fetch(this.API_URL + '/user',{
 			method: 'GET',
 			headers: {
 				Accept: 'application/json',

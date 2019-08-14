@@ -138,6 +138,12 @@ public User getUserByUsername(String username) {
         return null;
     }
 }
+
+@Override
+public User getRolebyUsername(String username) {
+	// TODO Auto-generated method stub
+	return null;
+}
 }
 
 
