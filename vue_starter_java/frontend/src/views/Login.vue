@@ -80,7 +80,9 @@ export default {
               token = token.replace(/"/g, '');
             }
             auth.saveToken(token);
-            this.$router.push('/');
+            //need to make redirect to admin page if admin = true
+            //if()
+            this.$router.push('/user');
           }
         })
         .catch((err) => console.error(err));

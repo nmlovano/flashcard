@@ -1,8 +1,17 @@
 <template>
 	<div class="user">
+		<router-link to="user"></router-link>
 		<h1>Welcome!</h1>
-		<div>
-			<router-link to="/allDecks={allDecks}" tag="button">View Decks!</router-link>
+		<p>Welcome to this page!</p>
+		<table>
+			<v-for="piece in users" v:bind:key="piece.username">
+			<tr>User Name: {{piece.username}}</tr>
+			<tr>Email: {{piece.email}}</tr>
+			<tr> First Name: </tr>
+			<tr> Last Name: </tr>
+		</table>
+		<div class="deckButton">
+			<router-link to="/decks" tag="button">View Decks!</router-link>
 		</div>
 	</div>
 </template>
@@ -10,52 +19,42 @@
 <script>
   import VueRouter from 'vue-router'
   import Vue from 'vue'
-import { userInfo } from 'os';
+   import auth from '../auth'
   
 
   export default {
 	name: 'user',
-	
 	components: {
 	},
 	data() {
 		return {
+			API_URL: process.env.VUE_APP_REMOTE_API,
 			filterValue: ''
 		}
 	},
 	methods: {
-		getAllDecks(){
-			fetch(`${process.env.VUE_APP_REMOTE_API}/allDecks={allDecks}`,{
-			method: 'GET',
-			headers: {
-				Accept: 'application/json',
-				'Content-Type': 'application/json',
-			},
-			body: JSON.stringify(this.card),
-			})
-			.then((response) => {
-			if (response.ok) {
-				return deckId;
-			}
-			})
 		},
-		getUserDetails(){
-			fetch(`${process.env.VUE_APP_REMOTE_API}/user`,{
+		created(){
+			this.getUserDetails(); 
+		},
+		getUserDetails(username){
+			fetch(this.API_URL + '/user?username={{username}}',{
 			method: 'GET',
 			headers: {
 				Accept: 'application/json',
 				'Content-Type': 'application/json',
+				Authorization: 'Bearer: '+ auth.getToken()
 			},
-			body: JSON.stringify(this.card),
+			body: JSON.stringify(this.user),
 			})
 			.then((response) => {
 			if (response.ok) {
-				return userInfo;
+				return user;
 			}
 			})
 		}
 	}
-}
+
 </script>
 
 <style>
