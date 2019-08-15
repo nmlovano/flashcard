@@ -11,7 +11,7 @@
         </div>
         <div>
             <button v-on:click="saveDeck">Save Deck!</button>
-            <button>Discard Deck!</button>
+            <button v-on:click="deleteDeck">Discard Deck!</button>
         </div>
 
         <div>
