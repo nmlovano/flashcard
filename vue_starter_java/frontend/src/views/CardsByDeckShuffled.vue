@@ -3,7 +3,7 @@
         <h1>Here's your cards shuffled</h1>
             <ul id="cardsByDeckShuffled">
                 <li v-for="item in card" v-bind:key="item.id">
-                {{item}}
+                {{item.frontText}} - {{item.backText}} - {{item.cardTag}}
                 </li>
             </ul>
     </div>

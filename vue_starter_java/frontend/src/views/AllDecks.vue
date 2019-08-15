@@ -3,9 +3,9 @@
         <h1>Here's some decks!</h1>
             <ul id="deck">
                 <li v-for="item in deck" v-bind:key="item.id">
-                {{item}}
-                <router-link v-bind:to="'/cardsByDeck/' + item.deckId">View Cards</router-link>
-                <router-link v-bind:to="'/cardsByDeckShuffled/' + item.deckId">View Cards Shuffled</router-link>
+                {{item.name}} - {{item.description}}
+                <router-link v-bind:to="'/cardsByDeck/' + item.deckId">View Cards </router-link>
+                <router-link v-bind:to="'/cardsByDeckShuffled/' + item.deckId">View Cards Shuffled </router-link>
                 </li>
             </ul>
     </div>
