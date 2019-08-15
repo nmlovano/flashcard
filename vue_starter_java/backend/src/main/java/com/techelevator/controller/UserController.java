@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.techelevator.model.UserDao;
+import com.techelevator.authentication.AuthProvider;
 import com.techelevator.model.CardDeck;
 import com.techelevator.model.User;
 
@@ -23,14 +24,16 @@ import com.techelevator.model.User;
 public class UserController {
 
 	private UserDao userDAO;
+	private AuthProvider authProvider;
 
 	@Autowired
-	public UserController(UserDao userDAO) {
+	public UserController(UserDao userDAO, AuthProvider authProvider) {
 		this.userDAO = userDAO;
+		this.authProvider = authProvider; 
 	}
 	@RequestMapping(path = "/user", method = RequestMethod.GET) 
-	public User getUserByUsername(@RequestParam String username) {
-		User thisUser = new User(); 
+	public User getUserByUsername() {
+		User thisUser = authProvider.getCurrentUser(); 
 		return thisUser; 
 	}
 
