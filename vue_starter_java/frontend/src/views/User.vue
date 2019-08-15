@@ -4,11 +4,10 @@
 		<h1>Welcome!</h1>
 		<p>Welcome to this page!</p>
 		<table>
-			<v-for="piece in user" v:bind:key="piece.username">
-			<tr>User Name: {{piece.username}}</tr>
-			<tr>Email: {{piece.email}}</tr>
-			<tr> First Name: </tr>
-			<tr> Last Name: </tr>
+			<tr>User Name: {{user.username}}</tr>
+			<tr>Email: {{user.email}}</tr>
+			<tr> First Name: {{user.firstName}}</tr>
+			<tr> Last Name: {{user.lastName}}</tr>
 		</table>
 		<div class="deckButton">
 			<router-link to="/decks" tag="button">View Decks!</router-link>
@@ -30,30 +29,39 @@
 		return {
 			API_URL: process.env.VUE_APP_REMOTE_API,
 			filterValue: '',
-			user:null
+			user: {
+				username:'',
+				email:'',
+				firstName:'',
+				lastName:''
+			}
 		}
 	},
 	methods: {
-		},
-		created(){
-			this.getUserDetails(); 
-		},
-		getUserDetails(username){
+		getUserDetails(){
 			fetch(this.API_URL + '/user',{
 			method: 'GET',
 			headers: {
 				Accept: 'application/json',
-				'Content-Type': 'application/json',
-				Authorization: 'Bearer: '+ auth.getToken()
+				Authorization: 'Bearer '+ auth.getToken()
 			},
-			body: JSON.stringify(this.user),
 			})
-			.then((response) => {
-			if (response.ok) {
-				return user;
+			.then((response) => {				//this is not the data... it is an obj that contains data and transmission information
+			return response.json(); 
+			})
+			.then((user)=>{	
+				this.user.username=user.username;
+				this.user.email=user.email;
+				this.user.firstName=user.firstName; 
+				this.user.lastName=user.lastName; //  variable we are setting = variable we got back to the response 
 			}
-			})
+			)
 		}
+		},
+		created(){
+			this.getUserDetails(); 
+		},
+
 	}
 
 </script>
