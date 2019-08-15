@@ -57,7 +57,11 @@ public class JDBCCardDeckDAO implements CardDeckDAO {
 	@Override
 	public List<Flashcard> getFlashcardsForDeckOrdered(int deckId) {
 		List<Flashcard> allCardsForDeck = new ArrayList<>();
-		String sqlAllCardsForDeck = "SELECT *" + "FROM card" + "WHERE deck_id = ?" + "ORDER by ?";
+		String sqlAllCardsForDeck = "select * " +
+									"from card " +
+									"inner join deck " +
+									"on card.deck_id = deck.deck_id " +
+									"where card.deck_id = ?";
 		
 		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlAllCardsForDeck, deckId);
 		while (results.next()) {

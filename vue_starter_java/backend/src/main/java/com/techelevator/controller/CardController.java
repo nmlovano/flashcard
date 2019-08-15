@@ -6,6 +6,7 @@ import javax.swing.text.html.HTML.Tag;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -48,9 +49,11 @@ public void assignCardToDeck(@RequestBody int cardId, int deckId) {
     cardDeckDAO.assignFlashcardToDeck(cardId, deckId);
 }
 
-@RequestMapping(path = "/deckOrder={deckId}", method = RequestMethod.GET)
-public List<Flashcard> getCardByDeckOrdered(@RequestParam int deckId) {
-    return cardDeckDAO.getFlashcardsForDeckOrdered(deckId);
+@RequestMapping(path = "/deckOrder/{deckId}", method = RequestMethod.GET)
+public List<Flashcard> getCardByDeckOrdered(@PathVariable int deckId) {
+	List<Flashcard> allCardsOrdered = cardDeckDAO.getFlashcardsForDeckOrdered(deckId);
+    return allCardsOrdered;
+    
 }
 
 @RequestMapping(path = "/shuffled={deckId}", method = RequestMethod.GET)

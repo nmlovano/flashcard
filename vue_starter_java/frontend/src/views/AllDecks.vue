@@ -33,7 +33,10 @@ export default {
             .then((deck) => {
                 console.log (deck);
                 this.deck = deck;
-            });
+            })
+            const card = {
+                template: '<div>card {{ $route.params.deckId }}</div>'
+            };
         }   
     },
     created() {
