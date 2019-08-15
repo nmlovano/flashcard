@@ -28,8 +28,6 @@ public interface CardDeckDAO {
 
 	public List<CardDeck> getCardDecksByUserName(String userName);
 
-	public List<CardDeck> getAllCardDecks();
-
 	public CardDeck getCardDeckByDeckId(int deckId);
 
 	public void updateCardDeck(int deckId, String name, String description, int userId);

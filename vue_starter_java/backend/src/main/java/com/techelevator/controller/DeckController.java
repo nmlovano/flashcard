@@ -3,6 +3,7 @@ package com.techelevator.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,7 +18,6 @@ import com.techelevator.model.Flashcard;
 
 @RestController
 @CrossOrigin
-@RequestMapping
 public class DeckController {
 
 	private AuthProvider authProvider;
@@ -35,7 +35,7 @@ public class DeckController {
 		return cardDeckDAO.getCardDecksByUserName(username);
 	}
 
-	@RequestMapping(path = "/savedeck={savedeck}", method = RequestMethod.POST)
+	@RequestMapping(path = "/savedeck", method = RequestMethod.POST)
 	public void saveNewDeck(@RequestBody CardDeck deck, String name, String description, int userId) {
 		cardDeckDAO.saveCardDeck(name, description, userId);
 
@@ -56,15 +56,13 @@ public class DeckController {
 		CardDeck thisDeck = cardDeckDAO.getCardDeckByDeckId(deckId);
 		return thisDeck;
 	}
-	@RequestMapping(path = "/userId={userId}", method = RequestMethod.GET)
-	public CardDeck getDeckByUserId(@RequestParam int userId) {
-		CardDeck thisDeck = cardDeckDAO.getCardDeckByDeckId(userId);
-		if (thisDeck.getUserId() == authProvider.getCurrentUser().getId());
-		cardDeckDAO.getCardDecksByUserId(userId);
-		return thisDeck;
+	
+	@RequestMapping(path = "/decksByUser", method = RequestMethod.GET)
+	public List<CardDeck> getDeckByUserId() {
+		return cardDeckDAO.getCardDecksByUserId((int)authProvider.getCurrentUser().getId());
 	}
 
-	@RequestMapping(path = "/deck", method = RequestMethod.PUT)
+	@RequestMapping(path = "/deck={deckId}", method = RequestMethod.PUT)
 	public void updateDeck(@RequestBody int deckId, String name, String description, int userId) {
 		cardDeckDAO.updateCardDeck(deckId, name, description, userId);
 
@@ -81,9 +79,10 @@ public class DeckController {
 
 	}
 	
-	@RequestMapping(path = "/allDecks={allDecks}", method = RequestMethod.GET)
+	@RequestMapping(path = "/decks", method = RequestMethod.GET)
 	public List<CardDeck> getAllDecks() {
-		return cardDeckDAO.getAllCardDecks();
+		List<CardDeck> allDecks = cardDeckDAO.getAllDecks();
+		return allDecks;
 	}
 
 }

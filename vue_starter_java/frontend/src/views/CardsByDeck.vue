@@ -1,10 +1,9 @@
 <template>
     <div>
-        <h1>Here's some decks!</h1>
-            <ul id="deck">
-                <li v-for="item in deck" v-bind:key="item.id">
+        <h1>Here's your cards</h1>
+            <ul id="cardsByDeck">
+                <li v-for="item in card" v-bind:key="item.id">
                 {{item}}
-                <router-link v-bind:to="'/cardsByDeck/' + item.deckId">View Cards</router-link>
                 </li>
             </ul>
     </div>
@@ -21,8 +20,8 @@ export default {
         }
     },
     methods: {
-        getAllDecks(){
-            fetch(this.API_URL + '/decks', {
+        getCardByDeckOrdered(){
+            fetch(this.API_URL + '/deckOrder={deckId}', {
                 headers: {
                     Authorization: 'Bearer ' + auth.getToken()
                 }
@@ -30,15 +29,19 @@ export default {
             .then((response) => {
                 return response.json();
             })
-            .then((deck) => {
-                console.log (deck);
-                this.deck = deck;
+            .then((card) => {
+                console.log (card);
+                this.card = card;
             });
         }   
     },
     created() {
-        this.getAllDecks();
+        const card = {
+            template: '<div>card {{ $route.params.deckId }}</div>'
+        }
+        this.getCardByDeckOrdered();
     }
+    
 }
 </script>
 

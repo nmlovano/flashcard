@@ -56,28 +56,29 @@ public class JDBCCardDeckDAO implements CardDeckDAO {
 
 	@Override
 	public List<Flashcard> getFlashcardsForDeckOrdered(int deckId) {
-		String sqlSearchForDeck = "SELECT *" + "FROM card" + "WHERE deck_id = ?" + "ORDER by ?";
-		SqlRowSet deck = jdbcTemplate.queryForRowSet(sqlSearchForDeck, deckId);
-		List<Flashcard> thisDeck = null;
-		if (deck.next()) {
-			thisDeck = new ArrayList<Flashcard>();
-			thisDeck = getFlashcardsForDeckOrdered(deck.getInt("deck_id"));
-
+		List<Flashcard> allCardsForDeck = new ArrayList<>();
+		String sqlAllCardsForDeck = "SELECT *" + "FROM card" + "WHERE deck_id = ?" + "ORDER by ?";
+		
+		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlAllCardsForDeck, deckId);
+		while (results.next()) {
+			Flashcard allCards = mapRowToFlashcard(results);
+			allCardsForDeck.add(allCards);
 		}
-		return thisDeck;
+		return allCardsForDeck;
 	}
+	
 
 	@Override
 	public List<Flashcard> getFlashcardsForDeckShuffled(int deckId) {
-		String sqlShuffleDeck = "SELECT *" + "from card" + "where deck_id = ?" + "order by random()";
-		SqlRowSet deck = jdbcTemplate.queryForRowSet(sqlShuffleDeck, deckId);
-		List<Flashcard> thisDeck = null;
-		if (deck.next()) {
-			thisDeck = new ArrayList<Flashcard>();
-			thisDeck = getFlashcardsForDeckShuffled(deck.getInt("deck_id"));
-
+		List<Flashcard> allCardsShuffled = new ArrayList<>();
+		String sqlAllCardsShuffled = "SELECT *" + "from card" + "where deck_id = ?" + "order by random()";
+		
+		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlAllCardsShuffled, deckId);
+		while (results.next()) {
+			Flashcard allShuffled = mapRowToFlashcard(results);
+			allCardsShuffled.add(allShuffled);
 		}
-		return thisDeck;
+		return allCardsShuffled;
 	}
 
 	@Override
@@ -111,27 +112,14 @@ public class JDBCCardDeckDAO implements CardDeckDAO {
 	}
 	@Override
 	public List<CardDeck> getCardDecksByUserId(int userId) {
-		String sqlDecksByUserId = "select * from deck where userId = ?";
-		SqlRowSet allDecksByUserId = jdbcTemplate.queryForRowSet(sqlDecksByUserId);
-		List<CardDeck> allMyIdDecks = null;
-		if (allDecksByUserId.next()) {
-			allMyIdDecks = new ArrayList<CardDeck>();
-			allMyIdDecks = getCardDecksByUserId(userId);
+		String sqlDecksByUserId = "select * from deck where user_id = ?";
+		SqlRowSet allDecksByUserId = jdbcTemplate.queryForRowSet(sqlDecksByUserId, userId);
+		List<CardDeck> allMyIdDecks = new ArrayList<CardDeck>();
+		while (allDecksByUserId.next()) {
+			CardDeck allTheseDecks = mapRowToCardDeck(allDecksByUserId);
+			allMyIdDecks.add(allTheseDecks);
 		}
 		return allMyIdDecks;
-	}
-
-	@Override
-	public List<CardDeck> getAllCardDecks() {
-		String sqlGetDecks = "SELECT *" + "from deck";
-		SqlRowSet decks = jdbcTemplate.queryForRowSet(sqlGetDecks);
-		List<CardDeck> thisDeck = null;
-		if (decks.next()) {
-			thisDeck = new ArrayList<CardDeck>();
-			thisDeck = getAllCardDecks();
-
-		}
-		return thisDeck;
 	}
 
 	@Override
@@ -214,6 +202,16 @@ public class JDBCCardDeckDAO implements CardDeckDAO {
 	    cardDeck.setDescription(result.getString("deck_description"));
 	    cardDeck.setUserId(result.getInt("user_id"));
 	    return cardDeck;
+	}
+	
+	private Flashcard mapRowToFlashcard(SqlRowSet result) {
+	    Flashcard flashcard = new Flashcard();
+	    flashcard.setCardId(result.getInt("card_id"));
+	    flashcard.setDeckId(result.getInt("deck_id"));
+	    flashcard.setFrontText(result.getString("card_front"));
+	    flashcard.setBackText(result.getString("card_back"));
+	    flashcard.setCardTag(result.getString("card_tag"));
+	    return flashcard;
 	}
 
 }

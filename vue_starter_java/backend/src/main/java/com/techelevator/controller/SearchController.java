@@ -25,7 +25,6 @@ import com.techelevator.model.Flashcard;
 
 @RestController
 @CrossOrigin
-
 public class SearchController {
 
 	private UserDao userDAO;

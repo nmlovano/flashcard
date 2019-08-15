@@ -55,11 +55,12 @@ export default {
         password: '',
       },
       invalidCredentials: false,
+      API_URL: process.env.VUE_APP_REMOTE_API,
     };
   },
   methods: {
     login() {
-      fetch(`${process.env.VUE_APP_REMOTE_API}/login`, {
+      fetch(this.API_URL + "/login", {
         method: 'POST',
         headers: {
           Accept: 'application/json',
@@ -80,7 +81,12 @@ export default {
               token = token.replace(/"/g, '');
             }
             auth.saveToken(token);
-            this.$router.push('/');
+            if(auth.getUser().rol==='admin'){
+              this.$router.push('/admin')
+            }
+            else{
+            this.$router.push('/user');
+            }
           }
         })
         .catch((err) => console.error(err));

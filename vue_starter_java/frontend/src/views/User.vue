@@ -1,8 +1,16 @@
 <template>
 	<div class="user">
+		<router-link to="user"></router-link>
 		<h1>Welcome!</h1>
-		<div>
-			<router-link to="/allDecks={allDecks}" tag="button">View Decks!</router-link>
+		<p>Welcome to this page!</p>
+		<table>
+			<tr>User Name: {{user.username}}</tr>
+			<tr>Email: {{user.email}}</tr>
+			<tr> First Name: {{user.firstName}}</tr>
+			<tr> Last Name: {{user.lastName}}</tr>
+		</table>
+		<div class="deckButton">
+			<router-link to="/decks" tag="button">View Decks!</router-link>
 		</div>
 	</div>
 </template>
@@ -10,52 +18,52 @@
 <script>
   import VueRouter from 'vue-router'
   import Vue from 'vue'
-import { userInfo } from 'os';
+   import auth from '../auth'
   
 
   export default {
 	name: 'user',
-	
 	components: {
 	},
 	data() {
 		return {
-			filterValue: ''
+			API_URL: process.env.VUE_APP_REMOTE_API,
+			filterValue: '',
+			user: {
+				username:'',
+				email:'',
+				firstName:'',
+				lastName:''
+			}
 		}
 	},
 	methods: {
-		getAllDecks(){
-			fetch(`${process.env.VUE_APP_REMOTE_API}/allDecks={allDecks}`,{
-			method: 'GET',
-			headers: {
-				Accept: 'application/json',
-				'Content-Type': 'application/json',
-			},
-			body: JSON.stringify(this.card),
-			})
-			.then((response) => {
-			if (response.ok) {
-				return deckId;
-			}
-			})
-		},
 		getUserDetails(){
-			fetch(`${process.env.VUE_APP_REMOTE_API}/user`,{
+			fetch(this.API_URL + '/user',{
 			method: 'GET',
 			headers: {
 				Accept: 'application/json',
-				'Content-Type': 'application/json',
+				Authorization: 'Bearer '+ auth.getToken()
 			},
-			body: JSON.stringify(this.card),
 			})
-			.then((response) => {
-			if (response.ok) {
-				return userInfo;
+			.then((response) => {				//this is not the data... it is an obj that contains data and transmission information
+			return response.json(); 
+			})
+			.then((user)=>{	
+				this.user.username=user.username;
+				this.user.email=user.email;
+				this.user.firstName=user.firstName; 
+				this.user.lastName=user.lastName; //  variable we are setting = variable we got back to the response 
 			}
-			})
+			)
 		}
+		},
+		created(){
+			this.getUserDetails(); 
+		},
+
 	}
-}
+
 </script>
 
 <style>

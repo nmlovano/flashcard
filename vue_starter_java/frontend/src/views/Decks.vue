@@ -11,7 +11,7 @@
         </div>
         <div>
             <button v-on:click="saveDeck">Save Deck!</button>
-            <button>Discard Deck!</button>
+            <button v-on:click="deleteDeck">Discard Deck!</button>
         </div>
 
         <div>
@@ -47,7 +47,7 @@ export default {
       })
       .then((response) => {
           if (response.ok) {
-            this.$router.push({ path: '/deck', query: { cards: 'success' } });
+            this.$router.push({ path: '/addDeck', query: { cards: 'success' } });
           }
         })
       .then((err) => console.error(err));

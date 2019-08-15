@@ -50,4 +50,17 @@ public class JdbcUserDAO implements UserDao {
 		return thisUser; 
 
 }
+	@Override
+	public User getRolebyUsername(String username) {
+		String sqlUserSelected="select role from users where username= ?";
+		
+		SqlRowSet user = jdbcTemplate.queryForRowSet(sqlUserSelected, username);
+		User thisUser = null;
+		while (user.next()) {
+			thisUser = new User();
+			thisUser = getUserByUsername(user.getString("role"));
+	}
+		return thisUser; 
+
+}
 }

@@ -19,7 +19,6 @@ import com.techelevator.model.Flashcard;
 
 @RestController
 @CrossOrigin
-@RequestMapping
 public class CardController {
 
 private AuthProvider authProvider;
@@ -44,12 +43,12 @@ public void saveNewCard(@RequestBody Flashcard card) {
 }
 
 
-@RequestMapping(path = "/assign={assign}", method = RequestMethod.POST)
+@RequestMapping(path = "/assign", method = RequestMethod.POST)
 public void assignCardToDeck(@RequestBody int cardId, int deckId) {
     cardDeckDAO.assignFlashcardToDeck(cardId, deckId);
 }
 
-@RequestMapping(path = "/deckOrder={deckOrder}", method = RequestMethod.GET)
+@RequestMapping(path = "/deckOrder={deckId}", method = RequestMethod.GET)
 public List<Flashcard> getCardByDeckOrdered(@RequestParam int deckId) {
     return cardDeckDAO.getFlashcardsForDeckOrdered(deckId);
 }
@@ -69,12 +68,12 @@ public List<Flashcard> searchCardsByTag(@RequestParam String tagNames) {
     return cardDeckDAO.searchCardsByTags(tagNames);
 }
 
-@RequestMapping(path = "/common={common}", method = RequestMethod.GET)
+@RequestMapping(path = "/common", method = RequestMethod.GET)
 public List<Flashcard> getCommonCards(@RequestParam String frontText, String backText) {
     return cardDeckDAO.getAllCommonCards(frontText, backText);
 }
 
-@RequestMapping(path = "/tags={tags}", method = RequestMethod.GET)
+@RequestMapping(path = "/tags", method = RequestMethod.GET)
 public List<Tag> getAllTags(String tagNames) {
     return cardDeckDAO.getAllTags(tagNames);
 }
