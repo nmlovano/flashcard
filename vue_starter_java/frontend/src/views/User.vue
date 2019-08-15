@@ -1,16 +1,20 @@
 <template>
 	<div class="user">
 		<router-link to="user"></router-link>
-		<h1>Welcome!</h1>
-		<p>Welcome to this page!</p>
+		<h1>Welcome{{user.firstname}}! </h1>
+		<p>Let's start learning!</p>
 		<table>
 			<tr>User Name: {{user.username}}</tr>
 			<tr>Email: {{user.email}}</tr>
 			<tr> First Name: {{user.firstName}}</tr>
 			<tr> Last Name: {{user.lastName}}</tr>
 		</table>
+
 		<div class="deckButton">
 			<router-link to="/decks" tag="button">View Decks!</router-link>
+		</div>
+		<div class="admin-button">
+			<router-link v-show="isAdmin()==true" to="/admin" tag="button">Take me to the Admin Page!</router-link>
 		</div>
 	</div>
 </template>
@@ -19,6 +23,7 @@
   import VueRouter from 'vue-router'
   import Vue from 'vue'
    import auth from '../auth'
+   import admin from './Admin'
   
 
   export default {
@@ -33,8 +38,9 @@
 				username:'',
 				email:'',
 				firstName:'',
-				lastName:''
-			}
+				lastName:'',
+				role:''
+			},
 		}
 	},
 	methods: {
@@ -53,13 +59,23 @@
 				this.user.username=user.username;
 				this.user.email=user.email;
 				this.user.firstName=user.firstName; 
-				this.user.lastName=user.lastName; //  variable we are setting = variable we got back to the response 
+				this.user.lastName=user.lastName; 
+				this.user.role=user.role; 		//  variable we are setting = variable we got back to the response 
+				
 			}
-			)
-		}
+			)},
+			isAdmin(){
+				if(this.user.role == "admin"){
+					return true;
+				}
+				else {
+					return false;
+				}
+			}
 		},
 		created(){
 			this.getUserDetails(); 
+			this.isAdmin(); 
 		},
 
 	}
@@ -67,4 +83,8 @@
 </script>
 
 <style>
+tr {
+	font-weight: bold; 
+}
+</style>
 
