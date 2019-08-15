@@ -11,7 +11,7 @@
 		</table>
 
 		<div class="deckButton">
-			<router-link to="/decks" tag="button">View Decks!</router-link>
+			<router-link to="/allDecks" tag="button">View Decks!</router-link>
 		</div>
 		<div class="admin-button">
 			<router-link v-show="isAdmin()==true" to="/admin" tag="button">Take me to the Admin Page!</router-link>
