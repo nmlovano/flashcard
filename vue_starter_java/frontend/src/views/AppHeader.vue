@@ -4,6 +4,7 @@
      <router-link to="/"> Home </router-link>
       <router-link to="/login">Login</router-link>
       <router-link to="/user">User Profile</router-link>
+       <router-link to="/contact">Contact</router-link>
     <router-link v:if="isLoggedIn" to="/logout">Log Out</router-link>
    
   <form class ="search" action="./searchresults">
