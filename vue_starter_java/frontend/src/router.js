@@ -15,6 +15,7 @@ import AppHeader from './views/AppHeader.vue'
 import AllDecks from './views/AllDecks.vue'
 import CardsByDeckShuffled from './views/CardsByDeckShuffled'
 import CardsByDeck from './views/CardsByDeck'
+import Logout from "./views/Logout"
 Vue.use(Router)
 
 /**
@@ -44,6 +45,14 @@ const router = new Router({
       path: "/login",
       name: "login",
       component: Login,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    {
+      path: "/logout",
+      name: "logout",
+      component: Logout,
       meta: {
         requiresAuth: false
       }
