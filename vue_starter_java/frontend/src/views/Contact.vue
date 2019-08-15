@@ -18,11 +18,11 @@
           placeholder="you@email.com"
         v-model="email"
       />
-      <label for="email">Message</label>
-      <input type="text"
-       placeholder="We'd love to hear what you have to say!"
+    <label for="message">Message</label>
+      <textarea type="text" 
+      Message placeholder="We'd love to hear what you have to say!"
+      />
       
-        v-model="message" />
 
     
         <button class="subButt"
@@ -33,10 +33,11 @@
       </form>
     </div>
   </div>
-  </div>
+
 </template>
 
 <script>
+import AppHeaderVue from './AppHeader.vue';
 
   export default{
     name: "Contact",
@@ -65,7 +66,7 @@
           subject: this.subject,
           message: this.message,
         }
-        Api.pushMessage(newMess)
+        AppHeaderVue.pushMessage(newMess)
             .then(()=>{
               console.log("New Message in Database");
             });
@@ -77,33 +78,33 @@
       }
     },
     computed:{
-      // isComplete(){
-      //   return this.cname && this.email && this.subject && this.message;
-      // }
+      
     }
   }
 </script>
 
 <style>
 .contact{
-      background-color: #FF5D73;
-}
+      
+ width:100%;
+ height:450px;
+ margin:auto;
+ position:relative;
+ }
+
  .contactForm{
-             
-font-weight:500;
+           width:100%;
+ height:450px;
         text-align:center;
+
         font-size: 16px;
-            border-radius: 10px;
+        border-radius: 10px;
     position: fixed;
     top:50%;
     bottom: 50%;
-   justify-content: center;
+
       }
-      .label{
-          font-weight: 600;
-         
-          
-        }
+  
       
         .subButt{
           font-size: 20px;

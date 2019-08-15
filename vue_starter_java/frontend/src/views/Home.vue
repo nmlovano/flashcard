@@ -54,6 +54,7 @@ padding: 70px 0;
 
 <h1>Flashcard Capstone HotMess</h1>
 <div id="home">
+  
 <div class="flip-card">
   <div class="flip-card-inner">
     <div class="flip-card-front">
