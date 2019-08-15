@@ -121,7 +121,7 @@ const router = new Router({
       }
     },
     {
-      path: '/cardsByDeckShuffled',
+      path: '/cardsByDeckShuffled/:deckId',
       name: 'cardsByDeckShuffled',
       component: CardsByDeckShuffled,
     },

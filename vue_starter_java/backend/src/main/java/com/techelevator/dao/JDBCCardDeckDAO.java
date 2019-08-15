@@ -75,7 +75,11 @@ public class JDBCCardDeckDAO implements CardDeckDAO {
 	@Override
 	public List<Flashcard> getFlashcardsForDeckShuffled(int deckId) {
 		List<Flashcard> allCardsShuffled = new ArrayList<>();
-		String sqlAllCardsShuffled = "SELECT *" + "from card" + "where deck_id = ?" + "order by random()";
+		String sqlAllCardsShuffled = "select * " +
+									 "from card " +
+									 "inner join deck " +
+									 "on card.deck_id = deck.deck_id " +
+									 "where card.deck_id = ?";
 		
 		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlAllCardsShuffled, deckId);
 		while (results.next()) {
