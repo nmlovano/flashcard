@@ -79,7 +79,8 @@ public class JDBCCardDeckDAO implements CardDeckDAO {
 									 "from card " +
 									 "inner join deck " +
 									 "on card.deck_id = deck.deck_id " +
-									 "where card.deck_id = ?";
+									 "where card.deck_id = ?" +
+									 "order by random()";
 		
 		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlAllCardsShuffled, deckId);
 		while (results.next()) {

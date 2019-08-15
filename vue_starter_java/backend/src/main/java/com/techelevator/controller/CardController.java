@@ -57,8 +57,9 @@ public List<Flashcard> getCardByDeckOrdered(@PathVariable int deckId) {
 }
 
 @RequestMapping(path = "/shuffled/{deckId}", method = RequestMethod.GET)
-public List<Flashcard> getCardByDeckShuffled(@RequestParam int deckId) {
-    return cardDeckDAO.getFlashcardsForDeckShuffled(deckId);
+public List<Flashcard> getCardByDeckShuffled(@PathVariable int deckId) {
+	List<Flashcard> allCardsShuffled = cardDeckDAO.getFlashcardsForDeckShuffled(deckId);
+    return allCardsShuffled;
 }
 
 @RequestMapping(path = "/update", method = RequestMethod.PUT)
