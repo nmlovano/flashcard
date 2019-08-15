@@ -1,204 +1,108 @@
 <template>
-  <div class="contact">
-    <h1 class="pageIdentifier">{{currentPage}}</h1>
-    <div class="form">
-      <form class="contactForm" action="submit">
-       
-        <label for="cname">Full Name</label>
-      <input type="text"
-          placeholder="Your name"
-          autocomplete="nada"
-          name="cname"
-          v-model="fullName"/>
-
-        <label for="email">Email</label>
-        <input type="text"
-          autocomplete="nada"
-          name="email" 
-          placeholder="you@email.com"
-        v-model="email"
-      />
-    <label for="message">Message</label>
-      <textarea type="text" 
-      Message placeholder="We'd love to hear what you have to say!"
-      />
-      
-
-    
-        <button class="subButt"
-          type="submit"
-          @click.prevent="()=>{submitMessage()}"
-          
-        >Send It!</button>
-      </form>
-    </div>
-  </div>
-
+<form>
+<ul class="form-style-1">
+    <li><label>Full Name <span class="required">*</span></label><input type="text" name="field1" class="field-divided" placeholder="First" /> <input type="text" name="field2" class="field-divided" placeholder="Last" /></li>
+    <li>
+        <label>Email <span class="required">*</span></label>
+        <input type="email" name="field3" class="field-long" />
+    </li>
+    <li>
+        <label>Subject</label>
+        <select name="field4" class="field-select">
+        <option value="General Question">General</option>
+		 <option value="Improve Our Page!">Improve Our Page!</option>
+        </select>
+    </li>
+    <li>
+        <label>Your Message <span class="required">*</span></label>
+        <textarea name="field5" id="field5" class="field-long field-textarea"></textarea>
+    </li>
+    <li>
+        <input type="submit" value="Submit" />
+		
+    </li>
+</ul>
+</form>
 </template>
-
-<script>
-import AppHeaderVue from './AppHeader.vue';
-
-  export default{
-    name: "Contact",
-    data(){
-      return{
-        fullName:"",
-        email:"",
-        subject:"",
-        message:"",
-      }
-    },
-    methods:{
-      deckAddedNotification(){
-          this.$snotify.success(
-              "Message Sent!",
-              'Contact Message',{
-                  timeout: 2000,
-                  pauseOnHover: true
-              }
-          );
-      },
-      submitMessage(){
-        const newMess = {
-          fullName:this.fullName,
-          email:this.email,
-          subject: this.subject,
-          message: this.message,
-        }
-        AppHeaderVue.pushMessage(newMess)
-            .then(()=>{
-              console.log("New Message in Database");
-            });
-        this.deckAddedNotification();
-        this.fullName="";
-        this.email="";
-        this.subject="";
-        this.message="";
-      }
-    },
-    computed:{
-      
-    }
-  }
-</script>
-
 <style>
-.contact{
-      
- width:100%;
- height:450px;
- margin:auto;
- position:relative;
- }
 
- .contactForm{
-           width:100%;
- height:450px;
-        text-align:center;
+.form-style-1 {
+	margin:10px auto;
+	max-width: 400px;
+	padding: 200px 12px 10px 0px;
+	font: 13px "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	top:50%;
+}
+.form-style-1 li {
+	padding: 0;
+	display: block;
+	list-style: none;
+	margin: 10px 0 0 0;
+}
+.form-style-1 label{
+	margin:0 0 3px 0;
+	padding:0px;
+	display:block;
+	font-weight: bold;
+}
+.form-style-1 input[type=text], 
+.form-style-1 input[type=date],
+.form-style-1 input[type=datetime],
+.form-style-1 input[type=number],
+.form-style-1 input[type=search],
+.form-style-1 input[type=time],
+.form-style-1 input[type=url],
+.form-style-1 input[type=email],
+textarea, 
+select{
+	box-sizing: border-box;
+	
 
-        font-size: 16px;
-        border-radius: 10px;
-    position: fixed;
-    top:50%;
-    bottom: 50%;
+	border:1px solid #BEBEBE;
+	padding: 7px;
+	margin:0px;
+	width:50%;
+	height:50%;
+}
+.form-style-1 input[type=text]:focus, 
+.form-style-1 input[type=date]:focus,
+.form-style-1 input[type=datetime]:focus,
+.form-style-1 input[type=number]:focus,
+.form-style-1 input[type=search]:focus,
+.form-style-1 input[type=time]:focus,
+.form-style-1 input[type=url]:focus,
+.form-style-1 input[type=email]:focus,
+.form-style-1 textarea:focus, 
+.form-style-1 select:focus{
+	
+	box-shadow: 0 0 8px #FF5D73;
+	border: 1px solid #FF5D73;
+}
+.form-style-1 .field-divided{
+	width: 49%;
+}
 
-      }
-  
-      
-        .subButt{
-          font-size: 20px;
-          font-family: Avenir;
-          color: #FF5D73;
-          border-radius: 5px;
-          background: transparent;
-          font-weight: 600;
-          border: 2px solid;
- border-color: #333;
-  text-align: center;
-  font-size: 16px;
-  margin: 4px 2px;
+.form-style-1 .field-long{
+	width: 100%;
+}
+.form-style-1 .field-select{
+	width: 100%;
+}
+.form-style-1 .field-textarea{
+	height: 100px;
+}
+.form-style-1 input[type=submit], .form-style-1 input[type=button]{
+	background: #FF5D73;
+	padding: 8px 15px 8px 15px;
+	border: none;
+	color: #fff;
+}
+.form-style-1 input[type=submit]:hover, .form-style-1 input[type=button]:hover{
+	background: #FF5D73;
+	box-shadow:none;
 
 }
-        
-         .button :hover{
-            cursor: pointer;
-         
-          }
-        
-        .label{
-          font-weight: 600;
-          color: white;
-          opacity: .6;
-        }
-        .input[type=text]{
-          border-radius: 5px;
-          color:#565554;
-      
-          font-family: Avenir;
-          font-size: 20px;
-          font-weight: 700;
-          width: 50%;
-          height:50%;
-          border: #333 10px solid;
-       
-        }
-        .input[type=text]:focus {
-    border-color:#333;
+.form-style-1 .required{
+	color:red;
 }
-    .input[type=text]::placeholder{
-        color: white;
-            opacity: .6;
-          
-    }
-        input[type=email]{
-          border-radius: 5px;
-          color: white;
-          padding: 15px;
-          font-family: Avenir;
-          font-size: 20px;
-          font-weight: 700;
-          width: 50%;
-          outline-style: solid;
-       outline-color: palevioletred;
-       outline-width: medium;
-          background: rgba(255,255,255,.2);
-        }
-           input[type=email]::placeholder{
-               opacity: inherit;
-           }
-          .valid{
-            background: rgba(144, 238, 144, 0.596);
-          }
-          .invalid{
-            background: rgba(255, 0, 0, 0.486);
-          }
-        
-        .messageinput{
-          color: white;
-          margin-top: 10px;
-          width: 100%;
-          font-family: Avenir;
-          font-size: 20px;
-          font-weight: 700;
-          border-radius: 5px;
-          border: 2px solid;
-          background: rgba(255,255,255,.2);
-        }
-#contactMessage{
-color:palevioletred;
-border: 2px solid;
-font-weight: 700;
-          border-radius: 5px;
-}
-      
-      .pageIdentifier{
-        position: fixed;
-        top: 180px;
-        right: -50px;
-        font-size: 75px;
-        opacity: .5;
-        color: white;
-        transform: rotate(-90deg);
-    }
 </style>

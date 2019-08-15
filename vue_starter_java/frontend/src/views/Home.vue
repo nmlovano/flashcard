@@ -44,15 +44,16 @@ padding: 70px 0;
 }
 
 .flip-card-back {
-  background-color: #2980b9;
+  background-color: #FF5D73;
   color: white;
   transform: rotateY(180deg);
 }
+   
 </style>
+
 <template>
 <body>
 
-<h1>Flashcard Capstone HotMess</h1>
 <div id="home">
   
 <div class="flip-card">

@@ -57,7 +57,7 @@ public class JDBCCardDeckDAO implements CardDeckDAO {
 	@Override
 	public List<Flashcard> getFlashcardsForDeckOrdered(int deckId) {
 		List<Flashcard> allCardsForDeck = new ArrayList<>();
-		String sqlAllCardsForDeck = "select * " +
+		String sqlAllCardsForDeck = "select card_front, card_back, card_tag " +
 									"from card " +
 									"inner join deck " +
 									"on card.deck_id = deck.deck_id " +
@@ -75,7 +75,12 @@ public class JDBCCardDeckDAO implements CardDeckDAO {
 	@Override
 	public List<Flashcard> getFlashcardsForDeckShuffled(int deckId) {
 		List<Flashcard> allCardsShuffled = new ArrayList<>();
-		String sqlAllCardsShuffled = "SELECT *" + "from card" + "where deck_id = ?" + "order by random()";
+		String sqlAllCardsShuffled = "select card_front, card_back, card_tag " +
+									 "from card " +
+									 "inner join deck " +
+									 "on card.deck_id = deck.deck_id " +
+									 "where card.deck_id = ?" +
+									 "order by random()";
 		
 		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlAllCardsShuffled, deckId);
 		while (results.next()) {
@@ -210,8 +215,6 @@ public class JDBCCardDeckDAO implements CardDeckDAO {
 	
 	private Flashcard mapRowToFlashcard(SqlRowSet result) {
 	    Flashcard flashcard = new Flashcard();
-	    flashcard.setCardId(result.getInt("card_id"));
-	    flashcard.setDeckId(result.getInt("deck_id"));
 	    flashcard.setFrontText(result.getString("card_front"));
 	    flashcard.setBackText(result.getString("card_back"));
 	    flashcard.setCardTag(result.getString("card_tag"));
