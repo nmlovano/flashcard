@@ -5,7 +5,7 @@
       <div class="alert alert-danger" role="alert" v-if="registrationErrors">
         There were problems registering this user.
       </div>
-      <div id="username">
+      <div id="register-username">
       <label for="username" class="sr-only">Username</label>
       <input
         type="text"
@@ -17,11 +17,11 @@
         autofocus
       />
       </div>
-      <div id="passwords">
+      <div id="register-passwords">
       <label for="password" class="sr-only">Password</label>
       <input
         type="password"
-        id="password"
+        id="register-password"
         class="form-control"
         placeholder="Password"
         v-model="user.password"
@@ -30,7 +30,7 @@
        <label for="password" class="sr-only">Confirm Password</label>
       <input
         type="password"
-        id="confirmPassword"
+        id="register-confirmPassword"
         class="form-control"
         placeholder="Confirm Password"
         v-model="user.confirmPassword"
@@ -41,7 +41,7 @@
       <label for="firstname" class="sr-only">First Name</label>
       <input
         type="firstname"
-        id="firstName"
+        id="register-firstName"
         class="form-control"
         placeholder="First Name"
         v-model="user.firstName"
@@ -50,7 +50,7 @@
       <label for="lastname" class="sr-only">Last Name</label>
       <input
         type="lastname"
-        id="lastName"
+        id="register-lastName"
         class="form-control"
         placeholder="Last Name"
         v-model="user.lastName"
@@ -60,7 +60,7 @@
      <label for="email" class="sr-only">Email</label>
       <input
         type="email"
-        id="email"
+        id="register-email"
         class="form-control"
         placeholder="Enter in Your Email Address"
         v-model="user.email"
@@ -70,7 +70,7 @@
       <label for="email" class="sr-only">Confirm Email</label>
        <input
         type="email"
-        id="confirmEmail"
+        id="register-confirmEmail"
         class="form-control"
         placeholder="Confirm Email Address"
         v-model="user.confirmEmail"
@@ -131,5 +131,53 @@ export default {
 </script>
 
 <style>
-
+#register-username{
+  display:block; 
+  margin-left: auto; 
+  margin-right: auto;
+  width: 60%; 
+  margin: 40px;  
+}
+#register-password{
+  display:block; 
+  margin-left: auto; 
+  margin-right: auto;
+  width: 60%; 
+  margin: 40px;  
+}
+#register-confirmPassword{
+  display:block; 
+  margin-left: auto; 
+  margin-right: auto;
+  width: 60%; 
+  margin: 40px;
+}
+#register-firstName{
+    display:block; 
+  margin-left: auto; 
+  margin-right: auto;
+  width: 60%; 
+  margin: 40px;
+}
+#register-lastName{
+    display:block; 
+  margin-left: auto; 
+  margin-right: auto;
+  width: 60%; 
+  margin: 40px;
+}
+#register-email{
+    display:block; 
+  margin-left: auto; 
+  margin-right: auto;
+  width: 60%; 
+  margin: 40px;
+}
+#register-confirmEmail{
+    display:block; 
+  margin-left: auto; 
+  margin-right: auto;
+  width: 40%; 
+  margin: 30px;
+}
 </style>

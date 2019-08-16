@@ -15,7 +15,7 @@
       <label for="username" class="sr-only">Username</label>
       <input
         type="text"
-        id="username"
+        id="login-username"
         class="form-control"
         placeholder="Username"
         v-model="user.username"
@@ -25,7 +25,7 @@
       <label for="password" class="sr-only">Password</label>
       <input
         type="password"
-        id="password"
+        id="login-password"
         class="form-control"
         placeholder="Password"
         v-model="user.password"
@@ -98,6 +98,20 @@ export default {
 </script>
 
 <style>
+#login-username{
+  display:block; 
+  margin-left: auto; 
+  margin-right: auto;
+  width: 70%; 
+  margin: 50px;  
+}
+#login-password{
+  display:block; 
+  margin-left: auto; 
+  margin-right: auto;
+  width: 70%; 
+  margin: 50px;  
+}
 
 #login{
   color:black;
