@@ -2,7 +2,7 @@
 <template>
 <div class="photo">
   <div class="admin">
-    <h1>Welcome to your deck page! </h1>
+    <h1 id="deck-page">Welcome to your deck page! </h1>
     <a href="/addDeck">
         <button id="add-decks-here" type="redirect">Add Decks Here!</button>
     </a>
@@ -76,7 +76,7 @@ export default {
   font-weight: lighter;
 }
 
-h1{
+#deck-page{
   padding: 80px; 
   font-size: 60px;
 }

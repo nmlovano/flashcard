@@ -44,12 +44,14 @@ body {
 .flip-card-front {
   background-color: #bbb;
   color: black;
+  
 }
 
 .flip-card-back {
   background-color: #FF5D73;
   color: white;
   transform: rotateY(180deg);
+  font-size: 20px;
 }
    
 </style>
