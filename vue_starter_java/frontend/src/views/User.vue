@@ -1,13 +1,13 @@
 <template>
 	<div class="user">
 		<router-link to="user"></router-link>
-		<h1>Welcome{{user.firstname}}! </h1>
-		<p>Let's start learning!</p>
+		<h1 id="welcome-msg"> Welcome{{user.firstname}}! </h1>
+		<p id="learn">Let's start learning!</p>
 		<table>
-			<tr>User Name: {{user.username}}</tr>
-			<tr>Email: {{user.email}}</tr>
-			<tr> First Name: {{user.firstName}}</tr>
-			<tr> Last Name: {{user.lastName}}</tr>
+			<tr>User Name: <div id="info">{{user.username}}</div></tr>
+			<tr>Email: <div id="info">{{user.email}}</div></tr>
+			<tr> First Name: <div id="info">{{user.firstName}}</div></tr>
+			<tr> Last Name: <div id="info">{{user.lastName}}</div></tr>
 		</table>
 
 		<div class="deckButton">
@@ -85,6 +85,24 @@
 <style>
 tr {
 	font-weight: bold; 
+	font-size: 30px;
+	text-emphasis-color: blue; 
+}
+.user{
+	padding:80px; 
+	background-color:lightcyan;
+}
+
+#welcome-msg{
+	font-size: 50px;
+}
+#learn{
+	font-size: 30px;
+	font-style: italic;
+}
+#info{
+	font-weight:lighter;
+
 }
 </style>
 

@@ -65,12 +65,9 @@ body {
       <img src="../Images/Flashcards (1).png" alt="TE" style="width:300px;height:300px;">
     </div>
     <div class="flip-card-back">
-     
       <h1>Flashcard Capstone</h1> 
-      <p>Lori</p>
-      <p>Sarah</p> 
-      <p>Nathan</p>
-      <p>Chris</p>
+      <p>Lori - Sarah</p> 
+      <p>Nathan - Chris</p>
       </div>
     </div>
   </div>

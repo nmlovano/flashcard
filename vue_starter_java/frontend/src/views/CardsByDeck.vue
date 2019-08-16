@@ -90,7 +90,7 @@ export default {
 }
 
 .flip-card-front {
-  background-color:palegreen;
+  background-color:white;
   color: black;
 }
 .flip-card-back {
