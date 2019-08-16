@@ -2,22 +2,24 @@
 <template>
 <div class="photo">
   <div class="admin">
-    <h1>Welcome to your deck page</h1>
+    <h1>Welcome to your deck page! </h1>
     <a href="/addDeck">
-        <button type="redirect">Add Decks Here!</button>
+        <button id="add-decks-here" type="redirect">Add Decks Here!</button>
     </a>
   </div>
   <table>
     <thead>
       <tr>
-        <th>Title</th>
-        <th>Description</th>
+        <th>Your Current Decks</th>
       </tr>
     </thead>
     <tbody>
       <tr v-for="deck in decks" v-bind:key="deck.id">
+         <img id="admin-card" src= "../Images/card-deck.png"/>
         <td><router-link to="/deck={deckId}" tag="button">{{deck.name}}</router-link></td>
-        <td>{{deck.description}}</td>
+        <div>
+        <tr> Description: <div id="admin-desc">" {{deck.description}} "</div></tr>
+        </div>
       </tr>
     </tbody>
   </table>
@@ -64,65 +66,25 @@ export default {
 </script>
 
 <style>
-body, html {
-  height: 100%;
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-.bg-img {
-  /* The image used */
-  background-image: url("img_nature.jpg");
-
-  min-height: 380px;
-
-  /* Center and scale the image nicely */
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  position: relative;
-}
-
-/* Add styles to the form container */
-.container {
-  position: absolute;
-  right: 0;
+#admin-card{
+ width: 70%;
   margin: 20px;
-  max-width: 300px;
-  padding: 16px;
-  background-color: white;
+}
+#admin-desc{
+  font-size:25px;
+  font-style:italic;
+  font-weight: lighter;
 }
 
-/* Full-width input fields */
-input[type=text], input[type=password] {
-  width: 100%;
-  padding: 15px;
-  margin: 5px 0 22px 0;
-  border: none;
-  background: #f1f1f1;
+h1{
+  padding: 80px; 
+  font-size: 60px;
 }
-
-input[type=text]:focus, input[type=password]:focus {
-  background-color: #ddd;
-  outline: none;
+#add-decks-here{
+  width: 200px;
+  margin: 20px;
+  border-color: red;
+  border-width: 5px;
+  border-radius:5%;
 }
-
-/* Set a style for the submit button */
-.btn {
-  background-color: #4CAF50;
-  color: white;
-  padding: 16px 20px;
-  border: none;
-  cursor: pointer;
-  width: 100%;
-  opacity: 0.9;
-}
-
-.btn:hover {
-  opacity: 1;
-}
-
-
+</style>
