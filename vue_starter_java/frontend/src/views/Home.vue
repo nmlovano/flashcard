@@ -8,10 +8,13 @@ body {
  display: block;
   margin-left: auto;
   margin-right: auto;
-padding: 70px 0;
+  padding: 70px 0;
   width: 50%;
 }
 .flip-card {
+  margin-top: 100px; 
+  margin-left: auto;
+  margin-right: auto;
   background-color: transparent;
   width: 300px;
   height: 300px;
