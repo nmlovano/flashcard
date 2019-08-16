@@ -3,9 +3,11 @@
         <h1>Here's some decks!</h1>
             <ul id="deck">
                 <li v-for="item in deck" v-bind:key="item.id">
-                {{item.name}} - {{item.description}}
-                <router-link v-bind:to="'/cardsByDeck/' + item.deckId">View Cards </router-link>
-                <router-link v-bind:to="'/cardsByDeckShuffled/' + item.deckId">View Cards Shuffled </router-link>
+                <img id="red-black-card" src= "../Images/card-deck.png"/>
+               <div id="card-name"> {{item.name}} </div>
+               <div id="card-desc">{{item.description}}</div>
+               <div id="card-link"> <router-link v-bind:to="'/cardsByDeck/' + item.deckId">View Cards </router-link></div>
+               <div id="card-link"> <router-link v-bind:to="'/cardsByDeckShuffled/' + item.deckId">View Cards Shuffled </router-link></div>
                 </li>
             </ul>
     </div>
@@ -47,5 +49,26 @@ export default {
 </script>
 
 <style>
+#deck{
+    list-style: none;
+    display:flex;
+    
+}
+#card-name{
+    font-weight:bold;
+    font-size: 40px;
+    text-align: center;
+    position: relative;
+}
+#card-desc{
+    font-style:italic;
+    font-size: 25px;
+    text-align: center;
+    position: relative;
+}
+#card-link{
+    font-size:20px; 
+    text-align:center;
 
+}
 </style>
