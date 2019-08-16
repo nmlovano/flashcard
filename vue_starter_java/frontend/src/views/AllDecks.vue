@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="allDecks">
         <h1>Here's some decks!</h1>
             <ul id="deck">
                 <li v-for="item in deck" v-bind:key="item.id">

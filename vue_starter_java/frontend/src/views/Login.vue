@@ -102,15 +102,16 @@ export default {
   display:block; 
   margin-left: auto; 
   margin-right: auto;
-  width: 70%; 
-  margin: 50px;  
+  margin-top: 10%;
+  width: 35%; 
+  margin: center;  
 }
 #login-password{
   display:block; 
   margin-left: auto; 
   margin-right: auto;
-  width: 70%; 
-  margin: 50px;  
+  width: 35%; 
+  margin: center;  
 }
 
 #login{
@@ -118,7 +119,7 @@ export default {
   font-family: 'Times New Roman', Times, serif;
   display:center;
 }
- 
+
 #button{
 
   padding: 15px 32px;
@@ -129,6 +130,7 @@ export default {
   margin: 4px 2px;
   cursor: pointer;
 }
+
 .header{
   font-family: Arial, Helvetica, sans-serif;
   text-align:center;
